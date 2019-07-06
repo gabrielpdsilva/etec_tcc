@@ -17,27 +17,58 @@
             android:layout_margin="10dp"
             android:layout_height="wrap_content">
 
-            <EditText
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_width="match_parent"
-                android:hint="Usuário"
-                android:id="@+id/txtUsuario"
-                android:padding="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.design.widget.TextInputEditText
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_width="match_parent"
-                android:hint="Senha"
-                android:id="@+id/txtSenha"
-                android:layout_marginTop="10dp"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:layout_height="wrap_content"/>
 
+            <!--Campo de email-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:hint="Usuário"
+                    android:id="@+id/txtUsuario"
+                    android:padding="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--Campo de senha-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:hint="Senha"
+                    android:id="@+id/txtSenha"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--TextView Esqueceu a Senha-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +81,7 @@
                 android:padding="10dp"
                 android:layout_gravity="end"/>
 
-
+            <!--Button Acessar-->
             <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -63,6 +94,7 @@
                 android:layout_marginBottom="20dp"
                 android:textSize="21dp" />
 
+            <!--TextView Cadastrar-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

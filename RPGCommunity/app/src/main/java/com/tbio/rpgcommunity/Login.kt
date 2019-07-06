@@ -3,10 +3,11 @@ package com.tbio.rpgcommunity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
+//import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.longToast
+//import android.widget.Toast
+//import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -21,7 +22,8 @@ class Login : AppCompatActivity() {
         val btnLogin: Button = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener {
-            toast("Botão login rodou...")
+            startActivity<MainActivity>()
+            longToast("Botão login rodou, você vai pra tela MainActivity!")
         }
 
         //TextView Cadastro
