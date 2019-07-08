@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 //import android.widget.EditText
 import android.widget.TextView
+import kotlinx.android.synthetic.main.login.*
 import org.jetbrains.anko.longToast
 //import android.widget.Toast
 //import kotlinx.android.synthetic.main.activity_main.*
@@ -19,11 +20,18 @@ class Login : AppCompatActivity() {
 
 
         //botao Login
+        var usuario: TextView = findViewById<TextView>(R.id.txtUsuario)
+        var senha: TextView = findViewById<TextView>(R.id.txtSenha)
         val btnLogin: Button = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener {
-            startActivity<MainActivity>()
-            longToast("Botão login rodou, você vai pra tela MainActivity!")
+            if(usuario.text.toString().equals("root") && senha.text.toString().equals("123")){
+                startActivity<MainActivity>()
+                longToast("Botão login rodou, você está na MainActivity!")
+            }else{
+                toast("usuário inválido...")
+            }
+
         }
 
         //TextView Cadastro

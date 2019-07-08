@@ -12,6 +12,7 @@ import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -32,11 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        //Botão teste pra redirecionar pra tela de login
-        val btnTeste: Button = findViewById(R.id.botaoTeste)
-        btnTeste.setOnClickListener {
-            startActivity<Login>()
-        }
     }
 
     override fun onBackPressed() {

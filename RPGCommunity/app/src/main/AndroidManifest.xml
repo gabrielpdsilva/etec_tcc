@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Login"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".EsqueciASenha"></activity>
+        <activity android:name=".Cadastro"></activity>
+    </application>
+
+</manifest>
+
+<!--
+Código original da primeira activity:
+<activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -19,9 +37,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".EsqueciASenha"></activity>
-        <activity android:name=".Cadastro"></activity>
-    </application>
 
-</manifest>
+-->
