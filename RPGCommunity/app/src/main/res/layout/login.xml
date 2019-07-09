@@ -20,7 +20,7 @@
 
             <!--Campo de email-->
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_email"
+                android:id="@+id/text_input_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true">
@@ -29,11 +29,12 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Usuário"
                     android:id="@+id/txtUsuario"
                     android:padding="10dp"
                     android:layout_marginTop="30dp"
-                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_login_user"
                     android:inputType="textEmailAddress"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -55,6 +56,7 @@
                     android:layout_marginTop="10dp"
                     android:inputType="textPassword"
                     android:padding="10dp"
+                    android:drawableStart="@drawable/ic_login_pass"
                     android:layout_height="wrap_content"/>
 
             </android.support.design.widget.TextInputLayout>
