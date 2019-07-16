@@ -16,33 +16,162 @@
             android:background="@color/colorPrimaryDark">
 
         </RelativeLayout>
-            
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:gravity="center_horizontal|center_vertical"
-                >
 
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:id="@+id/avatarPerfil"
-                    android:src="@drawable/ic_add_avatar"
-                    android:background="@color/colorPrimary"
-                    />
-                
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Nickname"
-                    android:padding="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal|center_vertical">
 
-            </LinearLayout>
+            <!--TextView da foto de perfil-->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/avatarPerfil"
+                android:src="@drawable/ic_add_avatar"
+                android:background="@color/colorPrimary" />
 
+            <!--TextView do nickname-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Nickname"
+                style="@style/TextViewTitulos" />
 
+        </LinearLayout>
 
+        <!--*********************************************************************************-->
+
+        <!--TextView das informações gerais-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Informações gerais:"
+            android:layout_marginTop="190dp"
+            style="@style/TextViewTitulos"
+            android:id="@+id/lblInformacoesGerais"/>
+
+        <!--TextView ID:-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="225dp"
+            android:text="ID:"
+            style="@style/TextViewComumBold"
+            android:id="@+id/lblId"/>
+
+        <!--TextView ID do usuario-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="225dp"
+            android:text="DarkLordGlaurung"
+            style="@style/TextViewComum"
+            android:id="@+id/lblIdUsuario"/>
+
+        <!--TextView Nome:-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="225dp"
+            android:text="Nome:"
+            style="@style/TextViewComumBold"
+            android:id="@+id/lblNome"/>
+
+        <!--TextView nome do usuário-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="225dp"
+            android:text="Gabriel"
+            style="@style/TextViewComum"
+            android:id="@+id/lblNomeUsuario"/>
+
+        <!--TextView E-mail:-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="255dp"
+            android:text="E-mail:"
+            style="@style/TextViewComumBold"
+            android:id="@+id/lblEmail"/>
+
+        <!--TextView e-mail do usuário-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="255dp"
+            android:text="email@email.com.br"
+            style="@style/TextViewComum"
+            android:id="@+id/lblEmailUsuario"/>
+
+        <!--TextView Sexo:-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="285dp"
+            android:text="Sexo:"
+            style="@style/TextViewComumBold"
+            android:id="@+id/lblSexo"/>
+
+        <!--TextView sexo do usuário-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="285dp"
+            android:text="Masculino"
+            style="@style/TextViewComum"
+            android:id="@+id/lblSexoUsuario"/>
+
+        <!--TextView Idade:-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="285dp"
+            android:text="Idade:"
+            style="@style/TextViewComumBold"
+            android:id="@+id/lblIdade"/>
+
+        <!--TextView idade do usuário-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="285dp"
+            android:text="20"
+            style="@style/TextViewComum"
+            android:id="@+id/lblIdadeUsuario"/>
+
+        <View style="@style/Linha"
+            android:layout_marginTop="330dp"/>
+
+        <!--*********************************************************************************-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Lista de personagens:"
+            android:layout_marginTop="340dp"
+            style="@style/TextViewTitulos"
+            android:id="@+id/lblListaPersonagens"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_marginTop="375dp"
+            android:layout_height="match_parent"
+            android:id="@+id/lvPersonagens">
+
+        </ListView>
 
     </RelativeLayout>
 

@@ -3,10 +3,50 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+
+        <!--Config original:
+       <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>-->
+
+        <!--Dia-->
+       <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="corBackground">#fcfcfc</item>
+        <item name="corCardBackground">#ffffff</item>
+        <item name="corTexto">#212121</item>
+        <item name="corTint">#ffffff</item>
+        <item name="corBotao">#2196F3</item>
+
     </style>
+
+        <!--Noite-->
+    <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="corBackground">#303030</item>
+        <item name="corCardBackground">#424242</item>
+        <item name="corTexto">#ffffff</item>
+        <item name="corTint">#ffffff</item>
+        <item name="corBotao">#212121</item>
+
+
+    </style>
+
+    <!--Animação que faz transição de temas entre Activities
+    Detalhe: pra funcionar, adicione o seguinte código em abos os styles dia e noite:
+    <item name="android:windowAnimationStyle">@style/TransicaoTemaActivity</item>
+    -->
+    <!--
+    <style name="TransicaoTemaActivity">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    -->
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -16,5 +56,40 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--Estilo pra criar a linha que separa conteúdo-->
+    <style name="Linha">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <!--Estilo pra TextView Comum-->
+    <style name="TextViewComum">
+        <item name="android:textSize">18dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <!--Estilo pra TextView Comum em negrito-->
+    <style name="TextViewComumBold">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <!--Estilo pra criar TextView maiores, de títulos-->
+    <style name="TextViewTitulos">
+        <item name="android:textSize">23dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <!--Estilo pra criar EditText do cadastro-->
+    <style name="EditTextCadastro">
+        <item name="android:textSize">18dp</item>
+
+    </style>
+
+
 
 </resources>

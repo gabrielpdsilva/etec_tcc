@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,6 +48,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    //Aqui é a opção de Settings (Configurações). Deixei como comentário aqui e no XML
+    /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -55,7 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> return super.onOptionsItemSelected(item)
         }
     }
-
+*/
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
@@ -73,11 +77,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_rascunho -> {
 
             }
-            R.id.nav_share -> {
-
+            R.id.nav_configuracoes -> {
+                startActivity<Configuracoes>()
             }
-            R.id.nav_send -> {
-
+            R.id.nav_logout -> {
+                finish()
+                //O código acima deve ser removido
+                // Acho que esse código serve quando aplicar firebase:
+                //Firebase.Auth.getInstance().signOut()
+                toast("Logout realizado com sucesso.")
             }
         }
 

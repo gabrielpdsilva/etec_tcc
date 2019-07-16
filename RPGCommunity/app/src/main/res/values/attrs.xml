@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ds">
+        <attr name="corBackground" format="color"/>
+        <attr name="corCardBackground" format="color"/>
+        <attr name="corTexto" format="color"/>
+        <attr name="corTint" format="color"/>
+        <attr name="corBotao" format="color"/>
+
+    </declare-styleable>
+</resources>
