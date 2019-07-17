@@ -25,8 +25,8 @@
 
         <!--Noite-->
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#212121</item>
-        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#303030</item>
         <item name="corCardBackground">#424242</item>

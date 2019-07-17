@@ -16,17 +16,18 @@
             android:id="@+id/nav_sessoes"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Sessões" />
+        <!--
         <item
             android:id="@+id/nav_rascunho"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Rascunho" />
+            android:title="Rascunho" />-->
     </group>
 
     <item android:title="Outros">
         <menu>
             <item
                 android:id="@+id/nav_configuracoes"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_manage"
                 android:title="Configurações" />
             <item
                 android:id="@+id/nav_logout"

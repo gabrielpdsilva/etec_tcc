@@ -22,12 +22,44 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
+    <!--Floating Action Button inicial-->
+<!--   <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_dialog_email" />-->
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab"
+        android:layout_gravity="bottom|end"
+        app:menu_showShadow="true"
+        app:menu_fab_label=""
+        app:menu_openDirection="up"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:menu_backgroundColor="@android:color/transparent"
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/floatingPersonagem"
+            app:fab_size="mini"
+            app:fab_label="Novo personagem"
+            android:src="@drawable/ic_floating_personagem"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/floatingSessao"
+            app:fab_size="mini"
+            app:fab_label="Nova sessão"
+            android:src="@drawable/ic_floating_personagem"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

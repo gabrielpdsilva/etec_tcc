@@ -20,9 +20,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        //floating action menu, necessario mudar a funcao
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+        }
+
+        //floating action button de criar personagem
+        floatingPersonagem.setOnClickListener{
+            startActivity<CriarPersonagem>()
+        }
+
+        //floating action button de criar sessão
+        floatingSessao.setOnClickListener{
+            startActivity<CriarSessao>()
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -74,9 +85,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 loadSessoes(frag = SessoesFragment())
 
             }
+
+            //menu nav_rascunho, que marquei como comentário em xml
+            /*
             R.id.nav_rascunho -> {
 
-            }
+            }*/
+
             R.id.nav_configuracoes -> {
                 startActivity<Configuracoes>()
             }

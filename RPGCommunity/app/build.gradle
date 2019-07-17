@@ -32,5 +32,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //anko
     implementation "org.jetbrains.anko:anko:$anko_version"
+
+    //auxiliador floating action button
+    implementation 'com.github.clans:fab:1.6.4'
 }

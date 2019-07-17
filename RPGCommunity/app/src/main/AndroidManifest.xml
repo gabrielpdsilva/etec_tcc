@@ -22,6 +22,8 @@
         <activity android:name=".EsqueciASenha"></activity>
         <activity android:name=".Cadastro"></activity>
         <activity android:name=".Configuracoes"></activity>
+        <activity android:name=".CriarPersonagem"></activity>
+        <activity android:name=".CriarSessao"></activity>
     </application>
 
 </manifest>
