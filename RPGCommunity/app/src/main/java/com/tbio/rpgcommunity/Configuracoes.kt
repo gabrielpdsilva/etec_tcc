@@ -30,10 +30,10 @@ class Configuracoes : AppCompatActivity() {
         switchTema.setOnCheckedChangeListener { buttonView: CompoundButton, isChecked: Boolean ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                restartApp()
+                recreate()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                restartApp()
+                recreate()
             }
         }
     }

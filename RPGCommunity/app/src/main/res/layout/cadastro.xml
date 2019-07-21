@@ -15,7 +15,7 @@
        <TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:hint="Cadastro"
+           android:hint="@string/txtCadastro"
            android:textSize="30dp"
            android:textStyle="bold"
            android:textAlignment="center"/>
@@ -29,7 +29,7 @@
            android:maxLength="15"
            android:layout_width="165dp"
            android:layout_height="wrap_content"
-           android:hint="Nickname"
+           android:hint="@string/txtNickname"
            android:id="@+id/txtNickname"/>
 
         <!--Campo nome-->
@@ -38,7 +38,7 @@
            android:layout_marginTop="40dp"
            android:layout_width="165dp"
            android:layout_height="wrap_content"
-           android:hint="Nome"
+           android:hint="@string/txtNome"
            style="@style/EditTextCadastro"
            android:maxLength="15"
            android:id="@+id/txtNome"
@@ -52,7 +52,7 @@
            style="@style/EditTextCadastro"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:hint="E-mail"
+           android:hint="@string/txtEmail"
            android:id="@+id/txtEmail"/>
 
 
@@ -60,7 +60,7 @@
        <EditText
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
-           android:hint="Senha"
+           android:hint="@string/txtSenha"
            android:layout_marginTop="130dp"
            android:inputType="textPassword"
            style="@style/EditTextCadastro"
@@ -72,7 +72,7 @@
        <EditText
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
-           android:hint="Confirme a senha"
+           android:hint="@string/txtConfirmaSenha"
            android:layout_marginTop="180dp"
            android:inputType="textPassword"
            style="@style/EditTextCadastro"
@@ -90,7 +90,7 @@
            android:maxLength="8"
            android:layout_width="115dp"
            android:layout_height="wrap_content"
-           android:hint="Nascimento"/>
+           android:hint="@string/txtNascimento"/>
 
        <!--Campo de escolha de sexo-->
         <RadioGroup
@@ -105,17 +105,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/EditTextCadastro"
-                android:text="Sexo:" />
+                android:text="@string/txtSexo" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Homem" />
+                android:text="@string/txtMasculino" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mulher" />
+                android:text="@string/txtSexoFeminino" />
 
         </RadioGroup>
 
@@ -125,7 +125,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:textAllCaps="false"
-            android:text="Cadastrar"
+            android:text="@string/btnCadastrar"
             android:id="@+id/btnCadastrar"
             android:layout_gravity="center"
             android:layout_marginTop="300dp"
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="355dp"
-            android:text="Já é cadastrado? Faça login"
+            android:text="@string/txtJaECadastrado"
             android:id="@+id/tvJaECadastrado"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -145,8 +145,6 @@
             android:onClick="onClick"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"/>
-
    </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

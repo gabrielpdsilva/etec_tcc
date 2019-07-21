@@ -19,14 +19,12 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
-
         //botao Login
         var email: TextView = findViewById<TextView>(R.id.txtEmail)
         var senha: TextView = findViewById<TextView>(R.id.txtSenha)
         val btnLogin: Button = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener {
-            toast("Carregando...")
             if(email.text.toString().equals("root") && senha.text.toString().equals("123")){
                 startActivity<MainActivity>()
                 longToast("Login realizado com sucesso!")

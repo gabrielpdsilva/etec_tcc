@@ -10,6 +10,7 @@ import org.jetbrains.anko.toast
 class Cadastro : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cadastro)
 

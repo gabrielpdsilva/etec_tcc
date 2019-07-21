@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="?attr/corTexto"
-            android:text="Preferências"
+            android:text="@string/txtPreferencias"
             style="@style/TextViewTitulos" />
 
         <Switch
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             style="@style/TextViewComum"
             android:textColor="?attr/corTexto"
-            android:text="Modo dia/noite:"/>
+            android:text="@string/txtModoDiaNoite"/>
 
         </LinearLayout>
 

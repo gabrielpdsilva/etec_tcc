@@ -7,15 +7,15 @@
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_perfil"
-            android:title="Perfil" />
+            android:title="@string/txtPerfil" />
         <item
             android:id="@+id/nav_amigos"
             android:icon="@drawable/ic_amigos"
-            android:title="Amigos" />
+            android:title="@string/txtAmigos" />
         <item
             android:id="@+id/nav_sessoes"
             android:icon="@drawable/ic_sessoes"
-            android:title="Sessões" />
+            android:title="@string/txtSessoes" />
         <!--
         <item
             android:id="@+id/nav_rascunho"
@@ -28,11 +28,11 @@
             <item
                 android:id="@+id/nav_configuracoes"
                 android:icon="@drawable/ic_menu_manage"
-                android:title="Configurações" />
+                android:title="@string/action_settings" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
-                android:title="Logout" />
+                android:title="@string/txtLogout" />
         </menu>
     </item>
 

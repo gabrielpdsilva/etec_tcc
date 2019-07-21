@@ -5,33 +5,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<!--
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        ></android.support.v7.widget.Toolbar>-->
 
     <!--EditText Digite aqui...-->
     <EditText
         android:id="@+id/txtChatAmigos"
-        android:layout_width="269dp"
-        android:layout_height="50dp"
+        android:layout_width="249dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
+        android:hint="@string/txtDigiteMensagem"
         android:inputType="textPersonName"
-        android:text="Digite aqui..."
-        app:layout_constraintEnd_toStartOf="@+id/btnEnviarMensagemAmigos"
+        app:layout_constraintEnd_toStartOf="@+id/imgButtonEnviar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="443dp" />
+        tools:layout_editor_absoluteY="446dp" />
 
     <!--Botão Enviar-->
-    <Button
-        android:id="@+id/btnEnviarMensagemAmigos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@null"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Enviar"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="446dp" />
+        tools:layout_editor_absoluteY="446dp"
+        android:id="@+id/imgButtonEnviar"
+        android:src="@drawable/ic_enviar"/>
 
     <!--RecyclerView com as mensagens-->
     <android.support.v7.widget.RecyclerView

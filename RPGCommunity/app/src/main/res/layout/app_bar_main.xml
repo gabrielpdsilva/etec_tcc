@@ -31,6 +31,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
+    <!--Floating action menu-->
     <com.github.clans.fab.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,23 +43,32 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:menu_backgroundColor="@android:color/transparent"
+        app:menu_colorNormal="@color/colorPrimary"
         >
 
+        <!--
+        teste:
+        app:menu_backgroundColor="@android:color/transparent"
+        -->
+        <!--Floating action button Personagem-->
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/floatingPersonagem"
             app:fab_size="mini"
-            app:fab_label="Novo personagem"
-            android:src="@drawable/ic_floating_personagem"/>
+            app:fab_label="@string/txtNovoPersonagem"
+            android:src="@drawable/ic_floating_personagem"
+            app:menu_colorNormal="@color/colorPrimary"/>
 
+        <!--Floating action button Sessão-->
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/floatingSessao"
             app:fab_size="mini"
-            app:fab_label="Nova sessão"
-            android:src="@drawable/ic_floating_personagem"/>
+            app:fab_label="@string/txtNovaSessao"
+            android:src="@drawable/ic_floating_sessao"
+            app:menu_colorNormal="@color/colorPrimary"/>
 
     </com.github.clans.fab.FloatingActionMenu>
 

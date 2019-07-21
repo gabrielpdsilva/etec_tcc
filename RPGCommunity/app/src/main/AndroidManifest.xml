@@ -14,31 +14,38 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".logincadastro.EsqueciASenha">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".logincadastro.Cadastro">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+        <activity
+            android:name=".logincadastro.Cadastro"
+            android:label="Registre-se">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".Configuracoes">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CriarPersonagem"></activity>
-        <activity android:name=".CriarSessao"></activity>
+        <activity android:name=".CriarPersonagem" />
+        <activity android:name=".CriarSessao" />
+        <activity android:name=".AmigosChat" />
     </application>
 
 </manifest>
 
-<!--
+    <!--
 Código original da primeira activity:
 <activity
             android:name=".MainActivity"

@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/corTexto"
-                android:text="Recuperação de senha"
+                android:text="@string/txtRecuperacao"
                 style="@style/TextViewTitulos"
                 android:layout_gravity="center"
                 />
@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Digite abaixo o seu endereço de e-mail para que possamos ajudá-lo a recuperar sua senha."
+                android:hint="@string/txtDigiteAbaixo"
                 android:textSize="15dp"
                 android:padding="5dp"
                 android:textAlignment="center"/>
@@ -44,12 +44,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Digite aqui o e-mail..."/>
+                android:hint="@string/txtDigiteEmail"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recuperar senha"
+                android:text="@string/btnRecuperarSenha"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_gravity="center"/>

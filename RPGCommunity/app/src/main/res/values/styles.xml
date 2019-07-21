@@ -12,21 +12,21 @@
     </style>-->
 
         <!--Dia-->
-       <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">#1976D2</item>
+       <item name="colorPrimary">#008577</item>
+        <item name="colorPrimaryDark">#00574B</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#fcfcfc</item>
         <item name="corCardBackground">#ffffff</item>
         <item name="corTexto">#212121</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#2196F3</item>
+        <item name="corBotao">#008577</item>
 
     </style>
 
         <!--Noite-->
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorPrimary">#008577</item>
+        <item name="colorPrimaryDark">#00574B</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#303030</item>
         <item name="corCardBackground">#424242</item>
@@ -91,6 +91,14 @@
         <item name="android:textSize">18dp</item>
     </style>
 
+    <!--Activities sem toolbar-->
+    <style name="AppThemeNo" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 
 </resources>

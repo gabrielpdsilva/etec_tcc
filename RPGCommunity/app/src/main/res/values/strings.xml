@@ -1,9 +1,53 @@
 <resources>
     <string name="app_name">RPG Community</string>
+    <!--login-->
+    <string name="btnAcessar">Acessar</string>
+    <string name="btnCadastrar">Cadastrar</string>
+    <string name="txtEmail">E-mail</string>
+    <string name="txtSenha">Senha</string>
+    <string name="txtBemVindo">Seja bem-vindo, aventureiro!</string>
+    <string name="txtFacaLogin">Faça login e participe de inúmeras campanhas que estão te esperando!</string>
+    <string name="txtEsqueceuASenha">Esqueceu a senha?</string>
+
+    <!--Esqueci A Senha-->
+    <string name="txtRecuperacao">Recuperação de senha</string>
+    <string name="txtDigiteAbaixo">Digite abaixo o seu endereço de e-mail para que possamos ajudá-lo a recuperar sua senha.</string>
+    <string name="txtDigiteEmail">Digite aqui o e-mail...</string>
+    <string name="btnRecuperarSenha">Recuperar senha</string>
+
+    <!--Cadastro-->
+    <string name="txtCadastro">Cadastro</string>
+    <string name="txtNickname">Nickname</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtConfirmaSenha">Confirme a senha</string>
+    <string name="txtNascimento">Nascimento</string>
+    <string name="txtSexo">Sexo:</string>
+    <string name="txtMasculino">Masculino</string>
+    <string name="txtSexoFeminino">Feminino</string>
+    <string name="txtJaECadastrado">Já é cadastrado? Faça login</string>
+
+    <!--Main Activity-->
+    <string name="txtPerfil">Perfil</string>
+    <string name="txtAmigos">Amigos</string>
+    <string name="txtSessoes">Sessões</string>
+    <string name="txtLogout">Logout</string>
+
+    <!--Floating action buttons-->
+    <string name="txtNovoPersonagem">Novo personagem</string>
+    <string name="txtNovaSessao">Nova sessão</string>
+
+    <!--Configurações-->
+    <string name="txtPreferencias">Preferências</string>
+    <string name="txtModoDiaNoite">Modo dia/noite</string>
+
+    <!--Chat-->
+    <string name="txtDigiteMensagem">Digite aqui...</string>
+
+    <!--outros-->
+    <string name="action_settings">Configurações</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Configurações</string>
 </resources>
