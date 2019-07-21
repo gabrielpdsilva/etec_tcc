@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login"
+            android:name=".logincadastro.Login"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,19 @@
         </activity>
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".EsqueciASenha"></activity>
-        <activity android:name=".Cadastro"></activity>
-        <activity android:name=".Configuracoes"></activity>
+        <activity android:name=".logincadastro.EsqueciASenha">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".logincadastro.Cadastro">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".Configuracoes">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+        </activity>
         <activity android:name=".CriarPersonagem"></activity>
         <activity android:name=".CriarSessao"></activity>
     </application>
@@ -40,5 +50,4 @@ Código original da primeira activity:
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 -->

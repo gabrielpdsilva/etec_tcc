@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="12dp">
+
+
+    <TextView
+        android:id="@+id/txtAmigosChegando"
+        android:layout_width="253dp"
+        android:layout_height="81dp"
+        android:background="@android:color/white"
+        android:padding="15dp"
+        android:text=" é um teste de exemplo que eu fiz só pra ver se dá tudo certo mesmo ok? Ok sei nao se deu certo."
+        app:layout_constraintTop_toTopOf="@+id/imgAmigosChegando"
+        tools:layout_editor_absoluteX="71dp" />
+
+    <ImageView
+        android:id="@+id/imgAmigosChegando"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtAmigosChegando"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
+</android.support.constraint.ConstraintLayout>

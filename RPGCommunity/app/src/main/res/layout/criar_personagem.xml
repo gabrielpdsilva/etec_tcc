@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Campo nome-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Criar Personagem"/>
+        android:text="Nome:"
+        style="@style/TextViewTitulos"/>
+    
+    <EditText
+        android:layout_marginStart="80dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <!--algo...-->
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="algo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
+
+        <!--Campo Descrição:-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição:"
+        style="@style/TextViewTitulos"/>
+
+        <!--EditText da descrição-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="top|left"
+        android:background="@color/colorAccent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+        <!--Campo História do personagem:-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="História do personagem:"
+        style="@style/TextViewTitulos"/>
+
+        <!--EditText da hist. personagem-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="top|left"
+        android:background="@color/colorAccent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+        <!--Botão Criar-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criar"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

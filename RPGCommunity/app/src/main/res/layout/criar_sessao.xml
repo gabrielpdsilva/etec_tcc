@@ -8,4 +8,14 @@
         android:layout_height="wrap_content"
         android:text="Activity Criar Sessão"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da sessão:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sistema:"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -62,6 +62,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
     </style>
 
     <!--Estilo pra TextView Comum-->
@@ -87,7 +89,6 @@
     <!--Estilo pra criar EditText do cadastro-->
     <style name="EditTextCadastro">
         <item name="android:textSize">18dp</item>
-
     </style>
 
 

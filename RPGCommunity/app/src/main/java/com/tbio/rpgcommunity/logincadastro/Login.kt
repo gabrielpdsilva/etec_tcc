@@ -1,11 +1,12 @@
-package com.tbio.rpgcommunity
+package com.tbio.rpgcommunity.logincadastro
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 //import android.widget.EditText
 import android.widget.TextView
-import kotlinx.android.synthetic.main.login.*
+import com.tbio.rpgcommunity.MainActivity
+import com.tbio.rpgcommunity.R
 import org.jetbrains.anko.longToast
 //import android.widget.Toast
 //import kotlinx.android.synthetic.main.activity_main.*
@@ -20,16 +21,21 @@ class Login : AppCompatActivity() {
 
 
         //botao Login
-        var usuario: TextView = findViewById<TextView>(R.id.txtUsuario)
+        var email: TextView = findViewById<TextView>(R.id.txtEmail)
         var senha: TextView = findViewById<TextView>(R.id.txtSenha)
         val btnLogin: Button = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener {
-            if(usuario.text.toString().equals("root") && senha.text.toString().equals("123")){
+            toast("Carregando...")
+            if(email.text.toString().equals("root") && senha.text.toString().equals("123")){
                 startActivity<MainActivity>()
-                longToast("Botão login rodou, você está na MainActivity!")
+                longToast("Login realizado com sucesso!")
+
+                //só pra deixar os campos de usuario e senha em branco após o login
+                email.setText("")
+                senha.setText("")
             }else{
-                toast("usuário inválido...")
+                toast("Usuário inválido!")
             }
 
         }
@@ -38,14 +44,12 @@ class Login : AppCompatActivity() {
         val tvCadastro: TextView = findViewById(R.id.tvCadastrar) as TextView
         tvCadastro.setOnClickListener{
             startActivity<Cadastro>()
-            toast("activity Cadastro rodou...")
         }
 
         //TextView Esqueci a Senha
         val tvEsqueceu: TextView = findViewById(R.id.tvEsqueceu) as TextView
         tvEsqueceu.setOnClickListener {
             startActivity<EsqueciASenha>()
-            toast("activity EsqueciASenha rodou...")
         }
 
     }

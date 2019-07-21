@@ -1,11 +1,10 @@
-package com.tbio.rpgcommunity
+package com.tbio.rpgcommunity.logincadastro
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import kotlinx.android.synthetic.main.cadastro.*
+import com.tbio.rpgcommunity.R
 import org.jetbrains.anko.toast
 
 class Cadastro : AppCompatActivity() {

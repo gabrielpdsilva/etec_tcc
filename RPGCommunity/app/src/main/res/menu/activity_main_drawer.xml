@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_perfil"
             android:title="Perfil" />
         <item
             android:id="@+id/nav_amigos"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_amigos"
             android:title="Amigos" />
         <item
             android:id="@+id/nav_sessoes"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_sessoes"
             android:title="Sessões" />
         <!--
         <item
@@ -31,7 +31,7 @@
                 android:title="Configurações" />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_logout"
                 android:title="Logout" />
         </menu>
     </item>
