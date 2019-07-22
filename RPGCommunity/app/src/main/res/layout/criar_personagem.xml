@@ -3,6 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
     <!--Campo nome-->
     <TextView
         android:layout_width="wrap_content"
@@ -19,7 +25,14 @@
      <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="algo"/>
+         android:text="Sexo"
+         style="@style/TextViewTitulos"
+         android:layout_alignParentEnd="true"/>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,5 +80,7 @@
             android:gravity="center"/>
 
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

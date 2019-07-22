@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".logincadastro.Cadastro"
-            android:label="Registre-se">
+            android:label="@string/txtManRegistreSe">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -38,8 +38,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CriarPersonagem" />
-        <activity android:name=".CriarSessao" />
+
+        <activity android:name=".CriarPersonagem"
+            android:label="@string/txtManNovoPersonagem">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity android:name=".CriarSessao"
+            android:label="@string/txtManNovaSessao"
+            android:windowSoftInputMode="adjustNothing">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".AmigosChat" />
     </application>
 

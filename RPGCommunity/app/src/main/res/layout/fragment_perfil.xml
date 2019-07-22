@@ -34,9 +34,10 @@
 
             <!--TextView do nickname-->
             <TextView
+                android:id="@+id/nickNamePerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Nickname"
+                android:text="@string/txtNickname"
                 style="@style/TextViewTitulos" />
 
         </LinearLayout>
@@ -47,7 +48,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Informações gerais:"
+            android:text="@string/txtInformacoesGerais"
             android:layout_marginTop="190dp"
             style="@style/TextViewTitulos"
             android:id="@+id/lblInformacoesGerais"/>
@@ -58,7 +59,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="225dp"
-            android:text="ID:"
+            android:text="@string/txtID"
             style="@style/TextViewComumBold"
             android:id="@+id/lblId"/>
 
@@ -78,7 +79,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
             android:layout_marginTop="225dp"
-            android:text="Nome:"
+            android:text="@string/txtNomePerfil"
             style="@style/TextViewComumBold"
             android:id="@+id/lblNome"/>
 
@@ -98,7 +99,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="255dp"
-            android:text="E-mail:"
+            android:text="@string/txtEmailPerfil"
             style="@style/TextViewComumBold"
             android:id="@+id/lblEmail"/>
 
@@ -118,7 +119,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="285dp"
-            android:text="Sexo:"
+            android:text="@string/txtSexo"
             style="@style/TextViewComumBold"
             android:id="@+id/lblSexo"/>
 
@@ -126,7 +127,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="70dp"
             android:layout_marginTop="285dp"
             android:text="Masculino"
             style="@style/TextViewComum"
@@ -138,7 +139,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
             android:layout_marginTop="285dp"
-            android:text="Idade:"
+            android:text="@string/txtIdade"
             style="@style/TextViewComumBold"
             android:id="@+id/lblIdade"/>
 
@@ -160,18 +161,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Lista de personagens:"
+            android:text="@string/txtListaDePersonagens"
             android:layout_marginTop="340dp"
             style="@style/TextViewTitulos"
             android:id="@+id/lblListaPersonagens"/>
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_marginTop="375dp"
-            android:layout_height="match_parent"
-            android:id="@+id/lvPersonagens">
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/rvPersonagens">
 
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 

@@ -22,7 +22,7 @@
     <string name="txtConfirmaSenha">Confirme a senha</string>
     <string name="txtNascimento">Nascimento</string>
     <string name="txtSexo">Sexo:</string>
-    <string name="txtMasculino">Masculino</string>
+    <string name="txtSexoMasculino">Masculino</string>
     <string name="txtSexoFeminino">Feminino</string>
     <string name="txtJaECadastrado">Já é cadastrado? Faça login</string>
 
@@ -42,6 +42,33 @@
 
     <!--Chat-->
     <string name="txtDigiteMensagem">Digite aqui...</string>
+
+    <!--Criar personagem-->
+    <string name="txtHistoriaPersonagem">História:</string>
+    <string name="txtDescricaoPersonagem">Descrição:</string>
+    <string name="btnCriar">Criar</string>
+
+    <!--Criar Sessão-->
+    <string name="txtCriarSessao">Criar Sessão</string>
+    <string name="txtDescricaoSessao">Descrição:</string>
+    <string name="txtTituloSessao">Título:</string>
+    <string name="txtAddSessao">Adicionar jogadores:</string>
+    <string name="btnAdicionar">Adicionar</string>
+    <string name="txtSistemaDaSessao">Sistema:</string>
+
+    <!--Sobre o Manifest-->
+    <string name="txtManNovoPersonagem">Novo personagem</string>
+    <string name="txtManNovaSessao">Nova sessão</string>
+    <string name="txtManRegistreSe">Registre-se</string>
+
+    <!--Fragment Perfil-->
+    <string name="txtID">ID</string>
+    <string name="txtListaDePersonagens">Lista de personagens:</string>
+    <string name="txtIdade">Idade:</string>
+    <string name="txtNomePerfil">Nome:</string>
+    <string name="txtEmailPerfil">E-mail:</string>
+    <string name="txtInformacoesGerais">Informações gerais:</string>
+    <string name="txtIdadeAnos"> anos</string>
 
     <!--outros-->
     <string name="action_settings">Configurações</string>

@@ -43,12 +43,11 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_colorNormal="@color/colorPrimary"
-        >
+        app:menu_colorNormal="@color/colorPrimary">
 
         <!--
-        teste:
-        app:menu_backgroundColor="@android:color/transparent"
+        "app:fab_colorRipple=" funciona quando segura o botão, aí ele muda a cor
+        "app:fab_colorNormal=" funciona quando clica no botão, ele vai ficar mais escuro nesse caso
         -->
         <!--Floating action button Personagem-->
         <com.github.clans.fab.FloatingActionButton
@@ -58,7 +57,9 @@
             app:fab_size="mini"
             app:fab_label="@string/txtNovoPersonagem"
             android:src="@drawable/ic_floating_personagem"
-            app:menu_colorNormal="@color/colorPrimary"/>
+            app:fab_colorRipple="@color/colorPrimaryDark"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark" />
 
         <!--Floating action button Sessão-->
         <com.github.clans.fab.FloatingActionButton
@@ -68,7 +69,9 @@
             app:fab_size="mini"
             app:fab_label="@string/txtNovaSessao"
             android:src="@drawable/ic_floating_sessao"
-            app:menu_colorNormal="@color/colorPrimary"/>
+            app:fab_colorRipple="@color/colorPrimaryDark"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"/>
 
     </com.github.clans.fab.FloatingActionMenu>
 
