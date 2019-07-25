@@ -26,6 +26,7 @@
            android:layout_marginEnd="0dp"
            android:layout_marginTop="40dp"
            style="@style/EditTextCadastro"
+           android:singleLine="true"
            android:maxLength="15"
            android:layout_width="165dp"
            android:layout_height="wrap_content"
@@ -39,6 +40,7 @@
            android:layout_width="165dp"
            android:layout_height="wrap_content"
            android:hint="@string/txtNome"
+           android:singleLine="true"
            style="@style/EditTextCadastro"
            android:maxLength="15"
            android:id="@+id/txtNome"
@@ -50,6 +52,7 @@
            android:layout_marginEnd="0dp"
            android:layout_marginTop="80dp"
            style="@style/EditTextCadastro"
+           android:singleLine="true"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="@string/txtEmail"
@@ -88,13 +91,13 @@
            style="@style/EditTextCadastro"
            android:inputType="date"
            android:maxLength="8"
-           android:layout_width="115dp"
+           android:layout_width="110dp"
            android:layout_height="wrap_content"
            android:hint="@string/txtNascimento"/>
 
        <!--Campo de escolha de sexo-->
         <RadioGroup
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="115dp"
             android:layout_marginEnd="0dp"
             android:layout_marginTop="240dp"
             android:layout_width="match_parent"
@@ -104,7 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/EditTextCadastro"
+                android:textSize="15dp"
                 android:text="@string/txtSexo" />
 
             <RadioButton

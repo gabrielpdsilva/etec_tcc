@@ -30,6 +30,15 @@
                 android:text="@string/txtCriarSessao"
                 android:textColor="#ffffff" />
 
+            <!--Imagem da sessão-->
+            <!--     <ImageView
+                     android:layout_width="match_parent"
+                     android:layout_height="130dp"
+                     android:layout_marginStart="10dp"
+                     android:layout_marginEnd="10dp"
+                     android:layout_marginTop="50dp"
+                     android:background="@color/colorPrimary"/>-->
+
 
             <!--TextView Título da sessão-->
             <TextView
@@ -38,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/txtTituloSessao" />
+
 
             <!--EditText título da sessão-->
             <EditText
@@ -67,6 +77,8 @@
                 android:singleLine="true"
                 android:maxLength="20" />
 
+
+
             <!--TextView Descrição-->
             <TextView
                 style="@style/TextViewComum"
@@ -86,6 +98,8 @@
                 android:background="@color/colorPrimary"
                 android:maxLength="500"
                 android:gravity="top|left" />
+
+
 
             <!--TextView Adicionar Jogadores-->
             <TextView
@@ -109,7 +123,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvJogadores"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="280dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
