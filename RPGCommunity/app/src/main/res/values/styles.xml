@@ -100,5 +100,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="BotaoEstilo">
+        <item name="android:background">@drawable/modelo_botao</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 
 </resources>

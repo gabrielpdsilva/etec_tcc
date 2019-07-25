@@ -17,27 +17,37 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:orientation="vertical">
 
             <!--TextView Criar sessão-->
-            <TextView
+            <!--<TextView
                 style="@style/TextViewTitulos"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:text="@string/txtCriarSessao"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff" />-->
 
             <!--Imagem da sessão-->
-            <!--     <ImageView
-                     android:layout_width="match_parent"
-                     android:layout_height="130dp"
-                     android:layout_marginStart="10dp"
-                     android:layout_marginEnd="10dp"
-                     android:layout_marginTop="50dp"
-                     android:background="@color/colorPrimary"/>-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="115dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="180dp"
+                style="@style/BotaoEstilo"
+                android:text="@string/btnImagemDaSessao"/>
 
 
             <!--TextView Título da sessão-->
@@ -45,7 +55,7 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="145dp"
                 android:text="@string/txtTituloSessao" />
 
 
@@ -54,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginEnd="15dp"
                 android:singleLine="true"
                 android:maxLength="20" />
@@ -64,7 +74,7 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="85dp"
+                android:layout_marginTop="180dp"
                 android:text="@string/txtSistemaDaSessao" />
 
             <!--EditText sistema da sessão-->
@@ -72,11 +82,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="175dp"
                 android:layout_marginEnd="15dp"
                 android:singleLine="true"
                 android:maxLength="20" />
-
 
 
             <!--TextView Descrição-->
@@ -84,7 +93,7 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="215dp"
                 android:text="@string/txtDescricaoSessao" />
 
             <!--EditText da descrição da sessão-->
@@ -92,13 +101,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="245dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorPrimaryDark"
                 android:maxLength="500"
                 android:gravity="top|left" />
-
 
 
             <!--TextView Adicionar Jogadores-->
@@ -106,27 +114,29 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="225dp"
+                android:layout_marginTop="330dp"
                 android:text="@string/txtAddSessao" />
 
             <!--Botão pra adicionar jogadores-->
             <Button
                 android:id="@+id/addJogadores"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="225dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="330dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="30dp"
+                style="@style/BotaoEstilo"
                 android:text="@string/btnAdicionar" />
 
             <!--RecyclerView que vai listar os participantes-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvJogadores"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="280dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="365dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/colorPrimaryDark"
                 android:layout_marginBottom="20dp">
 
             </android.support.v7.widget.RecyclerView>
@@ -138,14 +148,15 @@
     <!--Botão pra criar sessão-->
     <Button
         android:id="@+id/criarSessao"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="60dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        style="@style/BotaoEstilo"
         android:text="@string/btnCriar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

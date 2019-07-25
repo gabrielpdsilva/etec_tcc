@@ -55,6 +55,7 @@
     <string name="txtAddSessao">Adicionar jogadores:</string>
     <string name="btnAdicionar">Adicionar</string>
     <string name="txtSistemaDaSessao">Sistema:</string>
+    <string name="btnImagemDaSessao">Adicionar imagem</string>
 
     <!--Sobre o Manifest-->
     <string name="txtManNovoPersonagem">Novo personagem</string>
