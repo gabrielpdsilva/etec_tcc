@@ -24,7 +24,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/corTexto"
                 android:text="@string/txtRecuperacao"
                 style="@style/TextViewTitulos"
                 android:layout_gravity="center"

@@ -87,7 +87,6 @@
                 android:singleLine="true"
                 android:maxLength="20" />
 
-
             <!--TextView Descrição-->
             <TextView
                 style="@style/TextViewComum"

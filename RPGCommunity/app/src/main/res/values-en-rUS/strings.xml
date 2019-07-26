@@ -47,6 +47,10 @@
     <!--Criar personagem-->
     <string name="txtHistoriaPersonagem">Story:</string>
     <string name="txtDescricaoPersonagem">Description:</string>
+    <string name="txtNomePersonagem">Name:</string>
+    <string name="txtHabilidadesPersonagem">Habilities:</string>
+    <string name="txtClassePersonagem">Class:</string>
+    <string name="txtSexoPersonagem">Gender:</string>
     <string name="btnCriar">Create</string>
 
     <!--Criar Sessão-->
@@ -64,13 +68,20 @@
     <string name="txtManRegistreSe">Register</string>
 
     <!--Fragment Perfil-->
-    <string name="txtID">ID</string>
+    <string name="txtID">ID:</string>
     <string name="txtListaDePersonagens">Characters list:</string>
     <string name="txtIdade">Age:</string>
     <string name="txtNomePerfil">Name:</string>
     <string name="txtEmailPerfil">E-mail:</string>
     <string name="txtInformacoesGerais">General informations:</string>
     <string name="txtIdadeAnos"> years old</string>
+
+    <!--EditTexts do Fragment Perfil-->
+    <string name="txtFragmentID">ID</string>
+    <string name="txtFragmentIdade">Age</string>
+    <string name="txtFragmentNomePerfil">Name</string>
+    <string name="txtFragmentEmailPerfil">E-mail</string>
+    <string name="txtFragmentSexo">Gender</string>
 
     <!--outros-->
     <string name="action_settings">Settings</string>

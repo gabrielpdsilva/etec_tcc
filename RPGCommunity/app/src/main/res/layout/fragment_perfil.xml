@@ -38,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/txtNickname"
+                android:textColor="#ebebeb"
                 style="@style/TextViewTitulos" />
 
         </LinearLayout>
@@ -69,7 +70,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="225dp"
-            android:text="DarkLordGlaurung"
+            android:text="@string/txtFragmentID"
             style="@style/TextViewComum"
             android:id="@+id/lblIdUsuario"/>
 
@@ -89,7 +90,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="260dp"
             android:layout_marginTop="225dp"
-            android:text="Gabriel"
+            android:text="@string/txtFragmentNomePerfil"
             style="@style/TextViewComum"
             android:id="@+id/lblNomeUsuario"/>
 
@@ -109,7 +110,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="255dp"
-            android:text="email@email.com.br"
+            android:text="@string/txtFragmentEmailPerfil"
             style="@style/TextViewComum"
             android:id="@+id/lblEmailUsuario"/>
 
@@ -129,7 +130,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="285dp"
-            android:text="Masculino"
+            android:text="@string/txtFragmentSexo"
             style="@style/TextViewComum"
             android:id="@+id/lblSexoUsuario"/>
 
@@ -149,7 +150,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="260dp"
             android:layout_marginTop="285dp"
-            android:text="20"
+            android:text="@string/txtFragmentIdade"
             style="@style/TextViewComum"
             android:id="@+id/lblIdadeUsuario"/>
 
@@ -172,6 +173,7 @@
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:background="@color/colorPrimaryDark"
             android:id="@+id/rvPersonagens">
 
         </android.support.v7.widget.RecyclerView>

@@ -4,83 +4,164 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cvPersonagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp">
 
-    <!--Campo nome-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome:"
-        style="@style/TextViewTitulos"/>
-    
-    <EditText
-        android:layout_marginStart="80dp"
-        android:layout_width="100dp"
-        android:layout_height="40dp"/>
+        <android.support.v7.widget.CardView
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="305dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content">
 
-    <!--algo...-->
-     <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Sexo"
-         style="@style/TextViewTitulos"
-         android:layout_alignParentEnd="true"/>
+        <!--Imagem do personagem-->
+        <ImageView
+            android:id="@+id/imgPersonagem"
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:background="@color/colorPrimary"/>
 
-    <EditText
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="40dp">
-
-        <!--Campo Descrição:-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Descrição:"
-        style="@style/TextViewTitulos"/>
-
-        <!--EditText da descrição-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:gravity="top|left"
-        android:background="@color/colorAccent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
-
-        <!--Campo História do personagem:-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="História do personagem:"
-        style="@style/TextViewTitulos"/>
-
-        <!--EditText da hist. personagem-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:gravity="top|left"
-        android:background="@color/colorAccent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
-
-        <!--Botão Criar-->
-        <Button
+        <!--Campo nome-->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Criar"
-            android:gravity="center"/>
+            android:text="@string/txtNomePersonagem"
+            android:layout_marginStart="100dp"
+            style="@style/TextViewTitulos"/>
 
-    </LinearLayout>
+        <EditText
+            android:singleLine="true"
+            android:maxLength="15"
+            android:layout_marginStart="190dp"
+            android:layout_width="115dp"
+            android:layout_height="40dp" />
+
+            <!--Campo Classe-->
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtClassePersonagem"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        style="@style/TextViewTitulos"/>
+
+        <EditText
+            android:singleLine="true"
+            android:maxLength="15"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="115dp"
+            android:layout_height="40dp" />
+
+            <!--Campo Sexo-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSexoPersonagem"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="80dp"
+            style="@style/TextViewTitulos"/>
+
+        <EditText
+            android:singleLine="true"
+            android:maxLength="15"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="80dp"
+            android:layout_width="115dp"
+            android:layout_height="40dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="150dp">
+
+            <!--Campo Habilidades-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                style="@style/TextViewTitulos"
+                android:textAlignment="center"
+                android:text="@string/txtHabilidadesPersonagem"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="top|left"
+                android:background="@color/colorPrimary"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+                <!--Campo Descrição:-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/txtDescricaoPersonagem"
+                style="@style/TextViewTitulos"
+                android:textColor="#ffffff"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="#000000"/>
+
+                <!--EditText da descrição-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="top|left"
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+                <!--Campo História do personagem:-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:text="@string/txtHistoriaPersonagem"
+                android:textColor="#ffffff"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                style="@style/TextViewTitulos"/>
+
+                <!--EditText da hist. personagem-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="top|left"
+                android:background="@color/colorPrimary"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <!--Botão Criar-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnCriar"
+        android:layout_below="@+id/cvPersonagem"
+        style="@style/BotaoEstilo"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -4,16 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Fragment sessões"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment sessões"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvSessoes">
-
-    </android.support.v7.widget.RecyclerView>
+        android:id="@+id/rvSessoes"/>
 
 </LinearLayout>
