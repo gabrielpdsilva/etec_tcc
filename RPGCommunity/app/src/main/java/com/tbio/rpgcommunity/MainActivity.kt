@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.ListView
+import android.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.cadastro.*
@@ -23,6 +26,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        //*********************************************************************************************************************//
+        //EXPLICAÇÃO
+        //Se colocar background numa fragment, o conteúdo main ficará invisível mas você ainda pode clicar e vai funcionar.
+        //Só não vai funcionar se você inserir algo em cima, como um quadrado ou algo do tipo por exemplo.
+        //*********************************************************************************************************************//
+
+        //apague daqui
+        val btnhue: Button = findViewById(R.id.btnteste3)
+        btnhue.setOnClickListener {
+            toast("clicou!")
+        }//até aqui
 
         //floating action menu, necessario mudar a funcao
         fab.setOnClickListener { view ->
@@ -60,6 +75,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
+        //teste tentando fazer os action buttons sumirem em determinados momentos:
+        //menu!!.findItem(R.id.action_hue).isVisible = false
         return true
     }
 
@@ -81,6 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_perfil -> {
                 // Handle the camera action
                 loadMeuPerfil(frag = PerfilFragment())
+
             }
             R.id.nav_amigos -> {
                 loadAmigos(frag = AmigosFragment())
@@ -126,11 +145,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fm.commit()
     }
 
+    //função que carrega a Fragment Sessões
     private fun loadSessoes(frag: SessoesFragment){
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
     }
-
 
 }

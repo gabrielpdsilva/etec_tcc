@@ -79,16 +79,17 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--LinearLayout pra colocar as habilidades, descrição e história-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="150dp">
+            android:layout_marginTop="138dp">
 
             <!--Campo Habilidades-->
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="#000000"
@@ -99,7 +100,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:gravity="top|left"
                 android:background="@color/colorPrimary"
                 android:layout_marginBottom="10dp"
@@ -109,7 +110,7 @@
                 <!--Campo Descrição:-->
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:gravity="center"
                 android:text="@string/txtDescricaoPersonagem"
                 style="@style/TextViewTitulos"
@@ -121,7 +122,7 @@
                 <!--EditText da descrição-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:gravity="top|left"
                 android:background="@color/colorPrimary"
                 android:layout_marginStart="20dp"
@@ -130,7 +131,7 @@
                 <!--Campo História do personagem:-->
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:background="#000000"
                 android:text="@string/txtHistoriaPersonagem"
                 android:textColor="#ffffff"
@@ -143,7 +144,7 @@
                 <!--EditText da hist. personagem-->
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:gravity="top|left"
                 android:background="@color/colorPrimary"
                 android:layout_marginBottom="10dp"
@@ -156,12 +157,17 @@
 
     <!--Botão Criar-->
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/btnCriar"
         android:layout_below="@+id/cvPersonagem"
         style="@style/BotaoEstilo"
-        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

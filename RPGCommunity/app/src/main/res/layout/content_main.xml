@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:id="@+id/frameLayout">
 
 
 <!--    <TextView
@@ -18,15 +19,38 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />-->
 
+    <!--Apague daqui-->
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvSessoesHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se colocar background numa fragment, o conteúdo main ficará invisível mas você ainda pode clicar e vai funcionar. Só não vai funcionar se você inserir algo em cima, como um layout por exemplo, segundo testes."/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="teste 2"
+        android:layout_marginTop="200dp"/>
+
+        <Button
+            android:id="@+id/btnteste3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="370dp"
+            android:layout_marginStart="10dp"
+            android:text="teste 3"/>
+
+    </RelativeLayout>
+
+    <!--Até aqui-->
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/frameLayout"></FrameLayout>
+        ></FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
