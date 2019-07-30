@@ -82,6 +82,19 @@
     <string name="txtFragmentEmailPerfil">E-mail</string>
     <string name="txtFragmentSexo">Sexo</string>
 
+    <!--Toasts-->
+    <string name="txtLogoutRealizado">Logout realizado com sucesso!</string>
+    <string name="txtLogoutFoiCancelado">Logout cancelado.</string>
+    <string name="txtDuploClique">Clique novamente para sair.</string>
+    <string name="txtLoginRealizado">Login realizado com sucesso.</string>
+    <string name="txtLoginErro">Usuário inválido!</string>
+
+    <!--Alerts-->
+    <string name="txtLogoutCerteza">Tem certeza de que deseja fazer logout?</string>
+    <string name="txtLogoutTitulo">Logout</string>
+    <string name="txtLogoutSim">Sim</string>
+    <string name="txtLogoutNao">Cancelar</string>
+
     <!--outros-->
     <string name="action_settings">Configurações</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -11,10 +11,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".logincadastro.Login"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <!--Screen orientation -> portrait faz com que não seja possível virar a tela na horizontal-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,6 +1,7 @@
 package com.tbio.rpgcommunity
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -16,9 +17,7 @@ import android.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.cadastro.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,6 +25,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
 
         //*********************************************************************************************************************//
         //EXPLICAÇÃO
@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //floating action menu, necessario mudar a funcao
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+             //       .setAction("Action", null).show()
         }
 
         //floating action button de criar personagem
@@ -64,12 +64,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    override fun onBackPressed() {
+    //código original onBackPressed
+    /*override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
+    }*/
+
+    //código atual onBackPressed
+    var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        //Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        toast(R.string.txtDuploClique)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -119,11 +134,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity<Configuracoes>()
             }
             R.id.nav_logout -> {
-                finish()
-                //O código acima deve ser removido
+
                 // Acho que esse código serve quando aplicar firebase:
                 //Firebase.Auth.getInstance().signOut()
-                toast("Logout realizado com sucesso.")
+
+                alert {
+                    titleResource = R.string.txtLogoutTitulo
+                    messageResource = R.string.txtLogoutCerteza
+                    positiveButton(R.string.txtLogoutSim, { dialog ->
+                        //Firebase.Auth.getInstance().signOut()
+                        finish()
+                        toast(R.string.txtLogoutRealizado)
+                    })
+                    negativeButton(R.string.txtLogoutNao, { dialog ->
+                        //dialog.dismiss() <-- não sei o que isso faz, tava no tutorial. Esse mesmo código tava no positiveButton também.
+                        toast(R.string.txtLogoutFoiCancelado)
+                    })
+                    show()
+                }
             }
         }
 
