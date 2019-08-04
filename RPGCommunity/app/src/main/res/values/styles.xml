@@ -12,27 +12,27 @@
     </style>-->
 
         <!--Dia-->
-       <item name="colorPrimary">#008577</item>
-        <item name="colorPrimaryDark">#00574B</item>
+       <item name="colorPrimary">#6042ad</item>
+        <item name="colorPrimaryDark">#4b338a</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#fcfcfc</item>
         <item name="corCardBackground">#ffffff</item>
         <item name="corTexto">#212121</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#008577</item>
+        <item name="corBotao">#6042ad</item>
 
     </style>
 
         <!--Noite-->
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#008577</item>
-        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorPrimary">#6042ad</item>
+        <item name="colorPrimaryDark">#4b338a</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#303030</item>
         <item name="corCardBackground">#424242</item>
         <item name="corTexto">#ffffff</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#212121</item>
+        <item name="corBotao">#6042ad</item>
 
 
     </style>
@@ -69,21 +69,21 @@
     <!--Estilo pra TextView Comum-->
     <style name="TextViewComum">
         <item name="android:textSize">18dp</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">2dp</item>
     </style>
 
     <!--Estilo pra TextView Comum em negrito-->
     <style name="TextViewComumBold">
         <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">2dp</item>
     </style>
 
     <!--Estilo pra criar TextView maiores, de títulos-->
     <style name="TextViewTitulos">
         <item name="android:textSize">23dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">2dp</item>
     </style>
 
     <!--Estilo pra criar EditText do cadastro-->
@@ -100,10 +100,39 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--Estilo do botão-->
     <style name="BotaoEstilo">
         <item name="android:background">@drawable/modelo_botao</item>
         <item name="android:textColor">#ffffff</item>
     </style>
 
+    <!--=======Estilo de textos das sessões na Home=======-->
+
+    <!--Estilo do título da Home-->
+    <style name="TextViewHomeBoldTitulo">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <!--Estilo dos subtítulos da Home-->
+    <style name="TextViewHomeBold">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <!--Estilo do texto da descrição da Home-->
+    <style name="TextViewHomeDescricao">
+        <item name="android:textSize">14dp</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <!--Estilo dos outros detalhes da Home-->
+    <style name="TextViewHomeDetalhes">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:padding">2dp</item>
+    </style>
 
 </resources>

@@ -22,17 +22,16 @@ class Login : AppCompatActivity() {
         val btnLogin: Button = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener {
-            if(email.text.toString().equals("root") && senha.text.toString().equals("123")){
+            if (email.text.toString().equals("root") && senha.text.toString().equals("123")) {
                 startActivity<MainActivity>()
                 longToast(R.string.txtLoginRealizado)
 
                 //só pra deixar os campos de usuario e senha em branco após o login
                 email.setText("")
                 senha.setText("")
-            }else{
+            } else {
                 toast(R.string.txtLoginErro)
             }
-
         }
 
         //TextView Cadastro

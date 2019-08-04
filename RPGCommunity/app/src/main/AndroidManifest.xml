@@ -41,7 +41,8 @@
         </activity>
 
         <activity android:name=".CriarPersonagem"
-            android:label="@string/txtManNovoPersonagem">
+            android:label="@string/txtManNovoPersonagem"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -49,7 +50,9 @@
 
         <activity android:name=".CriarSessao"
             android:label="@string/txtManNovaSessao"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
+            <!--android:windowSoftInputMode="adjustNothing" faz com que o botão de criar sessão esteja fixo e não se mova quando abrir o teclado-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

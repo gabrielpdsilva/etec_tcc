@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#cc5ccc">
+
+    <!--ImageView do personagem-->
+    <ImageView
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:background="#c54342"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--TextView nome do personagem-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do personagem"
+            style="@style/TextViewHomeBoldTitulo"/>
+
+        <!--TextView classe do personagem-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Classe do personagem"
+            style="@style/TextViewHomeBold"/>
+
+        <!--TextView sessão do personagem-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sessão em que ele está"
+            style="@style/TextViewHomeBold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

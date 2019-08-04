@@ -13,6 +13,7 @@
 
        <!--Texto Cadastro-->
        <TextView
+           android:id="@+id/txtCadastroTitulo"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="@string/txtCadastro"
@@ -22,21 +23,21 @@
 
         <!--Campo nickname-->
        <EditText
+           android:id="@+id/txtNickname"
+           android:layout_below="@+id/txtCadastroTitulo"
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
-           android:layout_marginTop="40dp"
            style="@style/EditTextCadastro"
            android:singleLine="true"
            android:maxLength="15"
            android:layout_width="165dp"
            android:layout_height="wrap_content"
-           android:hint="@string/txtNickname"
-           android:id="@+id/txtNickname"/>
+           android:hint="@string/txtNickname" />
 
         <!--Campo nome-->
 
        <EditText
-           android:layout_marginTop="40dp"
+           android:layout_below="@+id/txtCadastroTitulo"
            android:layout_width="165dp"
            android:layout_height="wrap_content"
            android:hint="@string/txtNome"
@@ -48,9 +49,7 @@
 
         <!--Campo email-->
        <EditText
-           android:layout_marginStart="0dp"
-           android:layout_marginEnd="0dp"
-           android:layout_marginTop="80dp"
+           android:layout_below="@+id/txtNickname"
            style="@style/EditTextCadastro"
            android:singleLine="true"
            android:layout_width="match_parent"
@@ -61,10 +60,8 @@
 
         <!--Campo senha-->
        <EditText
-           android:layout_marginStart="0dp"
-           android:layout_marginEnd="0dp"
+           android:layout_below="@+id/txtEmail"
            android:hint="@string/txtSenha"
-           android:layout_marginTop="130dp"
            android:inputType="textPassword"
            style="@style/EditTextCadastro"
            android:layout_width="match_parent"
@@ -76,7 +73,7 @@
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
            android:hint="@string/txtConfirmaSenha"
-           android:layout_marginTop="180dp"
+           android:layout_below="@+id/txtSenha"
            android:inputType="textPassword"
            style="@style/EditTextCadastro"
            android:layout_width="match_parent"
@@ -87,19 +84,19 @@
        <EditText
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
-           android:layout_marginTop="230dp"
+           android:layout_below="@+id/txtConfirmeASenha"
            style="@style/EditTextCadastro"
            android:inputType="date"
            android:maxLength="8"
            android:layout_width="110dp"
            android:layout_height="wrap_content"
+           android:id="@+id/txtNascimento"
            android:hint="@string/txtNascimento"/>
 
        <!--Campo de escolha de sexo-->
         <RadioGroup
-            android:layout_marginStart="115dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginTop="240dp"
+            android:layout_below="@id/txtConfirmeASenha"
+            android:layout_toRightOf="@+id/txtNascimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -140,7 +137,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginTop="355dp"
             android:layout_marginBottom="50dp"
             android:text="@string/txtJaECadastrado"
             android:id="@+id/tvJaECadastrado"
@@ -148,6 +144,7 @@
             android:layout_marginEnd="20dp"
             android:clickable="true"
             android:onClick="onClick"
+            android:layout_below="@id/btnCadastrar"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"/>
    </RelativeLayout>

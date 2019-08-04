@@ -27,8 +27,10 @@
     <string name="txtJaECadastrado">Já é cadastrado? Faça login</string>
 
     <!--Main Activity-->
+    <string name="txtHome">Home</string>
     <string name="txtPerfil">Perfil</string>
     <string name="txtAmigos">Amigos</string>
+    <string name="txtOutros">Outras opções</string>
     <string name="txtSessoes">Sessões</string>
     <string name="txtLogout">Logout</string>
 
@@ -94,6 +96,14 @@
     <string name="txtLogoutTitulo">Logout</string>
     <string name="txtLogoutSim">Sim</string>
     <string name="txtLogoutNao">Cancelar</string>
+
+    <!--List item de sessões-->
+    <string name="txtSessaoNome">Sessão:</string>
+    <string name="txtSessaoDescricao">Descrição:</string>
+    <string name="txtSessaoSistema">Sistema:</string>
+    <string name="txtSessaoMestre">Mestre: </string>
+    <string name="txtSessaoNumeroJogadores">Nº de jogadores: </string>
+    <string name="txtSessaoId">ID da sessão: </string>
 
     <!--outros-->
     <string name="action_settings">Configurações</string>

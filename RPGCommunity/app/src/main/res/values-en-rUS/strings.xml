@@ -28,8 +28,10 @@
     <string name="txtJaECadastrado">Already have an account? Sign in</string>
 
     <!--Main Activity-->
+    <string name="txtHome">Home</string>
     <string name="txtPerfil">Profile</string>
     <string name="txtAmigos">Friends</string>
+    <string name="txtOutros">Other options</string>
     <string name="txtSessoes">Sessions</string>
     <string name="txtLogout">Logout</string>
 
@@ -95,6 +97,14 @@
     <string name="txtLogoutTitulo">Logout</string>
     <string name="txtLogoutSim">Yes</string>
     <string name="txtLogoutNao">Cancel</string>
+
+    <!--List item de sessões-->
+    <string name="txtSessaoNome">Session:</string>
+    <string name="txtSessaoDescricao">Description:</string>
+    <string name="txtSessaoSistema">System:</string>
+    <string name="txtSessaoMestre">Master: </string>
+    <string name="txtSessaoNumeroJogadores">Players: </string>
+    <string name="txtSessaoId">ID: </string>
 
     <!--outros-->
     <string name="action_settings">Settings</string>

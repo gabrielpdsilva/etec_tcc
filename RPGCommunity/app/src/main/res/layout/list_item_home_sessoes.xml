@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="#cc5ccc">
+
+    <!--Campo sessão-->
+    <TextView
+        android:id="@+id/txtHomeSessao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSessaoNome"
+        style="@style/TextViewHomeBoldTitulo"
+        />
+
+    <!--Campo a ser alterado sessão-->
+    <TextView
+        android:id="@+id/txtHomeAlterarSessao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtHomeSessao"
+        android:text="Darkness and light"
+        style="@style/TextViewHomeBoldTitulo"
+        />
+
+    <!--Campo sistema-->
+    <TextView
+        android:id="@+id/txtHomeSistema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtHomeSessao"
+        android:text="@string/txtSessaoSistema"
+        style="@style/TextViewHomeBold"
+        />
+
+    <!--Campo a ser alterado sistema-->
+    <TextView
+        android:id="@+id/txtHomeAlterarSistema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtHomeSessao"
+        android:layout_toRightOf="@id/txtHomeSistema"
+        android:text="Storyteller"
+        style="@style/TextViewHomeBold"
+        />
+
+    <!--Campo descrição-->
+    <TextView
+        android:id="@+id/txtHomeDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHomeSistema"
+        android:text="@string/txtSessaoDescricao"
+        style="@style/TextViewHomeBold"
+        />
+
+    <!--Campo a ser alterado descrição-->
+    <TextView
+        android:id="@+id/txtHomeAlterarDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHomeDescricao"
+        style="@style/TextViewHomeDescricao"
+        android:text="Essa descrição é puramente experimental, basicamente imaginando como seria um usuário comum colocando uma descrição em sua própria história. Nada de mais ok. Espere, acho que se eu adicionar só mais um pouco já é suficiente."
+        />
+
+    <!--Campo mestre-->
+    <TextView
+        android:id="@+id/txtHomeMestre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtHomeNJogadores"
+        style="@style/TextViewHomeDetalhes"
+        android:text="@string/txtSessaoMestre"/>
+
+    <!--Campo a ser alterado mestre-->
+    <TextView
+        android:id="@+id/txtHomeAlterarMestre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextViewHomeDetalhes"
+        android:layout_above="@+id/txtHomeNJogadores"
+        android:layout_toRightOf="@+id/txtHomeMestre"
+        android:text="Adriano"/>
+
+    <!--Campo nº de jogadores-->
+    <TextView
+        android:id="@+id/txtHomeNJogadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/TextViewHomeDetalhes"
+        android:text="@string/txtSessaoNumeroJogadores"/>
+
+    <!--Campo a ser alterado nº de jogadores-->
+    <TextView
+        android:id="@+id/txtHomeAlterarNJogadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtHomeNJogadores"
+        android:layout_alignParentBottom="true"
+        style="@style/TextViewHomeDetalhes"
+        android:text="0"/>
+
+    <!--Campo id sessão-->
+    <TextView
+        android:id="@+id/txtHomeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/txtHomeNJogadores"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/TextViewHomeDetalhes"
+        android:text="@string/txtSessaoId"/>
+
+    <!--Campo a ser alterado id sessão-->
+    <TextView
+        android:id="@+id/txtHomeAlterarId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29438"
+        android:layout_alignParentBottom="true"
+        style="@style/TextViewHomeDetalhes"
+        android:layout_toRightOf="@id/txtHomeId"/>
+
+
+</RelativeLayout>

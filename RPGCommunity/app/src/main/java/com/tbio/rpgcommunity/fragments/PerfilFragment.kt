@@ -1,15 +1,9 @@
-package com.tbio.rpgcommunity
+package com.tbio.rpgcommunity.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.*
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import com.tbio.rpgcommunity.R.id.fab
-import com.tbio.rpgcommunity.R.id.toolbar
-import kotlinx.android.synthetic.main.fragment_amigos.*
-import org.jetbrains.anko.support.v4.toast
+import com.tbio.rpgcommunity.R
 
 class PerfilFragment : Fragment() {
 

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1EDED"
-    tools:context=".PerfilFragment">
+    tools:context=".fragments.PerfilFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,10 +60,10 @@
 
         <!--TextView ID:-->
         <TextView
+            android:layout_below="@+id/lblInformacoesGerais"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="225dp"
             android:text="@string/txtID"
             style="@style/TextViewComumBold"
             android:id="@+id/lblId"/>
@@ -69,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="225dp"
+            android:layout_below="@id/lblInformacoesGerais"
             android:text="@string/txtFragmentID"
             style="@style/TextViewComum"
             android:id="@+id/nicknamePerfil"/>
@@ -79,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
-            android:layout_marginTop="225dp"
+            android:layout_below="@id/lblInformacoesGerais"
             android:text="@string/txtNomePerfil"
             style="@style/TextViewComumBold"
             android:id="@+id/lblNome"/>
@@ -89,17 +93,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="260dp"
-            android:layout_marginTop="225dp"
+            android:layout_below="@id/lblInformacoesGerais"
             android:text="@string/txtFragmentNomePerfil"
             style="@style/TextViewComum"
             android:id="@+id/lblNomeUsuario"/>
 
         <!--TextView E-mail:-->
         <TextView
+            android:layout_below="@+id/lblId"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="255dp"
             android:text="@string/txtEmailPerfil"
             style="@style/TextViewComumBold"
             android:id="@+id/lblEmail"/>
@@ -108,8 +112,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_below="@+id/lblId"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="255dp"
             android:text="@string/txtFragmentEmailPerfil"
             style="@style/TextViewComum"
             android:id="@+id/lblEmailUsuario"/>
@@ -118,8 +122,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_below="@id/lblEmail"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="285dp"
             android:text="@string/txtSexo"
             style="@style/TextViewComumBold"
             android:id="@+id/lblSexo"/>
@@ -129,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="285dp"
+            android:layout_below="@id/lblEmail"
             android:text="@string/txtFragmentSexo"
             style="@style/TextViewComum"
             android:id="@+id/lblSexoUsuario"/>
@@ -139,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
-            android:layout_marginTop="285dp"
+            android:layout_below="@id/lblEmail"
             android:text="@string/txtIdade"
             style="@style/TextViewComumBold"
             android:id="@+id/lblIdade"/>
@@ -149,13 +153,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="260dp"
-            android:layout_marginTop="285dp"
+            android:layout_below="@id/lblEmail"
             android:text="@string/txtFragmentIdade"
             style="@style/TextViewComum"
             android:id="@+id/lblIdadeUsuario"/>
 
         <View style="@style/Linha"
-            android:layout_marginTop="330dp"/>
+            android:id="@+id/linhaSeparadora"
+            android:layout_below="@id/lblSexo"/>
 
         <!--*********************************************************************************-->
 
@@ -163,13 +168,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/txtListaDePersonagens"
-            android:layout_marginTop="340dp"
+            android:layout_below="@id/linhaSeparadora"
             style="@style/TextViewTitulos"
             android:id="@+id/lblListaPersonagens"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_marginTop="375dp"
+            android:layout_below="@id/lblListaPersonagens"
             android:layout_marginBottom="20dp"
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
@@ -181,4 +186,6 @@
 
     </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+
+</RelativeLayout>

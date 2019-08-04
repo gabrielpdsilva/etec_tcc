@@ -2,21 +2,18 @@ package com.tbio.rpgcommunity
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
-import android.widget.ListView
-import android.widget.Toolbar
+import com.tbio.rpgcommunity.fragments.AmigosFragment
+import com.tbio.rpgcommunity.fragments.PerfilFragment
+import com.tbio.rpgcommunity.fragments.SessoesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.cadastro.*
 import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -82,7 +79,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         this.doubleBackToExitPressedOnce = true
-        //Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
         toast(R.string.txtDuploClique)
 
     }
@@ -111,6 +108,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            R.id.nav_home -> {
+                // Handle the camera action
+                toast("Ao clicar aqui tem que sair da fragment")
+            }
             R.id.nav_perfil -> {
                 // Handle the camera action
                 loadMeuPerfil(frag = PerfilFragment())

@@ -32,6 +32,7 @@
 
             <!--Imagem da sessão-->
             <ImageView
+                android:id="@+id/sessaoImagem"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="10dp"
@@ -40,99 +41,108 @@
                 android:background="@color/colorPrimaryDark"/>
 
             <Button
+                android:id="@+id/sessaoBotaoImagem"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="115dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="180dp"
+                android:layout_below="@id/sessaoImagem"
                 style="@style/BotaoEstilo"
                 android:text="@string/btnImagemDaSessao"/>
 
 
             <!--TextView Título da sessão-->
             <TextView
+                android:layout_below="@id/sessaoBotaoImagem"
+                android:id="@+id/sessaoTitulo"
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="145dp"
                 android:text="@string/txtTituloSessao" />
 
 
             <!--EditText título da sessão-->
             <EditText
+                android:id="@+id/sessaoTituloEt"
+                android:layout_below="@id/sessaoBotaoImagem"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="140dp"
                 android:layout_marginEnd="15dp"
                 android:singleLine="true"
                 android:maxLength="20" />
 
             <!--TextView Sistema-->
             <TextView
+                android:id="@+id/sessaoSistema"
                 style="@style/TextViewComum"
+                android:layout_below="@id/sessaoTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="180dp"
                 android:text="@string/txtSistemaDaSessao" />
 
             <!--EditText sistema da sessão-->
             <EditText
+                android:id="@+id/sessaoSistemaEt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:layout_below="@id/sessaoTitulo"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="175dp"
                 android:layout_marginEnd="15dp"
                 android:singleLine="true"
                 android:maxLength="20" />
 
             <!--TextView Descrição-->
             <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/sessaoDescricao"
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="215dp"
+                android:layout_below="@id/sessaoSistema"
                 android:text="@string/txtDescricaoSessao" />
 
             <!--EditText da descrição da sessão-->
             <EditText
+                android:id="@+id/sessaoDescricaoEt"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="245dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
                 android:background="@color/colorPrimaryDark"
-                android:maxLength="500"
+                android:maxLength="220"
+                android:layout_below="@+id/sessaoDescricao"
                 android:gravity="top|left" />
-
 
             <!--TextView Adicionar Jogadores-->
             <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/sessaoAddJogadores"
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="330dp"
+                android:layout_below="@+id/sessaoDescricaoEt"
                 android:text="@string/txtAddSessao" />
 
             <!--Botão pra adicionar jogadores-->
             <Button
-                android:id="@+id/addJogadores"
+                android:id="@+id/sessaoBotaoAddJogadores"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="330dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="30dp"
+                android:layout_above="@id/rvJogadores"
+                android:layout_toRightOf="@+id/sessaoAddJogadores"
                 style="@style/BotaoEstilo"
                 android:text="@string/btnAdicionar" />
 
             <!--RecyclerView que vai listar os participantes-->
             <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/sessaoAddJogadores"
                 android:id="@+id/rvJogadores"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:layout_marginTop="365dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@color/colorPrimaryDark"
@@ -144,9 +154,10 @@
 
     </android.support.v7.widget.CardView>
 
+
     <!--Botão pra criar sessão-->
     <Button
-        android:id="@+id/criarSessao"
+        android:id="@+id/sessaoBotaoCriarSessao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -161,5 +172,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
 
 </android.support.constraint.ConstraintLayout>
