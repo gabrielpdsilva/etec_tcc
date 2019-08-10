@@ -106,6 +106,11 @@
     <string name="txtSessaoNumeroJogadores">Players: </string>
     <string name="txtSessaoId">ID: </string>
 
+    <!--Switch e menus-->
+    <string name="txtVisivelParaTodos">Visible for all</string>
+    <string name="txtPesquisa">Search...</string>
+    <string name="txtEditarPersonagem">Edit</string>
+
     <!--outros-->
     <string name="action_settings">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

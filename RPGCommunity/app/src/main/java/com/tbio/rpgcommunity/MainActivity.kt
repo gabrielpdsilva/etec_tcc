@@ -1,5 +1,6 @@
 package com.tbio.rpgcommunity
 
+import android.app.Person
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
@@ -9,6 +10,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import com.tbio.rpgcommunity.criar.CriarPersonagem
+import com.tbio.rpgcommunity.criar.CriarSessao
 import com.tbio.rpgcommunity.fragments.AmigosFragment
 import com.tbio.rpgcommunity.fragments.PerfilFragment
 import com.tbio.rpgcommunity.fragments.SessoesFragment
@@ -88,8 +91,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
 
-        //teste tentando fazer os action buttons sumirem em determinados momentos:
-        //menu!!.findItem(R.id.action_hue).isVisible = false
+        //faz o menu de editar personagem não aparecer. Só aparecerá na activity do personagem, o
+        //código já tá lá
+        menu!!.findItem(R.id.action_editar_personagem).isVisible = false
         return true
     }
 
@@ -111,6 +115,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> {
                 // Handle the camera action
                 toast("Ao clicar aqui tem que sair da fragment")
+                startActivity<Personagem>()
             }
             R.id.nav_perfil -> {
                 // Handle the camera action

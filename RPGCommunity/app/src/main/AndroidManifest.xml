@@ -13,57 +13,68 @@
             android:name=".logincadastro.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
-            <!--Screen orientation -> portrait faz com que não seja possível virar a tela na horizontal-->
+
+            <!-- Screen orientation -> portrait faz com que não seja possível virar a tela na horizontal -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".logincadastro.EsqueciASenha">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".logincadastro.Login" />
         </activity>
         <activity
-            android:name=".logincadastro.Cadastro"
-            android:label="@string/txtManRegistreSe">
+            android:name=".logincadastro.Cadastro">
+            <!-- android:label="@string/txtManRegistreSe" faz mudar o texto na toolbar-->
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".logincadastro.Login" />
         </activity>
         <activity android:name=".Configuracoes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <activity android:name=".CriarPersonagem"
+        <activity
+            android:name=".criar.CriarPersonagem"
             android:label="@string/txtManNovoPersonagem"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <activity android:name=".CriarSessao"
+        <activity
+            android:name=".criar.CriarSessao"
             android:label="@string/txtManNovaSessao"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
-            <!--android:windowSoftInputMode="adjustNothing" faz com que o botão de criar sessão esteja fixo e não se mova quando abrir o teclado-->
+
+            <!-- android:windowSoftInputMode="adjustNothing" faz com que o botão de criar sessão esteja fixo e não se mova quando abrir o teclado -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".AmigosChat" />
+        <activity android:name=".AmigosChat" ></activity>
+
+        <activity android:name=".Personagem"
+            android:screenOrientation="portrait">
+
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity"/>
+        </activity>
+
     </application>
 
-</manifest>
-
-    <!--
+</manifest><!--
 Código original da primeira activity:
 <activity
             android:name=".MainActivity"

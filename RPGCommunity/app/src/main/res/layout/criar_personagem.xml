@@ -15,7 +15,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_width="305dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="15dp"
             android:layout_height="wrap_content">
 
         <!--Imagem do personagem-->
@@ -24,6 +24,7 @@
             android:layout_width="90dp"
             android:layout_height="100dp"
             android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:clickable="true"
             android:background="@color/colorPrimary"/>
@@ -34,12 +35,14 @@
             android:layout_height="wrap_content"
             android:text="@string/txtNomePersonagem"
             android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             style="@style/TextViewTitulos"/>
 
         <EditText
             android:singleLine="true"
             android:maxLength="15"
             android:layout_marginStart="190dp"
+            android:layout_marginLeft="190dp"
             android:layout_width="115dp"
             android:layout_height="40dp" />
 
@@ -48,6 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtClassePersonagem"
+            android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="40dp"
         style="@style/TextViewTitulos"/>
@@ -56,6 +60,7 @@
             android:singleLine="true"
             android:maxLength="15"
             android:layout_marginStart="190dp"
+            android:layout_marginLeft="190dp"
             android:layout_marginTop="40dp"
             android:layout_width="115dp"
             android:layout_height="40dp" />
@@ -66,6 +71,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txtSexoPersonagem"
             android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="80dp"
             style="@style/TextViewTitulos"/>
 
@@ -73,6 +79,7 @@
             android:singleLine="true"
             android:maxLength="15"
             android:layout_marginStart="190dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="80dp"
             android:layout_width="115dp"
             android:layout_height="40dp" />
@@ -105,7 +112,8 @@
                 android:background="@color/colorPrimary"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp"
+                android:maxLength="200"/>
 
                 <!--Campo Descrição:-->
             <TextView
@@ -126,7 +134,8 @@
                 android:gravity="top|left"
                 android:background="@color/colorPrimary"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp"
+                android:maxLength="200"/>
 
                 <!--Campo História do personagem:-->
             <TextView
@@ -149,7 +158,8 @@
                 android:background="@color/colorPrimary"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp"
+                android:maxLength="200"/>
 
         </LinearLayout>
 

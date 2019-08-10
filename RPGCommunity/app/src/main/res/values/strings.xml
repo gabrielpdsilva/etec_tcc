@@ -105,6 +105,11 @@
     <string name="txtSessaoNumeroJogadores">Nº de jogadores: </string>
     <string name="txtSessaoId">ID da sessão: </string>
 
+    <!--Switch e menus-->
+    <string name="txtVisivelParaTodos">Visível para todos</string>
+    <string name="txtPesquisa">Pesquisar...</string>
+    <string name="txtEditarPersonagem">Editar</string>
+
     <!--outros-->
     <string name="action_settings">Configurações</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
