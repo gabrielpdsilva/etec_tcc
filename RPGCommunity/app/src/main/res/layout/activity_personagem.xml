@@ -1,185 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sub_activitys.PersonagemActivity">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cvPersonagem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="305dp"
-            android:layout_marginEnd="15dp"
-            android:layout_height="wrap_content">
-
-            <!--Imagem do personagem-->
-            <ImageView
-                android:id="@+id/imgPersonagem"
-                android:layout_width="90dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:background="@color/colorPrimary"/>
-
-            <!--Campo nome-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtNomePersonagem"
-                android:layout_marginStart="100dp"
-                android:layout_marginLeft="100dp"
-                style="@style/TextViewTitulos"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="183dp"
-                android:layout_marginLeft="183dp"
-                android:text="Nome"
-                style="@style/TextViewComum"
-                />
-
-            <!--Campo Classe-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtClassePersonagem"
-                android:layout_marginLeft="100dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="30dp"
-                style="@style/TextViewTitulos"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
-                android:layout_marginStart="183dp"
-                android:layout_marginLeft="183dp"
-                android:text="Classe"
-                style="@style/TextViewComum"
-                />
-
-            <!--Campo Sexo-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtSexoPersonagem"
-                android:layout_marginStart="100dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="60dp"
-                style="@style/TextViewTitulos"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="63dp"
-                android:layout_marginStart="183dp"
-                android:layout_marginLeft="183dp"
-                android:text="Gênero"
-                style="@style/TextViewComum"
-                />
-
-            <!--switch de visível para todos-->
-            <Switch
-                android:layout_width="200dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginLeft="180dp"
-                android:text="@string/txtVisivelParaTodos"
-                style="@style/TextViewComum"
-                />
-
-        </android.support.v7.widget.CardView>
-
-        <!--LinearLayout pra colocar as habilidades, descrição e história-->
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPersonagem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="138dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp">
 
-            <!--Campo Habilidades-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="#000000"
-                android:textColor="#ffffff"
-                style="@style/TextViewTitulos"
-                android:textAlignment="center"
-                android:text="@string/txtHabilidadesPersonagem"/>
+            <androidx.cardview.widget.CardView
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="305dp"
+                android:layout_marginEnd="15dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:background="@color/colorPrimary"
+                <!--Imagem do personagem-->
+                <ImageView
+                    android:id="@+id/activity_personagem_img_imagem"
+                    android:layout_width="90dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:background="@color/colorPrimary" />
+
+                <!--Campo nome-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtNomePersonagem"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="100dp"
+                    style="@style/TextViewTitulos"/>
+
+                <TextView
+                    android:id="@+id/activity_personagem_txt_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="183dp"
+                    android:layout_marginLeft="183dp"
+                    style="@style/TextViewComum"
+                    />
+
+                <!--Campo Classe-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtClassePersonagem"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="30dp"
+                    style="@style/TextViewTitulos"/>
+
+                <TextView
+                    android:id="@+id/activity_personagem_txt_classe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginStart="183dp"
+                    android:layout_marginLeft="183dp"
+                    style="@style/TextViewComum"
+                    />
+
+                <!--Campo Sexo-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtSexoPersonagem"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="60dp"
+                    style="@style/TextViewTitulos"/>
+
+                <TextView
+                    android:id="@+id/activity_personagem_txt_genero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="63dp"
+                    android:layout_marginStart="183dp"
+                    android:layout_marginLeft="183dp"
+                    style="@style/TextViewComum"
+                    />
+
+                <!--switch de visível para todos-->
+                <Switch
+                    android:id="@+id/activity_personagem_swt_visibilidade"
+                    android:layout_width="200dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="92dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="180dp"
+                    android:text="@string/txtVisivelParaTodos"
+                    style="@style/TextViewComum"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--LinearLayout pra colocar as habilidades, descrição e história-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="Esse aqui é um texto qualquer talkei mano fim"
-                style="@style/TextViewComum"/>
+                android:orientation="vertical"
+                android:layout_marginTop="138dp">
 
-            <!--Campo Descrição:-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:gravity="center"
-                android:text="@string/txtDescricaoPersonagem"
-                style="@style/TextViewTitulos"
-                android:textColor="#ffffff"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="#000000"/>
+                <!--Campo Habilidades-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="#000000"
+                    android:textColor="#ffffff"
+                    style="@style/TextViewTitulos"
+                    android:textAlignment="center"
+                    android:text="@string/txtHabilidadesPersonagem"/>
 
-            <TextView
-                android:background="@color/colorPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="Conteúdo da descrição"
-                style="@style/TextViewComum"/>
+                <TextView
+                    android:id="@+id/activity_personagem_txt_habilidades"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    style="@style/TextViewComum"/>
 
-            <!--Campo História do personagem:-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:background="#000000"
-                android:text="@string/txtHistoriaPersonagem"
-                android:textColor="#ffffff"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:textAlignment="center"
-                android:layout_marginTop="0dp"
-                style="@style/TextViewTitulos"/>
+                <!--Campo Descrição:-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:gravity="center"
+                    android:text="@string/txtDescricaoPersonagem"
+                    style="@style/TextViewTitulos"
+                    android:textColor="#ffffff"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="#000000"/>
 
-            <TextView
-                android:background="@color/colorPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="Conteúdo da história"
-                style="@style/TextViewComum"/>
+                <TextView
+                    android:id="@+id/activity_personagem_txt_descricao"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    style="@style/TextViewComum" />
 
-        </LinearLayout>
+                <!--Campo História do personagem:-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="#000000"
+                    android:text="@string/txtHistoriaPersonagem"
+                    android:textColor="#ffffff"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textAlignment="center"
+                    android:layout_marginTop="0dp"
+                    style="@style/TextViewTitulos"/>
 
-    </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/activity_personagem_txt_historia"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    style="@style/TextViewComum" />
 
-</RelativeLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

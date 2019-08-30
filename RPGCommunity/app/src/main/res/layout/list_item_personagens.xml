@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#cc5ccc">
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <!--ImageView do personagem-->
     <ImageView
+        android:id="@+id/custom_img_foto_personagem"
         android:layout_width="95dp"
         android:layout_height="95dp"
         android:background="#c54342"/>
@@ -17,23 +18,25 @@
 
         <!--TextView nome do personagem-->
         <TextView
+            android:id="@+id/custom_txt_nome_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do personagem"
             style="@style/TextViewHomeBoldTitulo"/>
 
         <!--TextView classe do personagem-->
         <TextView
+            android:id="@+id/custom_txt_descricao_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Classe do personagem"
+            android:text="Descrição:"
             style="@style/TextViewHomeBold"/>
 
         <!--TextView sessão do personagem-->
         <TextView
+            android:id="@+id/custom_txt_sessao_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sessão em que ele está"
+            android:text="Sessão:"
             style="@style/TextViewHomeBold"/>
 
     </LinearLayout>

@@ -1,7 +1,7 @@
 package com.tbio.rpgcommunity.logincadastro
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.tbio.rpgcommunity.R
 
 class EsqueciASenha : AppCompatActivity() {

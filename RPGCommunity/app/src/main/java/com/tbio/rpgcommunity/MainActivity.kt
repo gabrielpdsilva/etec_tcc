@@ -1,20 +1,23 @@
 package com.tbio.rpgcommunity
 
-import android.app.Person
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.tbio.rpgcommunity.criar.CriarPersonagem
 import com.tbio.rpgcommunity.criar.CriarSessao
 import com.tbio.rpgcommunity.fragments.AmigosFragment
+import com.tbio.rpgcommunity.fragments.HomeFragment
 import com.tbio.rpgcommunity.fragments.PerfilFragment
 import com.tbio.rpgcommunity.fragments.SessoesFragment
+import com.tbio.rpgcommunity.logincadastro.Login
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.*
@@ -26,18 +29,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-
+        loadHome(frag = HomeFragment())
         //*********************************************************************************************************************//
         //EXPLICAÇÃO
         //Se colocar background numa fragment, o conteúdo main ficará invisível mas você ainda pode clicar e vai funcionar.
         //Só não vai funcionar se você inserir algo em cima, como um quadrado ou algo do tipo por exemplo.
         //*********************************************************************************************************************//
-
-        //apague daqui
-        val btnhue: Button = findViewById(R.id.btnteste3)
-        btnhue.setOnClickListener {
-            toast("clicou!")
-        }//até aqui
 
         //floating action menu, necessario mudar a funcao
         fab.setOnClickListener { view ->
@@ -93,7 +90,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //faz o menu de editar personagem não aparecer. Só aparecerá na activity do personagem, o
         //código já tá lá
-        menu!!.findItem(R.id.action_editar_personagem).isVisible = false
+        menu.findItem(R.id.action_editar_personagem).isVisible = false
         return true
     }
 
@@ -113,19 +110,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
-                toast("Ao clicar aqui tem que sair da fragment")
-                startActivity<Personagem>()
+                // home
+                loadHome(frag = HomeFragment())
             }
             R.id.nav_perfil -> {
-                // Handle the camera action
+                // perfil
                 loadMeuPerfil(frag = PerfilFragment())
-
             }
             R.id.nav_amigos -> {
+                // amigos
                 loadAmigos(frag = AmigosFragment())
             }
             R.id.nav_sessoes -> {
+                // sessões
                 loadSessoes(frag = SessoesFragment())
 
             }
@@ -147,15 +144,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 alert {
                     titleResource = R.string.txtLogoutTitulo
                     messageResource = R.string.txtLogoutCerteza
-                    positiveButton(R.string.txtLogoutSim, { dialog ->
+                    positiveButton(R.string.txtLogoutSim) { dialog ->
                         //Firebase.Auth.getInstance().signOut()
+                        FirebaseAuth.getInstance().signOut()
+                        val intentToLogin = Intent(applicationContext, Login::class.java)
+                        intentToLogin.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+                        startActivity(intentToLogin)
                         finish()
-                        toast(R.string.txtLogoutRealizado)
-                    })
-                    negativeButton(R.string.txtLogoutNao, { dialog ->
+                    }
+                    negativeButton(R.string.txtLogoutNao) { dialog ->
                         //dialog.dismiss() <-- não sei o que isso faz, tava no tutorial. Esse mesmo código tava no positiveButton também.
                         toast(R.string.txtLogoutFoiCancelado)
-                    })
+                    }
                     show()
                 }
             }
@@ -163,6 +164,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun loadHome(frag: HomeFragment) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.frameLayout, frag)
+        fm.commit()
     }
 
     //função que carrega a Fragment Meu Perfil

@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#aaaaaa">
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/pbAmigos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment amigos" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
-    <android.support.v7.widget.RecyclerView
+    <TextView
+        android:id="@+id/txtVoceNaoPossuiAmigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Você não possui amigos."
+        android:visibility="gone"
+        android:enabled="false" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvAmigos"/>
+        android:id="@+id/rvAmigos" />
 
-</LinearLayout>
+</RelativeLayout>

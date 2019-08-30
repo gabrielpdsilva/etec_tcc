@@ -2,10 +2,10 @@ package com.tbio.rpgcommunity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
 import android.widget.CompoundButton
 import android.widget.Switch
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import kotlinx.android.synthetic.main.configuracoes.*
 
 class Configuracoes : AppCompatActivity() {

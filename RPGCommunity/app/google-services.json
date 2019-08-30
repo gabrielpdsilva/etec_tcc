@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "755277040288",
+    "firebase_url": "https://rpg-community.firebaseio.com",
+    "project_id": "rpg-community",
+    "storage_bucket": "rpg-community.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755277040288:android:5a35c14a1f59f8de",
+        "android_client_info": {
+          "package_name": "com.tbio.rpgcommunity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755277040288-rum5olva6834ir8n294ora9o1d2it4ob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbio.rpgcommunity",
+            "certificate_hash": "a0fd9285a38bf1b5c368d89c962d228cd82a6efb"
+          }
+        },
+        {
+          "client_id": "755277040288-ahud80heh2psf05he7o9sku7dftvg9bl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBflu_RNd-4ytNTeHpfGehsqeLLXGgtIkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755277040288-ahud80heh2psf05he7o9sku7dftvg9bl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

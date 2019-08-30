@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,36 +21,9 @@
 
     <!--Apague daqui-->
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Se colocar background numa fragment, o conteúdo main ficará invisível mas você ainda pode clicar e vai funcionar. Só não vai funcionar se você inserir algo em cima, como um layout por exemplo, segundo testes."/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="teste 2"
-        android:layout_marginTop="200dp"/>
-
-        <Button
-            android:id="@+id/btnteste3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="370dp"
-            android:layout_marginStart="10dp"
-            android:text="teste 3"/>
-
-    </RelativeLayout>
-
-    <!--Até aqui-->
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ></FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
