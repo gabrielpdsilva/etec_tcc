@@ -6,15 +6,16 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.tbio.rpgcommunity.R
-import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
-import com.tbio.rpgcommunity.classes_model_do_sistema.Personagem
-import kotlinx.android.synthetic.main.criar_personagem.*
+import com.tbio.rpgcommunity.classes_model_do_sistema.*
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -56,17 +57,49 @@ class CriarPersonagem : AppCompatActivity() {
 
             imgPersonagemUri?.let {
                 val filename = UUID.randomUUID()
-                FirebaseStorage.getInstance().getReference("imagens/$filename")
+                FirebaseStorage.getInstance().getReference("/imagens/$filename")
                         .putFile(this.imgPersonagemUri!!)
                         .addOnSuccessListener {
-                            salvarPersonagem()
+                            it.metadata!!.reference!!.downloadUrl
+                                    .addOnSuccessListener {
+                                        this.imgPersonagemUri = it
+                                        salvarPersonagem()
+                                    }
                         }
             } ?: salvarPersonagem()
         }
     }
 
     private fun salvarPersonagem() {
+        if(edtNickname.text.toString().isEmpty()){
+            edtNickname.error = "preencha o nome do personagem por favor"
+            edtNickname.isFocusable = true
+        }
 
+        else
+            FirebaseFirestore.getInstance()
+                    .collection("Usuarios")
+                    .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email.toString())
+                    .limit(1)
+                    .get()
+                    .addOnSuccessListener {
+                        for(usuario in it) {
+                            Personagem(id = null,
+                                       parentId = usuario.id,
+                                       nome = Nome(edtNickname.text.toString()),
+                                       sessao = null,
+                                       descricao = Descricao(edtDescricao.text.toString()),
+                                       historia = Historia(historia = edtHistoria.text.toString()),
+                                       image = imgPersonagemUri)
+                                    .saveDB( fun(doc){
+                                        toast("Personagem salvo com sucesso!")
+                                        finish()
+                                    }, fun (e){
+                                        toast(Erros.ERRO_AO_CRIAR_PERSONAGEM)
+                                        Log.e(Tags.TAG_ERROR_CPA, e.message.toString() + e.stackTrace)
+                                    })
+                        }
+                    }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
