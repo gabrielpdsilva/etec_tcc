@@ -16,7 +16,7 @@ class Personagem (
 
                   // dados do personagem (dados estes que vão para o banco)
                   val nome: Nome,   // nome do personagem
-                  val sessao: DocumentReference? = null,
+                  var sessao: DocumentReference? = null,
                   var descricao: Descricao? = null,
                   var historia: Historia? = null,
                   var image: Uri? = null)
@@ -76,10 +76,18 @@ class Personagem (
             parcel.readString(),
             parcel.readString(),
             parcel.readParcelable<Nome>(Nome::class.java.classLoader),
-            parcel.readParcelable<>(),
+            null,
             parcel.readParcelable<Descricao>(Descricao::class.java.classLoader),
             parcel.readParcelable<Historia>(Historia::class.java.classLoader),
-            parcel.readParcelable(Uri::class.java.classLoader))
+            parcel.readParcelable(Uri::class.java.classLoader)){
+        parcel.readString()?.let {
+            FirebaseFirestore.getInstance().document(it)
+                    .get()
+                    .addOnSuccessListener {
+                        this.sessao = it.reference
+                    }
+        }
+    }
 
     override fun toObject(doc: DocumentSnapshot) {
         // recupera a descrição do personagem
@@ -136,10 +144,10 @@ class Personagem (
         parcel.writeString(this.getId())
         parcel.writeString(this.getParentId())
         parcel.writeParcelable(nome, flags)
-        parcel.writeTypedObject(sessao, flags)
         parcel.writeParcelable(descricao, flags)
         parcel.writeParcelable(historia, flags)
         parcel.writeParcelable(image, flags)
+        parcel.writeString(sessao?.path)
     }
 
     override fun describeContents(): Int {

@@ -105,10 +105,10 @@ class Sessao (
         parcel.writeString(this.getParentId())
         parcel.writeParcelable(nome, flags)
         parcel.writeParcelable(imagem, flags)
-        parcel.writeList(personagens)
         parcel.writeParcelable(historiaDeUniverso, flags)
         parcel.writeString(sistema)
         parcel.writeParcelable(descricao, flags)
+        parcel.writeList(personagens)
     }
 
     override fun describeContents(): Int {

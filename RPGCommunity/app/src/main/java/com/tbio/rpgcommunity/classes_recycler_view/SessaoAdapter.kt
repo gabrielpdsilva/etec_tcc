@@ -39,6 +39,12 @@ class SessaoAdapter(val sessoes: MutableList<Sessao>,
                 .resize(150, 130)
                 .into(holder.image)
 
+        holder.cardview.setOnClickListener {
+            val intentToSessaoActivity: Intent = Intent(this.context, SessaoActivity::class.java)
+            intentToSessaoActivity.putExtra("sessao", this.sessoes[position])
+            this.context.startActivity(intentToSessaoActivity)
+        }
+
         holder.sistema.text = sessoes[position].sistema
         holder.nome.text = sessoes[position].nome.toString()
         holder.descricao.text = sessoes[position].descricao?.getDescricaoBasica()
@@ -46,16 +52,11 @@ class SessaoAdapter(val sessoes: MutableList<Sessao>,
     }
 
     inner class SessaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val cardview = itemView.custom_cdv_item_sessao
         val image = itemView.custom_img_profile_sessao
         val nome = itemView.custom_txt_nome_sessao
         val sistema = itemView.custom_txt_sistema_sessao
         val mestre = itemView.custom_txt_mestre_sessao
         val descricao =  itemView.custom_txt_descricao_sessao
-
-        init{
-            val intentToSessaoActivity: Intent = Intent(this@SessaoAdapter.context, SessaoActivity::class.java)
-            intentToSessaoActivity.putExtra("sessao", this@SessaoAdapter.sessoes[this.adapterPosition])
-            this@SessaoAdapter.context.startActivity(intentToSessaoActivity)
-        }
     }
 }

@@ -89,8 +89,8 @@ class Historia (val nome: Nome? = null,    // nome, caso a história tenha nome
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeParcelable(nome, flags)
-        parcel.writeList(personagensEnvolvidos)
         parcel.writeString(historia)
+        parcel.writeList(personagensEnvolvidos)
     }
 
     override fun describeContents(): Int {
