@@ -9,7 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 class Historia (val nome: Nome? = null,    // nome, caso a história tenha nome
                 private var personagensEnvolvidos: MutableList<DocumentReference>? = null, // personagens envolvidos na história
                 private var historia: String) // história de fato
-    : RpgItem(), Parcelable {
+    : RpgItem() {
 
     constructor(parcel: Parcel) : this(
             parcel.readParcelable(Nome::class.java.classLoader),

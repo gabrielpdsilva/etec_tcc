@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sub_activitys.ChatSessaoActivity">
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+    
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/activity_chat_sessao_mensagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginRight="150dp"/>
+
+            <Button
+                android:id="@+id/activity_chat_sessao_botaoenviar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enviar Mensagem"
+                android:layout_toRightOf="@+id/activity_chat_sessao_mensagem"
+                android:layout_marginRight="30dp"/>
+
+            <Button
+                android:id="@+id/activity_chat_sessao_botao1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_above="@+id/activity_chat_sessao_mensagem"/>
+
+            <Button
+                android:id="@+id/activity_chat_sessao_botao2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_above="@+id/activity_chat_sessao_mensagem"
+                android:layout_toRightOf="@+id/activity_chat_sessao_botao1"/>
+
+            <Button
+                android:id="@+id/activity_chat_sessao_botao3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_above="@+id/activity_chat_sessao_mensagem"
+                android:layout_toRightOf="@+id/activity_chat_sessao_botao2"/>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

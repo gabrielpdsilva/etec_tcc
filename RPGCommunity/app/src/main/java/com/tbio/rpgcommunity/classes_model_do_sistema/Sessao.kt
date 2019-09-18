@@ -24,7 +24,9 @@ class Sessao (
         var sistema: String? = null,  // sistema da Sessão
         var descricao: Descricao? = null // descrição da Sessão
              )
-    : SubDocumentoRpgItem(id, parentId), Parcelable {
+    : SubDocumentoRpgItem(id, parentId) {
+    override var parentReference: DocumentReference? = null
+        get() = this.referencia.parent.parent
 
     var visibilidadeDeAcesso: Int = 0
         set(newVisibilidade) {

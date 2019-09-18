@@ -8,7 +8,7 @@ import java.lang.IllegalArgumentException
 
 data class Nome (val nome: String,  // Nome
                  val sobreNome: List<String>? = null)
-                : RpgItem(), Parcelable{
+                : RpgItem() {
     override fun toHashMap(): HashMap<String, Any?> {
         val nomeHashMap = hashMapOf<String, Any?>()
 

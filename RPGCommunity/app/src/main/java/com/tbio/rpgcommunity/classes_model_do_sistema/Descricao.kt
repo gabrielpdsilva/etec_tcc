@@ -14,7 +14,7 @@ import java.lang.IllegalArgumentException
  *  @property campos representa os campos que a descrição pode conter, como exemplo: Classe, Raça, Etnia, etc.*/
 class Descricao(private var descricaoBasica: String,
                 private var campos: MutableMap<String, Any>? = null)
-                : RpgItem(), Parcelable {
+                : RpgItem() {
 
     constructor(parcel: Parcel) : this(
             parcel.readString(),

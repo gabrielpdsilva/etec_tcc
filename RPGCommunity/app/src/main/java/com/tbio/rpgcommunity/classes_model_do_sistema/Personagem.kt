@@ -20,7 +20,9 @@ class Personagem (
                   var descricao: Descricao? = null,
                   var historia: Historia? = null,
                   var image: Uri? = null)
-    : SubDocumentoRpgItem(id, parentId), Parcelable{
+    : SubDocumentoRpgItem(id, parentId){
+    override var parentReference: DocumentReference? = null
+        get() = this.referencia.parent.parent
 
     constructor(id: String?,
                 parentId: String,
