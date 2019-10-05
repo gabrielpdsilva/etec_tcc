@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
                 .addOnSuccessListener {
                     sessoes = mutableListOf<Sessao>()
 
-                    for(sessao in it){
+                    for(sessao in it) {
                         sessoes.add(Sessao.toNewObject(sessao) as Sessao)
                     }
 

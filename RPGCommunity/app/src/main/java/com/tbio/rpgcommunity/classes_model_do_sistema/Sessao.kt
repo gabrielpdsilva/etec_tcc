@@ -98,7 +98,7 @@ class Sessao (
                           sistema = doc["sistema"] as String,
                           descricao = Descricao.toNewObject(doc.get("descricao") as Map<String, Any?>) as Descricao,
                           imagem = (doc["imagem"] as String?)?.toUri()
-            )
+                         )
         }
     }
 
