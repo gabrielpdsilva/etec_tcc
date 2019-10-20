@@ -57,13 +57,33 @@
                 android:layout_marginTop="190dp"
                 android:text="@string/txtInformacoesGerais" />
 
+            <!--TextView Nome:-->
+            <TextView
+                 android:id="@+id/lblNome"
+                 style="@style/TextViewComumBold"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_below="@id/lblInformacoesGerais"
+                 android:layout_marginLeft="5dp"
+                 android:text="@string/txtNomePerfil" />
+
+            <!--TextView nome do usuário-->
+            <TextView
+                 android:id="@+id/lblNomeUsuario"
+                 style="@style/TextViewComum"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_below="@id/lblInformacoesGerais"
+                 android:layout_toRightOf="@+id/lblNome"
+                 android:text="@string/txtFragmentNomePerfil" />
+
             <!--TextView ID:-->
             <TextView
                 android:id="@+id/lblId"
                 style="@style/TextViewComumBold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/lblInformacoesGerais"
+                android:layout_below="@+id/lblNomeUsuario"
                 android:layout_marginLeft="5dp"
                 android:text="@string/txtID" />
 
@@ -73,29 +93,29 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@id/lblInformacoesGerais"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@id/lblNomeUsuario"
+                android:layout_toRightOf="@+id/lblId"
                 android:text="@string/txtFragmentID" />
 
             <!--TextView Nome:-->
-            <TextView
+           <!-- <TextView
                 android:id="@+id/lblNome"
                 style="@style/TextViewComumBold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@id/lblInformacoesGerais"
                 android:layout_marginLeft="200dp"
-                android:text="@string/txtNomePerfil" />
+                android:text="@string/txtNomePerfil" />-->
 
             <!--TextView nome do usuário-->
-            <TextView
+           <!-- <TextView
                 android:id="@+id/lblNomeUsuario"
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@id/lblInformacoesGerais"
                 android:layout_marginLeft="260dp"
-                android:text="@string/txtFragmentNomePerfil" />
+                android:text="@string/txtFragmentNomePerfil" />-->
 
             <!--TextView E-mail:-->
             <TextView
@@ -114,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/lblId"
-                android:layout_marginLeft="70dp"
+                android:layout_toRightOf="@+id/lblEmail"
                 android:text="@string/txtFragmentEmailPerfil" />
 
             <!--TextView Sexo:-->
@@ -134,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@id/lblEmail"
-                android:layout_marginLeft="70dp"
+                android:layout_toRightOf="@+id/lblSexo"
                 android:text="@string/txtFragmentSexo" />
 
             <!--TextView Idade:-->
@@ -154,8 +174,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@id/lblEmail"
-                android:layout_marginLeft="260dp"
+                android:layout_toRightOf="@+id/lblIdade"
                 android:text="@string/txtFragmentIdade" />
+
 
             <View
                 android:id="@+id/linhaSeparadora"

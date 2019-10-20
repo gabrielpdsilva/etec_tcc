@@ -11,28 +11,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>-->
 
+        <!--Cores anteriormente usadas:
+        #6042ad (roxo primário)
+        #4b338a (roxo primário escuro)
+        -->
+
         <!--Dia-->
-       <item name="colorPrimary">#6042ad</item>
-        <item name="colorPrimaryDark">#4b338a</item>
+       <item name="colorPrimary">#bf2a45</item>
+        <item name="colorPrimaryDark">#591c44</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#fcfcfc</item>
         <item name="corCardBackground">#ffffff</item>
         <item name="corTexto">#212121</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#6042ad</item>
+        <item name="corBotao">#bf2a45</item>
 
     </style>
 
         <!--Noite-->
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#6042ad</item>
-        <item name="colorPrimaryDark">#4b338a</item>
+        <item name="colorPrimary">#bf2a45</item>
+        <item name="colorPrimaryDark">#591c44</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#303030</item>
         <item name="corCardBackground">#424242</item>
         <item name="corTexto">#ffffff</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#6042ad</item>
+        <item name="corBotao">#bf2a45</item>
 
 
     </style>
@@ -69,14 +74,14 @@
     <!--Estilo pra TextView Comum-->
     <style name="TextViewComum">
         <item name="android:textSize">18dp</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">1dp</item>
     </style>
 
     <!--Estilo pra TextView Comum em negrito-->
     <style name="TextViewComumBold">
         <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">1dp</item>
     </style>
 
     <!--Estilo pra criar TextView maiores, de títulos-->
