@@ -1,6 +1,7 @@
 package com.tbio.rpgcommunity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import com.google.android.material.navigation.NavigationView
@@ -8,9 +9,14 @@ import androidx.core.view.GravityCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import com.tbio.rpgcommunity.criar.CriarPersonagem
 import com.tbio.rpgcommunity.criar.CriarSessao
 import com.tbio.rpgcommunity.fragments.AmigosFragment
@@ -30,6 +36,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         loadHome(frag = HomeFragment())
+
+        // captura a imagem e o campo de texto da navbar de perfil
+        val headerView = findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
+        val profileImg = headerView.findViewById<ImageView>(R.id.imageMenu)!!;
+        val profileNickname = headerView.findViewById<TextView>(R.id.nicknameMenu)!!;
+
+        FirebaseFirestore.getInstance()
+                .collection("Usuarios")
+                .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email.toString())
+                .limit(1)
+                .get()
+                .addOnSuccessListener {
+                    for(element in it){
+                        Picasso.get()
+                                .load((element["foto"] as String).toUri())
+                                .resize(100, 100)
+                                .into(profileImg);
+
+                        profileNickname.text = (element["nickname"] as Map<String, Any?>)["nome"] as String;
+                    }
+                }
         //*********************************************************************************************************************//
         //EXPLICAÇÃO
         //Se colocar background numa fragment, o conteúdo main ficará invisível mas você ainda pode clicar e vai funcionar.
@@ -74,6 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
+            finishAffinity()
             super.onBackPressed()
             return
         }
@@ -81,7 +109,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         this.doubleBackToExitPressedOnce = true
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
         toast(R.string.txtDuploClique)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

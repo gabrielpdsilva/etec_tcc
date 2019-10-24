@@ -36,7 +36,7 @@ class SessaoAdapter(val sessoes: MutableList<Sessao>,
 
         Picasso.get()
                 .load(sessoes[position].imagem)
-                .resize(150, 130)
+                .resize(265, 155)
                 .into(holder.image)
 
         holder.cardview.setOnClickListener {
