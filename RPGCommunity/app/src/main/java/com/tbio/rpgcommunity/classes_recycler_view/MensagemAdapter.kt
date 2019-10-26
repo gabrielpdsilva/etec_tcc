@@ -9,33 +9,34 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
-import kotlinx.android.synthetic.main.list_item_mensagens_outros.view.*
+import kotlinx.android.synthetic.main.list_item_mensagens.*
+import kotlinx.android.synthetic.main.list_item_mensagens.view.*
 
 class MensagemAdapter(val mensagens: MutableList<Mensagem>,
                       val context: Context)
     : RecyclerView.Adapter<MensagemAdapter.MensagemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MensagemViewHolder =
-            MensagemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_mensagens_outros, parent))
+            MensagemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_mensagens, parent))
 
     override fun getItemCount(): Int = this.mensagens.size
 
     override fun onBindViewHolder(holder: MensagemViewHolder, position: Int) {
-        FirebaseFirestore.getInstance()
+        /* FirebaseFirestore.getInstance()
                 .document(this.mensagens[position].de!!.path)
                 .get()
                 .addOnSuccessListener {
                     holder.de.text = it["email"].toString()
-                }
+                } */
 
         holder.mensagem.text = this.mensagens[position].mensagem
     }
 
     inner class MensagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val de = itemView.list_item_mensagens_outros_de
-        val mensagem = itemView.list_item_mensagens_outros_mensagem
+        // val de = itemView.list_item_mensagens
+        val mensagem = itemView.list_item_mensagens_layout_other_message
 
         fun getLayout(): Int{
-            var layout: Int = R.layout.list_item_mensagens_minhas
+            var layout: Int = R.layout.list_item_mensagens
             var isComplete = false
 
             FirebaseFirestore.getInstance()
@@ -43,7 +44,7 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
                     .get()
                     .addOnSuccessListener {
                         if(it["email"] == FirebaseAuth.getInstance().currentUser!!.email!!.toString())
-                            layout = R.layout.list_item_mensagens_outros
+                            layout = R.layout.list_item_mensagens
 
                         isComplete = true
                     }
