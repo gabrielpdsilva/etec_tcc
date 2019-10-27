@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/activity_sessao_switch"
+        android:text="@string/start_session"
+        android:enabled="false"
         />
 
 </RelativeLayout>

@@ -2,16 +2,21 @@ package com.tbio.rpgcommunity.sub_activitys
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
+import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
 import com.tbio.rpgcommunity.classes_recycler_view.MensagemAdapter
 import com.tbio.rpgcommunity.classes_recycler_view.SessaoAdapter
 import kotlinx.android.synthetic.main.fragment_sessoes.*
+import org.jetbrains.anko.toast
 
 class ChatSessaoActivity : AppCompatActivity() {
 
@@ -21,11 +26,35 @@ class ChatSessaoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_sessao)
 
-        // continuar daqui com a requisição
-        // das mensagens no banco de dados
+        val db = FirebaseFirestore.getInstance()
+        val sessao = intent.extras!!["sessao"] as Sessao
+
+        db.collection("${sessao.caminho}/Histórico de mensagens")
+                .get()
+                .addOnSuccessListener {
+                    for(m in it) {
+
+                        var from: DocumentSnapshot? = null
+
+                        db.document(m["from"] as String)
+                                .get()
+                                .addOnSuccessListener {
+                                    from = it
+                                }
+
+                        Log.d("DebugChat", from.toString())
+                        val message = m["message"] as String;
+                        Log.d("DebugChat", message)
+
+                        /*from.get()
+                            .addOnSuccessListener {
+                                toast("${it["email"] as String}: ${message}");
+                            }*/
+                    }
+                }
     }
 
-    fun setSessionRecyclerView() {
+    fun setMensagensRecyclerView() {
         // define a progressbar como invisível
         findViewById<ProgressBar>(R.id.PbSessoes).visibility = View.GONE
 
