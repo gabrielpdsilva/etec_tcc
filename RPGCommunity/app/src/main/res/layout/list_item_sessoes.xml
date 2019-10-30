@@ -12,11 +12,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/custom_txt_nome_sessao"
+            style="@style/TextViewHomeBoldTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            />
+
 
         <ImageView
             android:id="@+id/custom_img_profile_sessao"
             android:layout_width="match_parent"
-            android:layout_height="150dp"/>
+            android:layout_height="150dp"
+            android:layout_below="@+id/custom_txt_nome_sessao"/>
 
 <!--
         <TextView
@@ -26,14 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/custom_img_profile_sessao"/>-->
 
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/custom_txt_nome_sessao"
-            style="@style/TextViewHomeBoldTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/custom_img_profile_sessao"/>
+
 
 
         <TextView
@@ -43,15 +48,15 @@
             android:text="Mestre: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/custom_txt_nome_sessao"/>
+            android:layout_below="@+id/custom_img_profile_sessao"/>
 
         <TextView
             style="@style/TextViewComum"
             android:id="@+id/custom_txt_mestre_sessao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/custom_txt_nome_sessao"
-            android:layout_toRightOf="@+id/custom_txt_sistema"/>
+            android:layout_below="@+id/custom_img_profile_sessao"
+            android:layout_toRightOf="@+id/custom_txt_mestre"/>
 
         <TextView
             style="@style/TextViewComumBold"
@@ -91,7 +96,7 @@
             android:id="@+id/linhaSeparadora"
             style="@style/Linha"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_below="@id/custom_txt_descricao_sessao"/>
 
     </RelativeLayout>
