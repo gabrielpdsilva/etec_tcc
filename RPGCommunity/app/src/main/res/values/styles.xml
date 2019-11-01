@@ -75,6 +75,8 @@
     <style name="TextViewComum">
         <item name="android:textSize">18dp</item>
         <item name="android:padding">1dp</item>
+        <item name="android:textColor">#ededed</item>
+
     </style>
 
     <!--Estilo pra TextView Comum em negrito-->
@@ -82,6 +84,7 @@
         <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">1dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Estilo pra criar TextView maiores, de títulos-->
@@ -89,11 +92,13 @@
         <item name="android:textSize">23dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Estilo pra criar EditText do cadastro-->
     <style name="EditTextCadastro">
         <item name="android:textSize">18dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Activities sem toolbar-->
@@ -118,6 +123,7 @@
         <item name="android:textSize">25dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Estilo dos subtítulos da Home-->
@@ -125,12 +131,14 @@
         <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Estilo do texto da descrição da Home-->
     <style name="TextViewHomeDescricao">
         <item name="android:textSize">14dp</item>
         <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
     <!--Estilo dos outros detalhes da Home-->
@@ -138,6 +146,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
         <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ededed</item>
     </style>
 
 </resources>

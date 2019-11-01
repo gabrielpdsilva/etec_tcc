@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fundoCinza">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,7 +18,8 @@
             android:layout_height="380dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="80dp"
+            app:cardBackgroundColor="@color/cardViewCinza">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/txtBemVindo"
-                style="@style/TextViewTitulos"
+                style="@style/TextViewHomeBoldTitulo"
                 android:textAlignment="center"/>
 
             <TextView
@@ -68,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:passwordToggleTint="#ededed"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -92,6 +95,7 @@
                 android:layout_marginEnd="20dp"
                 android:id="@+id/tvEsqueceu"
                 android:text="@string/txtEsqueceuASenha"
+                style="@style/TextViewComum"
                 android:clickable="true"
                 android:onClick="onClick"
                 android:padding="5dp"
@@ -120,6 +124,7 @@
                 android:id="@+id/tvCadastrar"
                 android:clickable="true"
                 android:onClick="onClick"
+                style="@style/TextViewHomeBoldTitulo"
                 android:layout_gravity="center_horizontal"
                 android:textSize="21sp"/>
 
