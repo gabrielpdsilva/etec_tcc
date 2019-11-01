@@ -7,9 +7,16 @@
     tools:context=".sub_activitys.ChatSessaoActivity">
     
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_chat_sessao_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/PbMensagens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
     
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

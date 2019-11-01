@@ -84,6 +84,14 @@ class Mensagem(
     }
 
     companion object CREATOR : Parcelable.Creator<Mensagem> {
+        fun toNewObject(doc: DocumentSnapshot) =
+                Mensagem(id = doc.id,
+                         parentId = doc.reference.parent.parent!!.id,
+                         parentReference = doc.reference.parent.parent,
+                         de = doc.data!!["from"] as DocumentReference,
+                         para = null,
+                         mensagem = doc["message"] as String)
+
         override fun createFromParcel(parcel: Parcel): Mensagem {
             return Mensagem(parcel)
         }
