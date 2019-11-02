@@ -18,4 +18,5 @@
     <color name="textosBrancos">#ededed</color>
     <color name="textosEditText">#a8a8a8</color>
     <color name="caixasDeTexto">#242424</color>
+    <color name="branco">#ffffff</color>
 </resources>

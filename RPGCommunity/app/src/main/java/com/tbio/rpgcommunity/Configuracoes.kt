@@ -10,6 +10,11 @@ import kotlinx.android.synthetic.main.configuracoes.*
 
 class Configuracoes : AppCompatActivity() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.configuracoes)
+    }
+/*
     private lateinit var switchTema: Switch
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,5 +48,5 @@ class Configuracoes : AppCompatActivity() {
         startActivity(i)
         finish()
 
-    }
+    }*/
 }

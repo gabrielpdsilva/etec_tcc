@@ -14,14 +14,15 @@
             android:id="@+id/PbSessoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/txtNaoExistemSessoesSuas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/voce_nao_pertence_sessoes"
-            android:textSize="20sp"
+            style="@style/TextViewHomeBold"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:visibility="gone"/>

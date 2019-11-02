@@ -17,7 +17,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/caixasDeTexto">
 
             </RelativeLayout>
 
@@ -29,12 +29,24 @@
                 android:orientation="vertical">
 
                 <!--TextView da foto de perfil-->
+
+                <!--Antiga imageview, imagem quadrada-->
+                <!--
                 <ImageView
                     android:id="@+id/avatarPerfil"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:background="@color/colorPrimary"
-                    android:src="@drawable/ic_add_avatar" />
+                    android:src="@drawable/ic_add_avatar" />-->
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/avatarPerfil"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_add_avatar"
+                    app:civ_border_width="5dp"
+                    app:civ_border_color="#ffffff"/>
 
                 <!--TextView do nickname-->
                 <TextView
@@ -42,7 +54,7 @@
                     style="@style/TextViewTitulos"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="#ebebeb" />
+                    android:textColor="@color/textosBrancos" />
 
             </LinearLayout>
 
@@ -196,11 +208,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPersonagens"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_below="@id/lblListaPersonagens"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginEnd="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -209,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="350sp" />
+                android:layout_marginTop="400sp" />
 
             <TextView
                 android:id="@+id/txt_vazio_personagens_perfil"

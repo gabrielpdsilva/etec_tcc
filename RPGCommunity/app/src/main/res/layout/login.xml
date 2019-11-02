@@ -19,6 +19,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp"
             app:cardBackgroundColor="@color/cardViewCinza">
 
         <LinearLayout
@@ -60,7 +61,7 @@
                     android:id="@+id/txtEmail"
                     android:padding="10dp"
                     android:layout_marginTop="0dp"
-                    android:drawableLeft="@drawable/ic_login_user"
+                    android:drawableLeft="@drawable/ic_login_usuario"
                     android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -83,7 +84,7 @@
                     android:layout_marginTop="10dp"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_login_pass"
+                    android:drawableLeft="@drawable/ic_login_senha"
                     android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>

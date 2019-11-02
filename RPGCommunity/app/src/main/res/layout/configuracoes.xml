@@ -4,8 +4,40 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/corBackground">
+    android:background="@color/fundoCinza">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sobre o aplicativo"
+        style="@style/TextViewTitulos" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/cardViewCinza">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:maxLines="20"
+            android:id="@+id/sobre_o_app_1"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aplicativo para Trabalho de Conclusão de Curso desenvolvido pelos alunos do terceiro módulo de Desenvolvimento de Sistemas da ETEC Zona Leste.\n\nProgramação desenvolvida por:\n-Davi Mendes Pimentel;\n-Gabriel Pimentel da Silva."
+            style="@style/TextViewComum"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,5 +75,5 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="150dp"
         android:text="teste..."/>
-
+-->
 </LinearLayout>
