@@ -16,23 +16,23 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
                       val context: Context)
     : RecyclerView.Adapter<MensagemAdapter.MensagemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MensagemViewHolder =
-            MensagemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_mensagens, parent))
+            MensagemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_mensagens, parent, false))
 
     override fun getItemCount(): Int = this.mensagens.size
 
     override fun onBindViewHolder(holder: MensagemViewHolder, position: Int) {
-        /* FirebaseFirestore.getInstance()
+        /*FirebaseFirestore.getInstance()
                 .document(this.mensagens[position].de!!.path)
                 .get()
                 .addOnSuccessListener {
                     holder.de.text = it["email"].toString()
-                } */
+                }*/
 
         holder.mensagem.text = this.mensagens[position].mensagem
     }
 
     inner class MensagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        // val de = itemView.list_item_mensagens
+        // val de = itemView.
         val mensagem = itemView.list_item_mensagens_layout_other_message
 
         fun getLayout(): Int{
