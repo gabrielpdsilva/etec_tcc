@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fundoCinza">
 
    <RelativeLayout
         android:layout_width="match_parent"
@@ -17,25 +18,12 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="@string/txtCadastro"
-           android:textSize="30dp"
-           android:textStyle="bold"
+           style="@style/TextViewHomeBoldTitulo"
            android:textAlignment="center"/>
 
-        <!--Campo nickname-->
-       <EditText
-           android:id="@+id/txtNickname"
-           android:layout_below="@+id/txtCadastroTitulo"
-           android:layout_marginStart="0dp"
-           android:layout_marginEnd="0dp"
-           style="@style/EditTextCadastro"
-           android:singleLine="true"
-           android:maxLength="15"
-           android:layout_width="165dp"
-           android:layout_height="wrap_content"
-           android:hint="@string/txtNickname" />
 
         <!--Campo nome-->
-
+       <!--
        <EditText
            android:layout_below="@+id/txtCadastroTitulo"
            android:layout_width="165dp"
@@ -46,15 +34,17 @@
            android:maxLength="15"
            android:id="@+id/txtNome"
            android:layout_alignParentRight="true"/>
+           -->
 
         <!--Campo email-->
        <EditText
-           android:layout_below="@+id/txtNickname"
+           android:layout_below="@+id/txtCadastroTitulo"
            style="@style/EditTextCadastro"
            android:singleLine="true"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="@string/txtEmail"
+           android:textColorHint="@color/textosEditText"
            android:id="@+id/txtEmail"/>
 
 
@@ -66,6 +56,7 @@
            style="@style/EditTextCadastro"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:textColorHint="@color/textosEditText"
            android:id="@+id/txtSenha"/>
 
         <!--Campo confirme a senha-->
@@ -78,9 +69,26 @@
            style="@style/EditTextCadastro"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:textColorHint="@color/textosEditText"
            android:id="@+id/txtConfirmeASenha"/>
 
-       <!--Campo Data de Nascimento-->
+       <!--Campo nickname-->
+       <EditText
+           android:id="@+id/txtNickname"
+           android:layout_below="@+id/txtConfirmeASenha"
+           android:layout_marginStart="0dp"
+           android:layout_marginEnd="0dp"
+           style="@style/EditTextCadastro"
+           android:singleLine="true"
+           android:maxLength="15"
+           android:layout_width="165dp"
+           android:layout_height="wrap_content"
+           android:textColorHint="@color/textosEditText"
+           android:hint="@string/txtNickname" />
+
+       <!--MARCANDO COMO COMENTÁRIO A DATA DE NASCIMENTO E SEXO DO USUÁRIO!!!-->
+
+       <!--Campo Data de Nascimento
        <EditText
            android:layout_marginStart="0dp"
            android:layout_marginEnd="0dp"
@@ -93,7 +101,7 @@
            android:id="@+id/txtNascimento"
            android:hint="@string/txtNascimento"/>
 
-       <!--Campo de escolha de sexo-->
+       Campo de escolha de sexo
         <RadioGroup
             android:layout_below="@id/txtConfirmeASenha"
             android:layout_toRightOf="@+id/txtNascimento"
@@ -119,6 +127,8 @@
 
         </RadioGroup>
 
+       -->
+
        <!--botão-->
         <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,15 +139,15 @@
             android:id="@+id/btnCadastrar"
             style="@style/BotaoEstilo"
             android:layout_gravity="center"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
+            android:layout_below="@id/txtNickname"
             android:textSize="21dp" />
 
        <!--Campo "já é cadastrado?-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginBottom="50dp"
             android:text="@string/txtJaECadastrado"
             android:id="@+id/tvJaECadastrado"
             android:layout_marginStart="20dp"
@@ -146,6 +156,7 @@
             android:onClick="onClick"
             android:layout_below="@id/btnCadastrar"
             android:layout_gravity="center_horizontal"
+            style="@style/TextViewComum"
             android:textSize="18sp"/>
    </RelativeLayout>
 

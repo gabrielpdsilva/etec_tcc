@@ -17,27 +17,30 @@
         -->
 
         <!--Dia-->
-       <item name="colorPrimary">#bf2a45</item>
+       <item name="colorPrimary">#ff6b08</item>
         <item name="colorPrimaryDark">#591c44</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#fcfcfc</item>
         <item name="corCardBackground">#ffffff</item>
         <item name="corTexto">#212121</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#bf2a45</item>
+        <item name="corBotao">#ff6b08</item>
+
+        <!--O código abaixo foi adicionado pra mudar a cor de título da navigation drawer-->
+        <item name="android:textColorSecondary">@color/textosBrancos</item>
 
     </style>
 
         <!--Noite-->
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#bf2a45</item>
+        <item name="colorPrimary">#ff6b08</item>
         <item name="colorPrimaryDark">#591c44</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="corBackground">#303030</item>
         <item name="corCardBackground">#424242</item>
         <item name="corTexto">#ffffff</item>
         <item name="corTint">#ffffff</item>
-        <item name="corBotao">#bf2a45</item>
+        <item name="corBotao">#ff6b08</item>
 
 
     </style>
@@ -56,6 +59,10 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <!--O código abaixo foi adicionado pra mudar a cor de título da navigation drawer-->
+        <item name="android:textColorSecondary">@color/textosBrancos</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

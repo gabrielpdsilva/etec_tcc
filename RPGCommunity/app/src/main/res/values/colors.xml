@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--
+    cores anteriores...
     <color name="colorPrimary">#bf2a45</color>
     <color name="colorPrimaryDark">#591c44</color>
     <color name="colorAccent">#2a53db</color>
+    -->
+
+    <color name="colorPrimary">#ff6b08</color>
+    <color name="colorPrimaryDark">#591c44</color>
+    <color name="colorAccent">#2a53db</color>
+
 
     <color name="cardViewCinza">#424242</color>
     <color name="fundoCinza">#303030</color>
     <color name="textosBrancos">#ededed</color>
+    <color name="textosEditText">#a8a8a8</color>
+    <color name="caixasDeTexto">#242424</color>
 </resources>

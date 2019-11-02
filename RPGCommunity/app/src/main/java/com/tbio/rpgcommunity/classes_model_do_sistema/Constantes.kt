@@ -23,12 +23,19 @@ object Erros{
 
 object Divergencias{
     // divergências nos dados do usuário
-    const val USUARIO_EMAIL_VAZIO = "por favor, preencha o campo email para continuar"
-    const val USUARIO_EMAIL_INCORRETO = "por favor, preencha o campo email corretamente para continuar"
-    const val USUARIO_CONFS_INVALIDA = "a confirmação da senha preenchida está incorreta"
-    const val USUARIO_SENHA_VAZIA = "por favor, preencha o campo senha"
-    const val USUARIO_NICKNAME_VAZIO = "por favor, preencha o campo nickname para continuar"
+    const val USUARIO_EMAIL_VAZIO = "Por favor, preencha o campo email para continuar."
+    const val USUARIO_EMAIL_INCORRETO = "Por favor, preencha o campo email corretamente para continuar."
+    const val USUARIO_CONFS_INVALIDA = "A confirmação da senha preenchida está incorreta."
+    const val USUARIO_SENHA_VAZIA = "Por favor, preencha o campo senha."
+    const val USUARIO_NICKNAME_VAZIO = "Por favor, preencha o campo nickname para continuar."
 
     // divergências nos dados da Sessão
-    const val SESSAO_NOME_VAZIO = "por favor, informe o nome da sessão"
+    const val SESSAO_NOME_VAZIO = "Por favor, informe o nome da sessão."
+    const val SESSAO_SISTEMA_VAZIO = "Por favor, informe o sistema da sessão."
+    const val SESSAO_DESCRICAO_VAZIA = "Por favor, informe uma descrição para sua sessão."
+
+    //divergências nos dados do personagem
+    const val PERSONAGEM_NOME_VAZIO = "Por favor, preencha o nome do personagem."
+    const val PERSONAGEM_CLASSE_VAZIA = "Por favor, preencha a classe do personagem."
+
 }

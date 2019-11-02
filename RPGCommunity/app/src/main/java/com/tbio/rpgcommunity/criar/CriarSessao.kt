@@ -75,6 +75,7 @@ class CriarSessao : AppCompatActivity() {
     }
 
     private fun salvarSessao() {
+
         val nome = findViewById<EditText>(R.id.sessaoTituloEt).text.toString()
         val sistema = findViewById<EditText>(R.id.sessaoSistemaEt).text.toString()
         val descricao = findViewById<EditText>(R.id.sessaoDescricaoEt).text.toString()
@@ -82,6 +83,15 @@ class CriarSessao : AppCompatActivity() {
         if(nome.isEmpty()){
             findViewById<EditText>(R.id.sessaoTituloEt).error = Divergencias.SESSAO_NOME_VAZIO
             findViewById<EditText>(R.id.sessaoTituloEt).isFocusable = true
+        }
+        else if(sistema.isEmpty()){
+            findViewById<EditText>(R.id.sessaoSistemaEt).error = Divergencias.SESSAO_SISTEMA_VAZIO
+            findViewById<EditText>(R.id.sessaoSistemaEt).isFocusable = true
+
+        }
+        else if(descricao.isEmpty()){
+            findViewById<EditText>(R.id.sessaoDescricaoEt).error = Divergencias.SESSAO_DESCRICAO_VAZIA
+            findViewById<EditText>(R.id.sessaoDescricaoEt).isFocusable = true
         }
 
         else

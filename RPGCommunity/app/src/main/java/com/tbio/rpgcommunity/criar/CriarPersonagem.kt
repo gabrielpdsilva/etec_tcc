@@ -71,9 +71,17 @@ class CriarPersonagem : AppCompatActivity() {
     }
 
     private fun salvarPersonagem() {
+
+        //se o nome do personagem estiver vazio
         if(edtNickname.text.toString().isEmpty()){
-            edtNickname.error = "preencha o nome do personagem por favor"
+            edtNickname.error = Divergencias.PERSONAGEM_NOME_VAZIO
             edtNickname.isFocusable = true
+        }
+
+        //se a classe do personagem estiver vazia
+        else if(edtClasse.text.toString().isEmpty()){
+            edtClasse.error = Divergencias.PERSONAGEM_CLASSE_VAZIA
+            edtClasse.isFocusable = true
         }
 
         else
