@@ -49,7 +49,7 @@ class ChatSessaoActivity : AppCompatActivity() {
         findViewById<ProgressBar>(R.id.PbMensagens).visibility = View.GONE
 
         if (mensagens.size > 0) {
-
+            Log.d("DebugChat", findViewById<ProgressBar>(R.id.PbMensagens).visibility.toString(), Exception("passou por aqui"));
             // define o adapter da RecyclerView
             activity_chat_sessao_recycler_view.adapter = MensagemAdapter(mensagens, this.applicationContext)
 

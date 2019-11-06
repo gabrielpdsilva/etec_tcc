@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,37 +22,26 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
     override fun getItemCount(): Int = this.mensagens.size
 
     override fun onBindViewHolder(holder: MensagemViewHolder, position: Int) {
-        /*FirebaseFirestore.getInstance()
+        var isComplete = false
+        FirebaseFirestore.getInstance()
                 .document(this.mensagens[position].de!!.path)
                 .get()
                 .addOnSuccessListener {
-                    holder.de.text = it["email"].toString()
-                }*/
+                    holder.mensagem =
+                            if(it["email"] === FirebaseAuth.getInstance().currentUser!!.email!!)
+                                holder.itemView.list_item_mensagens_layout_enviando
+                            else
+                                holder.itemView.list_item_mensagens_layout_chegando
 
-        holder.mensagem.text = this.mensagens[position].mensagem
+                    isComplete = true;
+                }
+
+        while(!isComplete);
+
+        holder.mensagem!!.text = this.mensagens[position].mensagem;
     }
 
     inner class MensagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        // val de = itemView.
-        val mensagem = itemView.list_item_mensagens_layout_other_message
-
-        fun getLayout(): Int{
-            var layout: Int = R.layout.list_item_mensagens
-            var isComplete = false
-
-            FirebaseFirestore.getInstance()
-                    .document(this@MensagemAdapter.mensagens[this.adapterPosition].de!!.id)
-                    .get()
-                    .addOnSuccessListener {
-                        if(it["email"] == FirebaseAuth.getInstance().currentUser!!.email!!.toString())
-                            layout = R.layout.list_item_mensagens
-
-                        isComplete = true
-                    }
-
-            while(!isComplete);
-
-            return layout
-        }
+        var mensagem: TextView? = null
     }
 }
