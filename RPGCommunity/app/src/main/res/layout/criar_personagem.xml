@@ -32,71 +32,60 @@
                     android:layout_height="wrap_content">
 
             <!--Imagem do personagem-->
-            <ImageView
-                android:id="@+id/criar_personagem_imv_imagem"
-                android:layout_width="90dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:background="@color/colorPrimary"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/criar_personagem_imv_imagem"
+                        android:clickable="true"
+                        android:layout_margin="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_add_avatar"
+                        app:civ_border_width="5dp"
+                        app:civ_border_color="#ffffff"/>
 
             <!--Campo nome-->
-            <TextView
-                android:id="@+id/criar_personagem_textview_nome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtNomePersonagem"
-                android:layout_toRightOf="@+id/criar_personagem_imv_imagem"
-                style="@style/TextViewTitulos"/>
 
             <EditText
                 android:id="@+id/criar_personagem_edt_nickname"
                 android:singleLine="true"
                 android:maxLength="15"
-                android:layout_toRightOf="@id/criar_personagem_textview_nome"
+                android:hint="@string/txtNomePersonagem"
+                style="@style/EditTextCadastro"
+                android:layout_toRightOf="@id/criar_personagem_imv_imagem"
                 android:layout_width="match_parent"
-                android:textColor="@color/textosEditText"
+                android:textColor="@color/branco"
+                android:textColorHint="@color/textosEditText"
                 android:layout_height="40dp" />
 
                 <!--Campo Classe-->
-            <TextView
-            android:id="@+id/criar_personagem_textview_classe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtClassePersonagem"
-            android:layout_toRightOf="@+id/criar_personagem_imv_imagem"
-            style="@style/TextViewTitulos"
-            android:layout_below="@id/criar_personagem_textview_nome"/>
 
             <EditText
                 android:id="@+id/criar_personagem_edt_classe"
                 android:singleLine="true"
                 android:maxLength="15"
-                android:layout_toRightOf="@id/criar_personagem_textview_classe"
-                android:textColor="@color/textosEditText"
-                android:layout_marginTop="40dp"
+                android:hint="@string/txtClassePersonagem"
+                android:layout_below="@+id/criar_personagem_edt_nickname"
+                android:layout_toRightOf="@id/criar_personagem_imv_imagem"
+                android:textColor="@color/branco"
+                android:textColorHint="@color/textosEditText"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
                 <!--Campo Sexo-->
-            <TextView
-                android:id="@+id/criar_personagem_textview_sexo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtSexoPersonagem"
-                android:layout_toRightOf="@+id/criar_personagem_imv_imagem"
-                android:layout_below="@id/criar_personagem_textview_classe"
-                style="@style/TextViewTitulos"/>
 
             <EditText
                 android:id="@+id/criar_personagem_edt_genero"
                 android:singleLine="true"
                 android:maxLength="15"
-                android:textColor="@color/textosEditText"
-                android:layout_toRightOf="@+id/criar_personagem_textview_sexo"
-                android:layout_below="@id/criar_personagem_textview_classe"
+                android:hint="@string/txtSexoPersonagem"
+                android:textColor="@color/branco"
+                android:textColorHint="@color/textosEditText"
+                android:layout_toRightOf="@+id/criar_personagem_imv_imagem"
+                android:layout_below="@id/criar_personagem_edt_classe"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
@@ -111,47 +100,23 @@
                 android:orientation="vertical"
                 android:layout_marginTop="138dp">
 
-                <!--Campo Habilidades-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#000000"
-                    android:textColor="#ffffff"
-                    style="@style/TextViewTitulos"
-                    android:textAlignment="center"
-                    android:text="@string/txtHabilidadesPersonagem"/>
-
-                <EditText
-                    android:id="@+id/criar_personagem_edt_habilidades"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textColor="@color/branco"
-                    android:gravity="top|left"
-                    android:background="@color/caixasDeTexto"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:maxLength="200"/>
-
                     <!--Campo Descrição:-->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/txtDescricaoPersonagem"
-                    style="@style/TextViewTitulos"
-                    android:textColor="#ffffff"
+                    style="@style/TextViewHomeBold"
+                    android:textColor="@color/branco"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="#000000"/>
+                    android:background="@color/colorPrimary"/>
 
                     <!--EditText da descrição-->
                 <EditText
                     android:id="@+id/criar_personagem_edt_descricao"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:textColor="@color/branco"
                     android:gravity="top|left"
                     android:background="@color/caixasDeTexto"
@@ -162,21 +127,21 @@
                     <!--Campo História do personagem:-->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="#000000"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
                     android:text="@string/txtHistoriaPersonagem"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/branco"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
-                    style="@style/TextViewTitulos"/>
+                    style="@style/TextViewHomeBold"/>
 
                     <!--EditText da hist. personagem-->
                 <EditText
                     android:id="@+id/criar_personagem_edt_historia"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:gravity="top|left"
                     android:textColor="@color/branco"
                     android:background="@color/caixasDeTexto"

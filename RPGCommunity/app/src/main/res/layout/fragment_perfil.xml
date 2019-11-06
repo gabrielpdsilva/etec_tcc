@@ -69,65 +69,6 @@
                 android:layout_marginTop="190dp"
                 android:text="@string/txtInformacoesGerais" />
 
-            <!--TextView Nome:-->
-            <TextView
-                 android:id="@+id/lblNome"
-                 style="@style/TextViewComumBold"
-                 android:layout_width="wrap_content"
-                 android:layout_height="match_parent"
-                 android:layout_below="@id/lblInformacoesGerais"
-                 android:layout_marginLeft="5dp"
-                 android:text="@string/txtNomePerfil" />
-
-            <!--TextView nome do usuário-->
-            <TextView
-                 android:id="@+id/lblNomeUsuario"
-                 style="@style/TextViewComum"
-                 android:layout_width="wrap_content"
-                 android:layout_height="match_parent"
-                 android:layout_below="@id/lblInformacoesGerais"
-                 android:layout_toRightOf="@+id/lblNome"
-                 android:text="@string/txtFragmentNomePerfil" />
-
-            <!--TextView ID:-->
-            <TextView
-                android:id="@+id/lblId"
-                style="@style/TextViewComumBold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/lblNomeUsuario"
-                android:layout_marginLeft="5dp"
-                android:text="@string/txtID" />
-
-            <!--TextView ID do usuario. Coloquei o mesmo id do Nickname, ID original: " @+id/lblIdUsuario "-->
-            <TextView
-                android:id="@+id/nicknamePerfil"
-                style="@style/TextViewComum"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblNomeUsuario"
-                android:layout_toRightOf="@+id/lblId"
-                android:text="@string/txtFragmentID" />
-
-            <!--TextView Nome:-->
-           <!-- <TextView
-                android:id="@+id/lblNome"
-                style="@style/TextViewComumBold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblInformacoesGerais"
-                android:layout_marginLeft="200dp"
-                android:text="@string/txtNomePerfil" />-->
-
-            <!--TextView nome do usuário-->
-           <!-- <TextView
-                android:id="@+id/lblNomeUsuario"
-                style="@style/TextViewComum"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblInformacoesGerais"
-                android:layout_marginLeft="260dp"
-                android:text="@string/txtFragmentNomePerfil" />-->
 
             <!--TextView E-mail:-->
             <TextView
@@ -135,7 +76,7 @@
                 style="@style/TextViewComumBold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/lblId"
+                android:layout_below="@+id/lblInformacoesGerais"
                 android:layout_marginLeft="5dp"
                 android:text="@string/txtEmailPerfil" />
 
@@ -145,55 +86,15 @@
                 style="@style/TextViewComum"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/lblId"
+                android:layout_below="@+id/lblInformacoesGerais"
                 android:layout_toRightOf="@+id/lblEmail"
                 android:text="@string/txtFragmentEmailPerfil" />
-
-            <!--TextView Sexo:-->
-            <TextView
-                android:id="@+id/lblSexo"
-                style="@style/TextViewComumBold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblEmail"
-                android:layout_marginLeft="5dp"
-                android:text="@string/txtSexo" />
-
-            <!--TextView sexo do usuário-->
-            <TextView
-                android:id="@+id/lblSexoUsuario"
-                style="@style/TextViewComum"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblEmail"
-                android:layout_toRightOf="@+id/lblSexo"
-                android:text="@string/txtFragmentSexo" />
-
-            <!--TextView Idade:-->
-            <TextView
-                android:id="@+id/lblIdade"
-                style="@style/TextViewComumBold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblEmail"
-                android:layout_marginLeft="200dp"
-                android:text="@string/txtIdade" />
-
-            <!--TextView idade do usuário-->
-            <TextView
-                android:id="@+id/lblIdadeUsuario"
-                style="@style/TextViewComum"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/lblEmail"
-                android:layout_toRightOf="@+id/lblIdade"
-                android:text="@string/txtFragmentIdade" />
 
 
             <View
                 android:id="@+id/linhaSeparadora"
                 style="@style/Linha"
-                android:layout_below="@id/lblSexo" />
+                android:layout_below="@id/lblEmailUsuario" />
 
             <!--*********************************************************************************-->
 
@@ -208,7 +109,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPersonagens"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:layout_below="@id/lblListaPersonagens"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">

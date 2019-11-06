@@ -41,7 +41,7 @@ class CriarPersonagem : AppCompatActivity() {
         edtNickname = findViewById(R.id.criar_personagem_edt_nickname)
         edtClasse = findViewById(R.id.criar_personagem_edt_classe)
         edtGenero = findViewById(R.id.criar_personagem_edt_genero)
-        edtHabilidades = findViewById(R.id.criar_personagem_edt_habilidades)
+        //edtHabilidades = findViewById(R.id.criar_personagem_edt_habilidades)
         edtDescricao = findViewById(R.id.criar_personagem_edt_descricao)
         edtHistoria = findViewById(R.id.criar_personagem_edt_historia)
 

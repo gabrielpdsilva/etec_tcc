@@ -50,11 +50,10 @@ class PerfilFragment : Fragment() {
 
                         val nicknamePerfil = activity!!.findViewById<TextView>(R.id.nicknamePerfil_perfil)
                         val fotoPerfil = activity!!.findViewById<ImageView>(R.id.avatarPerfil)
-                        val idPerfil = activity!!.findViewById<TextView>(R.id.nicknamePerfil)
                         val emailPerfil = activity!!.findViewById<TextView>(R.id.lblEmailUsuario)
 
                         nicknamePerfil.text = mUsuario.nickname.nome
-                        idPerfil.text = mUsuario.getId()
+                        //idPerfil.text = mUsuario.getId()
                         emailPerfil.text = mUsuario.email
 
                         Picasso.get()
