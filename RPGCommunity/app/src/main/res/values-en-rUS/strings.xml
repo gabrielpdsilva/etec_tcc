@@ -124,4 +124,8 @@
     <string name="voce_nao_pertence_sessoes">You are not in any sessions</string>
     <string name="start_session">Session started</string>
 
+    <!--Textos sobre sessoes...-->
+    <string name="sessao_salva_com_sucesso">Session created succesfully!</string>
+    <string name="sessao_sem_imagem">Cannot create an session without image!</string>
+
 </resources>

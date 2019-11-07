@@ -41,11 +41,12 @@
                 android:textAlignment="center"/>
 
             <EditText
+                android:id="@+id/txt_esqueci_a_senha"
+                android:layout_below="@+id/txtConfirmeASenha"
+                android:layout_margin="20dp"
+                style="@style/EditTextCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="10dp"
                 android:textColorHint="@color/textosEditText"
                 android:hint="@string/txtDigiteEmail"/>
 
@@ -53,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btnRecuperarSenha"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
