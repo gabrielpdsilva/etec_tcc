@@ -29,7 +29,7 @@ class PersonagemAdapter(val context: Context,
 
         holder.nome.text = personagens[position].nome.nome
         holder.descricao.text = String.format("Descrição: %s",
-                personagens[position].descricao?.getDescricaoBasica() ?: "sem descrição")
+                personagens[position].descricao?.getDescricaoBasica() ?: "Sem descrição")
 
         Picasso.get()
                 .load(personagens[position].image)
@@ -44,7 +44,7 @@ class PersonagemAdapter(val context: Context,
                 }
 
         if(personagens[position].sessao == null){
-            holder.sessao.text = String.format("Sessão: %s", "não está em sessões")
+            holder.sessao.text = String.format("Sessão: %s", "Não está em sessões")
         }
 
     }

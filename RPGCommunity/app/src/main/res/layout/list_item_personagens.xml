@@ -2,16 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="115dp"
+    android:background="@color/caixasDeTexto">
 
-    <!--ImageView do personagem-->
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/custom_img_foto_personagem"
         android:layout_width="95dp"
         android:layout_height="95dp"
-        android:background="#c54342"/>
+        android:src="@drawable/ic_add_avatar"
+        app:civ_border_width="5dp"
+        app:civ_border_color="@color/branco"/>
 
     <LinearLayout
+        android:id="@+id/linear_layout_personagens"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,7 +25,7 @@
             android:id="@+id/custom_txt_nome_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextViewHomeBoldTitulo"/>
+            style="@style/estilo_list_item_personagem"/>
 
         <!--TextView classe do personagem-->
         <TextView
@@ -29,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descrição:"
-            style="@style/TextViewHomeBold"/>
+            style="@style/estilo_list_item_personagem"/>
 
         <!--TextView sessão do personagem-->
         <TextView
@@ -37,8 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sessão:"
-            style="@style/TextViewHomeBold"/>
+            style="@style/estilo_list_item_personagem"/>
 
     </LinearLayout>
+
+
 
 </LinearLayout>
