@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_item_mensagens"
-    android:orientation="vertical">
+    android:id="@+id/list_item_mensagens">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/list_item_mensagens_crdview_chegando"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true">
 
                 <TextView
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/list_item_mensagens_layout_chegando"
-                    android:layout_width="253dp"
-                    android:layout_height="81dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
                     android:background="@android:color/white"
-                    android:padding="15dp"
-                    tools:layout_editor_absoluteX="71dp" />
+                    android:padding="15dp"/>
+    </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/list_item_mensagens_crdview_enviando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true">
 
             <TextView
+                android:layout_alignParentRight="true"
                 android:id="@+id/list_item_mensagens_layout_enviando"
-                android:layout_width="253dp"
-                android:layout_height="81dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:background="@android:color/white"
-                android:padding="15dp"
-                app:layout_constraintEnd_toStartOf="@+id/imgAmigosEnviando"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:padding="15dp"/>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+
+</RelativeLayout>
