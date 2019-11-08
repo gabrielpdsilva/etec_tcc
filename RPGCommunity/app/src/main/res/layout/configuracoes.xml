@@ -30,6 +30,7 @@
             android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:text="Aplicativo para Trabalho de Conclusão de Curso desenvolvido pelos alunos do terceiro módulo de Desenvolvimento de Sistemas da ETEC Zona Leste.\n\nProgramação desenvolvida por:\n-Davi Mendes Pimentel;\n-Gabriel Pimentel da Silva."
             style="@style/TextViewComum"/>
 

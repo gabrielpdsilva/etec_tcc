@@ -13,11 +13,15 @@
         android:scrollbars="vertical">
 
        <!--Texto Cadastro-->
+
+
        <TextView
            android:id="@+id/txtCadastroTitulo"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:hint="@string/txtCadastro"
+           android:layout_marginStart="20dp"
+           android:layout_marginEnd="20dp"
+           android:text="@string/txtCadastro"
            style="@style/TextViewHomeBoldTitulo"
            android:textAlignment="center"/>
 

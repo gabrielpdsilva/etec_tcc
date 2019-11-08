@@ -64,6 +64,7 @@
                     android:layout_below="@id/sessaoBotaoImagem"
                     android:id="@+id/sessaoTitulo"
                     style="@style/TextViewComum"
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtTituloSessao" />
@@ -72,20 +73,21 @@
                 <!--EditText título da sessão-->
                 <EditText
                     android:id="@+id/sessaoTituloEt"
-                    android:textColorHint="@color/textosEditText"
                     android:layout_below="@id/sessaoBotaoImagem"
                     android:layout_toRightOf="@+id/sessaoTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
                     android:singleLine="true"
+                    android:textColor="@color/branco"
+                    style="@style/estilo_edittext_sessao"
+                    android:layout_marginRight="15dp"
                     android:maxLength="20" />
 
                 <!--TextView Sistema-->
                 <TextView
                     android:id="@+id/sessaoSistema"
                     style="@style/TextViewComum"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_below="@id/sessaoTitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,12 +98,12 @@
                     android:id="@+id/sessaoSistemaEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/textosEditText"
+                    style="@style/estilo_edittext_sessao"
                     android:layout_below="@id/sessaoTitulo"
                     android:layout_toRightOf="@+id/sessaoSistema"
                     android:singleLine="true"
+                    android:textColor="@color/branco"
+                    android:layout_marginRight="15dp"
                     android:maxLength="20" />
 
                 <!--TextView Descrição-->

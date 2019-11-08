@@ -16,6 +16,8 @@
         #4b338a (roxo primário escuro)
         -->
 
+        <item name="android:textColorHint">@color/textosBrancos</item>
+
         <!--Dia-->
        <item name="colorPrimary">#ff6b08</item>
         <item name="colorPrimaryDark">#591c44</item>
@@ -105,7 +107,7 @@
     <!--Estilo pra criar EditText do cadastro-->
     <style name="EditTextCadastro">
         <item name="android:textSize">18dp</item>
-        <item name="android:textColor">#ededed</item>
+        <item name="android:textColor">@color/textosBrancos</item>
     </style>
 
     <!--Activities sem toolbar-->
@@ -161,6 +163,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
         <item name="android:textColor">#ededed</item>
+    </style>
+
+    <!--EditText de criar sessao-->
+    <style name="estilo_edittext_sessao">
+        <item name="android:textColorHint">@color/textosEditText</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/textosEditText</item>
     </style>
 
 </resources>

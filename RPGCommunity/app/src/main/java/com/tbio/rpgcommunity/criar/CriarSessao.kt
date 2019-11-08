@@ -76,6 +76,11 @@ class CriarSessao : AppCompatActivity() {
 
     private fun salvarSessao() {
 
+        if(this.uriImagemSelecionada == null){
+            toast(R.string.sessao_sem_imagem);
+            return;
+        }
+
         val nome = findViewById<EditText>(R.id.sessaoTituloEt).text.toString()
         val sistema = findViewById<EditText>(R.id.sessaoSistemaEt).text.toString()
         val descricao = findViewById<EditText>(R.id.sessaoDescricaoEt).text.toString()
@@ -110,7 +115,7 @@ class CriarSessao : AppCompatActivity() {
                                    sistema = sistema,
                                    descricao = Descricao(descricao))
                                     .saveDB(fun (doc) {
-                                        toast("Sessao salva com sucesso")
+                                        toast(R.string.sessao_salva_com_sucesso)
                                         finish()
                                     }, fun (exception) {
                                         toast(Erros.ERRO_AO_CRIAR_SESSAO)
