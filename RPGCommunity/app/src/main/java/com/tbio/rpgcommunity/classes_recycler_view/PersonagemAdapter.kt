@@ -49,6 +49,10 @@ class PersonagemAdapter(val context: Context,
 
     }
 
+    override public fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     inner class PersonagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val nome = itemView.custom_txt_nome_personagem
         val foto = itemView.custom_img_foto_personagem

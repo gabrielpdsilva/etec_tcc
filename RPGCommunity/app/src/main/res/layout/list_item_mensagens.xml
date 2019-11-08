@@ -10,6 +10,7 @@
         android:id="@+id/list_item_mensagens_crdview_chegando"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:visibility="invisible"
         android:layout_alignParentLeft="true">
 
@@ -18,16 +19,18 @@
                     android:id="@+id/list_item_mensagens_layout_chegando"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:background="@android:color/white"
-                    android:padding="15dp"/>
+                    android:padding="5dp"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/list_item_mensagens_crdview_enviando"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:visibility="invisible"
+        android:background="@color/colorPrimary"
         android:layout_alignParentRight="true">
 
             <TextView
@@ -37,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@android:color/white"
-                android:padding="15dp"/>
+                android:padding="5dp"/>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

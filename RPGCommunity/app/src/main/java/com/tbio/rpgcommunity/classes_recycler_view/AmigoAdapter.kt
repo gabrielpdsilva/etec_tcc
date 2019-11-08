@@ -37,6 +37,10 @@ class AmigoAdapter(val amigos: MutableList<Usuario>,
                 .into(holder.foto)
     }
 
+    override public fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     inner class AmigoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var nickname = itemView.nicknameAmigo
         var nome = itemView.nomeAmigo

@@ -5,13 +5,18 @@ import android.os.Bundle
 import android.os.Message
 import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageButton
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
 import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
@@ -24,16 +29,24 @@ import org.jetbrains.anko.toast
 class ChatSessaoActivity : AppCompatActivity() {
 
     private lateinit var mensagens: MutableList<Mensagem>
+    private lateinit var mButtonEnviar: AppCompatImageButton
+    private lateinit var mEditxtMensagem: EditText
+    private lateinit var sessao: Sessao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_sessao)
 
+        this.mButtonEnviar = findViewById(R.id.activity_chat_sessao_btn_enviar)
+        this.mEditxtMensagem = findViewById(R.id.activity_chat_sessao_edt_message)
+
         val db = FirebaseFirestore.getInstance()
-        val sessao = intent.extras!!["sessao"] as Sessao
+        this.sessao = intent.extras!!["sessao"] as Sessao
         this.mensagens = mutableListOf()
 
         db.collection("${sessao.caminho}/Histórico de mensagens")
+                .limit(50)
+                .orderBy("date", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener {
                     for(m in it) {
@@ -42,6 +55,33 @@ class ChatSessaoActivity : AppCompatActivity() {
 
                     this.setMensagensRecyclerView()
                 }
+
+        this.mButtonEnviar.setOnClickListener {
+            db.collection("Usuarios")
+                    .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email!!)
+                    .limit(1)
+                    .get()
+                    .addOnSuccessListener {
+                        for(user in it) {
+                            val message = Mensagem( id = null,
+                                                    parentId = this.sessao.referencia.id,
+                                                    parentReference = this.sessao.referencia,
+                                                    de = user.reference,
+                                                    para = this.sessao.referencia,
+                                                    mensagem = this.mEditxtMensagem.text.toString())
+
+                            db.collection("${this.sessao.caminho}/Histórico de mensagens")
+                                    .add(message.toHashMap())
+                                    .addOnSuccessListener {
+                                        toast("Mensagem enviada")
+                                        this.mensagens.add(message)
+                                        activity_chat_sessao_recycler_view.scrollToPosition(this.mensagens.size - 1)
+                                        activity_chat_sessao_recycler_view.adapter?.notifyDataSetChanged()
+                                                ?: setMensagensRecyclerView()
+                                    }
+                        }
+                    }
+        }
     }
 
     fun setMensagensRecyclerView() {

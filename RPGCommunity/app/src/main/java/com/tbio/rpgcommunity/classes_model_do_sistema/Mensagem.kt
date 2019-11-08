@@ -2,6 +2,7 @@ package com.tbio.rpgcommunity.classes_model_do_sistema
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,9 +26,10 @@ class Mensagem(
     override fun toHashMap(): HashMap<String, Any?> {
         val mensagemHashMap = hashMapOf<String, Any?>()
 
-        mensagemHashMap.put("de", this.de)
-        mensagemHashMap.put("para", this.para)
-        mensagemHashMap.put("mensagem", this.mensagem)
+        mensagemHashMap.put("from", this.de)
+        mensagemHashMap.put("to", this.para)
+        mensagemHashMap.put("message", this.mensagem)
+        mensagemHashMap.put("date", Timestamp.now())
 
         return mensagemHashMap
     }
@@ -88,7 +90,7 @@ class Mensagem(
                 Mensagem(id = doc.id,
                          parentId = doc.reference.parent.parent!!.id,
                          parentReference = doc.reference.parent.parent,
-                         de = doc.data!!["from"] as DocumentReference,
+                         de = doc["from"] as DocumentReference,
                          para = null,
                          mensagem = doc["message"] as String)
 

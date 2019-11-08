@@ -9,7 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_chat_sessao_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_chat_sessao_crdvw_mensagem">
     </androidx.recyclerview.widget.RecyclerView>
 
     <!-- <ProgressBar
@@ -19,6 +20,7 @@
         android:layout_centerHorizontal="true"/> -->
     
     <androidx.cardview.widget.CardView
+        android:id="@+id/activity_chat_sessao_crdvw_mensagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -29,39 +31,25 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/activity_chat_sessao_mensagem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginRight="150dp"/>
+                android:hint="@string/txtDigiteMensagem"
+                android:id="@+id/activity_chat_sessao_edt_message"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_margin="8dp"
+                android:maxWidth="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/activity_chat_sessao_btn_enviar"
+                android:inputType="textPersonName"/>
 
-            <Button
-                android:id="@+id/activity_chat_sessao_botaoenviar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enviar Mensagem"
-                android:layout_toRightOf="@+id/activity_chat_sessao_mensagem"
-                android:layout_marginRight="30dp"/>
-
-            <Button
-                android:id="@+id/activity_chat_sessao_botao1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_above="@+id/activity_chat_sessao_mensagem"/>
-
-            <Button
-                android:id="@+id/activity_chat_sessao_botao2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_above="@+id/activity_chat_sessao_mensagem"
-                android:layout_toRightOf="@+id/activity_chat_sessao_botao1"/>
-
-            <Button
-                android:id="@+id/activity_chat_sessao_botao3"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_above="@+id/activity_chat_sessao_mensagem"
-                android:layout_toRightOf="@+id/activity_chat_sessao_botao2"/>
+            <!--Botão Enviar-->
+            <ImageButton
+                android:id="@+id/activity_chat_sessao_btn_enviar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_enviar"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

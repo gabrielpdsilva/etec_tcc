@@ -51,6 +51,10 @@ class SessaoAdapter(val sessoes: MutableList<Sessao>,
                 ?: "sem descrição"
     }
 
+    override public fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     inner class SessaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val cardview = itemView.custom_cdv_item_sessao
         val image = itemView.custom_img_profile_sessao
