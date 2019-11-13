@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Você não possui amigos."
+        android:text="@string/voce_nao_possui_amigos"
         style="@style/TextViewHomeBold"
         android:visibility="gone"
         android:enabled="false" />

@@ -48,7 +48,7 @@
             style="@style/TextViewComumBold"
             android:layout_marginLeft="10dp"
             android:id="@+id/custom_txt_mestre"
-            android:text="Mestre: "
+            android:text="@string/txtSessaoMestre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/custom_img_profile_sessao"/>
@@ -65,7 +65,7 @@
             style="@style/TextViewComumBold"
             android:layout_marginLeft="10dp"
             android:id="@+id/custom_txt_sistema"
-            android:text="Sistema: "
+            android:text="@string/txtSessaoSistema"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/custom_txt_mestre_sessao" />
@@ -84,7 +84,7 @@
             android:id="@+id/custom_txt_descricao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição: "
+            android:text="@string/txtDescricaoSessao"
             android:layout_below="@+id/custom_txt_sistema_sessao"/>
 
         <TextView

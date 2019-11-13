@@ -32,7 +32,7 @@
             android:id="@+id/custom_txt_descricao_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição:"
+            android:text="@string/txtDescricaoPersonagem"
             style="@style/estilo_list_item_personagem"/>
 
         <!--TextView sessão do personagem-->
@@ -40,11 +40,9 @@
             android:id="@+id/custom_txt_sessao_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sessão:"
+            android:text="@string/txtSessaoNome"
             style="@style/estilo_list_item_personagem"/>
 
     </LinearLayout>
-
-
 
 </LinearLayout>
