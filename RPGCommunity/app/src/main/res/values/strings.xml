@@ -98,9 +98,9 @@
     <string name="txtLogoutNao">Cancelar</string>
 
     <!--List item de sessões-->
-    <string name="txtSessaoNome">Sessão:</string>
-    <string name="txtSessaoDescricao">Descrição:</string>
-    <string name="txtSessaoSistema">Sistema:</string>
+    <string name="txtSessaoNome">Sessão: </string>
+    <string name="txtSessaoDescricao">Descrição: </string>
+    <string name="txtSessaoSistema">Sistema: </string>
     <string name="txtSessaoMestre">Mestre: </string>
     <string name="txtSessaoNumeroJogadores">Nº de jogadores: </string>
     <string name="txtSessaoId">ID da sessão: </string>
@@ -121,6 +121,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="voce_nao_pertence_sessoes">Você não pertence a sessões</string>
+    <string name="voce_nao_possui_amigos">Você não possui amigos.</string>
     <string name="start_session">Sessão ativa</string>
 
     <!--Textos sobre sessoes...-->
