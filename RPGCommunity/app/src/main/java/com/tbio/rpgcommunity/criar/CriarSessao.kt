@@ -1,17 +1,21 @@
 package com.tbio.rpgcommunity.criar
 
 import android.app.Activity
+import android.app.Person
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,6 +23,10 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.*
+import com.tbio.rpgcommunity.classes_recycler_view.PersonagemAdapter
+import com.tbio.rpgcommunity.sub_activitys.AdicionarJogadorActivity
+import kotlinx.android.synthetic.main.criar_sessao.*
+import kotlinx.android.synthetic.main.fragment_perfil.*
 import org.jetbrains.anko.coroutines.experimental.asReference
 import org.jetbrains.anko.toast
 import java.util.*
@@ -32,12 +40,21 @@ class CriarSessao : AppCompatActivity() {
     private lateinit var imagemSessao: ImageView
 
     // propriedades do banco
+    private lateinit var db: FirebaseFirestore
     private var uriImagemSelecionada: Uri? = null
-    private var personagens: MutableList<DocumentReference>? = null
+    private lateinit var personagens: MutableList<DocumentReference>
+    private lateinit var p: MutableList<Personagem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.criar_sessao)
+
+        this.db = FirebaseFirestore.getInstance()
+
+        this.personagens = mutableListOf<DocumentReference>()
+        this.p = mutableListOf<Personagem>()
+
+        this.setRecyclerView(this.p);
 
         // define o botão da foto da Sessão
         btnSelecionarImagem = findViewById<Button>(R.id.sessaoBotaoImagem)
@@ -51,7 +68,8 @@ class CriarSessao : AppCompatActivity() {
         // define o botão 'adicionar jogadores'
         btnAdicionarJogador = findViewById(R.id.sessaoBotaoAddJogadores)
         btnAdicionarJogador.setOnClickListener {
-
+            val intent = Intent(this, AdicionarJogadorActivity::class.java)
+            startActivity(intent);
         }
 
         // define o botão 'criar sessão'
@@ -70,8 +88,17 @@ class CriarSessao : AppCompatActivity() {
                                     }
                         }
             } ?: salvarSessao()
-
         }
+    }
+
+    private fun setRecyclerView(p: MutableList<Personagem>) {
+        // define o adaptador de RecyclerView de personagens
+        rvJogadores.adapter = PersonagemAdapter(applicationContext, p)
+
+        // define o layout
+        val mLayout = LinearLayoutManager(this)
+        mLayout.orientation = RecyclerView.VERTICAL
+        rvPersonagens.layoutManager = mLayout
     }
 
     private fun salvarSessao() {

@@ -50,7 +50,7 @@ class Sessao (
             put("likes", 0)
             put("deslikes", 0)
             personagens?.let {
-                put("personagens", personagens)
+                put("personagens", it)
             }
         }
 
