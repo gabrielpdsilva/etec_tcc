@@ -39,8 +39,8 @@
                         android:id="@+id/personagem_imv_imagem"
                         android:clickable="true"
                         android:layout_margin="5dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
@@ -56,11 +56,14 @@
                         android:text="@string/txtNomePersonagem"
                         style="@style/TextViewComumBold"/>
 
-                    <TextView
-                        android:id="@+id/dinamic_personagem_txt_nickname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewComumBold"
+                    <EditText
+                        android:id="@+id/dinamic_personagem_edt_nickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        style="@style/TextViewComum"
+                        android:maxLength="15"
+                        android:enabled="false"
+                        android:singleLine="true"
                         android:layout_toRightOf="@+id/personagem_txt_nickname"/>
 
                     <TextView
@@ -72,13 +75,17 @@
                         android:text="@string/txtClassePersonagem"
                         style="@style/TextViewComumBold"/>
 
-                    <TextView
-                        android:id="@+id/dinamic_personagem_txt_classe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewComumBold"
+                    <EditText
+                        android:id="@+id/dinamic_personagem_edt_classe"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
                         android:layout_below="@+id/personagem_txt_nickname"
+                        style="@style/TextViewComum"
+                        android:maxLength="15"
+                        android:enabled="false"
+                        android:singleLine="true"
                         android:layout_toRightOf="@+id/personagem_txt_classe"/>
+
 
                     <TextView
                         android:id="@+id/personagem_txt_sexo"
@@ -89,12 +96,15 @@
                         android:text="@string/txtSexo"
                         style="@style/TextViewComumBold"/>
 
-                    <TextView
-                        android:id="@+id/dinamic_personagem_txt_sexo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewComumBold"
+                    <EditText
+                        android:id="@+id/dinamic_personagem_edt_sexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
                         android:layout_below="@+id/personagem_txt_classe"
+                        style="@style/TextViewComum"
+                        android:maxLength="15"
+                        android:enabled="false"
+                        android:singleLine="true"
                         android:layout_toRightOf="@+id/personagem_txt_sexo"/>
 
                 </RelativeLayout>
