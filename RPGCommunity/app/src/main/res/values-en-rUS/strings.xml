@@ -129,4 +129,6 @@
     <string name="sessao_salva_com_sucesso">Session created succesfully!</string>
     <string name="sessao_sem_imagem">Cannot create an session without image!</string>
 
+    <string name="editar_isso">Edit...</string>
+
 </resources>

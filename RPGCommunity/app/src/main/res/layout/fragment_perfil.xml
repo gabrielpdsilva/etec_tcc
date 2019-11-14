@@ -132,6 +132,15 @@
                 android:visibility="gone"
                 android:text="Vazio" />
 
+            <Button
+                style="@style/BotaoEstilo"
+                android:layout_below="@+id/rvPersonagens"
+                android:id="@+id/btn_editar"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editar_isso"/>
+
         </RelativeLayout>
 
     </ScrollView>

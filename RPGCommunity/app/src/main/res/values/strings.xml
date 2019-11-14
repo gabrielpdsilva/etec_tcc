@@ -127,4 +127,6 @@
     <!--Textos sobre sessoes...-->
     <string name="sessao_salva_com_sucesso">Sessão criada com sucesso!</string>
     <string name="sessao_sem_imagem">Não é possível criar uma sessão sem imagem!</string>
+
+    <string name="editar_isso">Editar...</string>
 </resources>
