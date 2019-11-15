@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -95,10 +96,11 @@ class CriarSessao : AppCompatActivity() {
         // define o adaptador de RecyclerView de personagens
         rvJogadores.adapter = PersonagemAdapter(applicationContext, p)
 
+        Log.d("DebugAddAmigos", rvJogadores.toString(), Exception("parou a aplicação aqui"))
         // define o layout
         val mLayout = LinearLayoutManager(this)
         mLayout.orientation = RecyclerView.VERTICAL
-        rvPersonagens.layoutManager = mLayout
+        rvJogadores.layoutManager = mLayout
     }
 
     private fun salvarSessao() {

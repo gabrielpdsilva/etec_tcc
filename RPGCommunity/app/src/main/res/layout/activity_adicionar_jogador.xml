@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".sub_activitys.AdicionarJogadorActivity">
 
+    <ProgressBar
+        android:id="@+id/pbPersonagensAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/txtVoceNaoPossuiAmigosAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/voce_nao_possui_amigos"
+        android:visibility="invisible"
+        android:enabled="false"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPersonagensAdd"
         android:layout_width="wrap_content"
