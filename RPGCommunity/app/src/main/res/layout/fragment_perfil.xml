@@ -21,7 +21,7 @@
 
             </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
                 android:layout_marginTop="20dp"
@@ -44,19 +44,46 @@
                     android:id="@+id/avatarPerfil"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_add_avatar"
                     app:civ_border_width="5dp"
                     app:civ_border_color="#ffffff"/>
 
                 <!--TextView do nickname-->
                 <TextView
+                    android:layout_below="@+id/avatarPerfil"
                     android:id="@+id/nicknamePerfil_perfil"
                     style="@style/TextViewTitulos"
+                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@color/textosBrancos" />
+                    android:textColor="@color/textosBrancos"/>
+<!--
+                <Button
+                    style="@style/BotaoEstilo"
+                    android:layout_below="@+id/avatarPerfil"
+                    android:id="@+id/btn_editar"
+                    android:layout_marginLeft="110dp"
+                    android:layout_toRightOf="@+id/nicknamePerfil_perfil"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/editar_isso"/>-->
 
-            </LinearLayout>
+                <!--Textview pra editar o perfil-->
+                <TextView
+                    style="@style/TextViewComum"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_editar_perfil"
+                    android:text="@string/editar_isso"
+                    android:layout_below="@+id/avatarPerfil"
+                    android:layout_toRightOf="@+id/nicknamePerfil_perfil"/>
+
+            </RelativeLayout>
 
             <!--*********************************************************************************-->
 
@@ -132,14 +159,7 @@
                 android:visibility="gone"
                 android:text="Vazio" />
 
-            <Button
-                style="@style/BotaoEstilo"
-                android:layout_below="@+id/rvPersonagens"
-                android:id="@+id/btn_editar"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/editar_isso"/>
+
 
         </RelativeLayout>
 

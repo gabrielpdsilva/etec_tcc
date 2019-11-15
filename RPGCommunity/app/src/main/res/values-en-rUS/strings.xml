@@ -109,7 +109,7 @@
     <!--Switch e menus-->
     <string name="txtVisivelParaTodos">Visible for all</string>
     <string name="txtPesquisa">Search...</string>
-    <string name="txtEditarPersonagem">Edit</string>
+    <string name="txtEditarPersonagem">Edit character</string>
 
     <!--outros-->
     <string name="action_settings">Settings</string>
@@ -131,4 +131,6 @@
 
     <string name="editar_isso">Edit...</string>
 
+    <string name="amigo_adicionar">Adicionar amigo</string>
+    <string name="amigo_excluir">Excluir amigo</string>
 </resources>

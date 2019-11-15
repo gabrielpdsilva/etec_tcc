@@ -108,7 +108,7 @@
     <!--Switch e menus-->
     <string name="txtVisivelParaTodos">Visível para todos</string>
     <string name="txtPesquisa">Pesquisar...</string>
-    <string name="txtEditarPersonagem">Editar</string>
+    <string name="txtEditarPersonagem">Editar personagem</string>
 
     <!--outros-->
     <string name="action_settings">Configurações</string>
@@ -129,4 +129,7 @@
     <string name="sessao_sem_imagem">Não é possível criar uma sessão sem imagem!</string>
 
     <string name="editar_isso">Editar...</string>
+
+    <string name="amigo_adicionar">Adicionar amigo</string>
+    <string name="amigo_excluir">Excluir amigo</string>
 </resources>
