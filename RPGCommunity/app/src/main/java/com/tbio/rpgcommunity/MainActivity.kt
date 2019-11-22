@@ -1,34 +1,39 @@
 package com.tbio.rpgcommunity
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
 import com.tbio.rpgcommunity.criar.CriarPersonagem
 import com.tbio.rpgcommunity.criar.CriarSessao
-import com.tbio.rpgcommunity.fragments.AmigosFragment
-import com.tbio.rpgcommunity.fragments.HomeFragment
-import com.tbio.rpgcommunity.fragments.PerfilFragment
-import com.tbio.rpgcommunity.fragments.SessoesFragment
+import com.tbio.rpgcommunity.fragments.*
 import com.tbio.rpgcommunity.logincadastro.Login
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private var isSearchButtonAlreadyPressed: Boolean = false
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val searchFragment: SearchFragment = SearchFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,12 +118,93 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        val mInflater = menuInflater.inflate(R.menu.main, menu)
+
+        val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+
+        // define que ação o pesquisador deverá executar
+        // quando utilizado
+        searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                isSearchButtonAlreadyPressed = false;
+                searchView.clearFocus()
+                searchView.setQuery("", false)
+                searchItem.collapseActionView()
+                toast("Looking for $query")
+
+                val homeFrag = HomeFragment()
+                val arguments = Bundle()
+
+                arguments.putString("search", query!!)
+
+                homeFrag.arguments = arguments
+                loadHome(homeFrag)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                /*newText?.let {
+                    db.collection("Pesquisas")
+                            .orderBy("vezes_pesquisadas")
+                            .startAt(newText).endAt(newText + "\uf8ff")
+                            .limit(10)
+                            .get()
+                            .addOnSuccessListener {
+                                val newPesquisaList = mutableListOf<String>()
+
+                                for(p in it) {
+                                    newPesquisaList.add(p["pesquisa"].toString())
+                                    toast(p["pesquisa"].toString())
+                                }
+
+                                try {
+                                    this@MainActivity.searchFragment.pesquisas = newPesquisaList
+                                    this@MainActivity.searchFragment.setRecyclerView()
+                                } catch(e: Exception) {
+                                    toast("${e.stackTrace} : ${e.message}")
+                                }
+                            }
+                }*/
+
+                return false
+            }
+        })
+
+        searchView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+            override fun onViewAttachedToWindow(p0: View?) {
+
+            }
+
+            override fun onViewDetachedFromWindow(p0: View?) {
+                isSearchButtonAlreadyPressed = false;
+                loadHome(HomeFragment())
+            }
+        })
+
+        searchView.setOnSearchClickListener {
+            loadSearchFragment(SearchFragment())
+        }
 
         //faz o menu de editar personagem não aparecer. Só aparecerá na activity do personagem, o
         //código já tá lá
         menu.findItem(R.id.action_editar_personagem).isVisible = false
         return true
+    }
+
+    private fun loadSearchFragment(frag: SearchFragment) {
+        if(isSearchButtonAlreadyPressed) {
+            return
+        } else {
+            isSearchButtonAlreadyPressed = true
+
+            val fm = supportFragmentManager.beginTransaction()
+            fm.replace(R.id.frameLayout, frag)
+            fm.commit()
+        }
     }
 
     //Aqui é a opção de Settings (Configurações). Deixei como comentário aqui e no XML

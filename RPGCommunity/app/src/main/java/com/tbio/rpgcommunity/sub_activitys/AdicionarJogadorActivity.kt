@@ -1,5 +1,6 @@
 package com.tbio.rpgcommunity.sub_activitys
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tbio.rpgcommunity.R
+import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
 import com.tbio.rpgcommunity.classes_model_do_sistema.Personagem
 import com.tbio.rpgcommunity.classes_model_do_sistema.Usuario
 import com.tbio.rpgcommunity.classes_recycler_view.AmigoAdapter
@@ -52,8 +54,9 @@ class AdicionarJogadorActivity : AppCompatActivity() {
                                                         .addOnSuccessListener {
                                                             for(p in it) {
                                                                 this.personagens.add(Personagem.toNewObject(p) as Personagem)
-                                                                rvPersonagensAdd.adapter!!.notifyDataSetChanged()
                                                             }
+
+                                                            this.setRecyclerView()
                                                         }
                                             }
                                      }
@@ -66,16 +69,32 @@ class AdicionarJogadorActivity : AppCompatActivity() {
     }
 
     public fun setRecyclerView() {
-        // define o texto 'Você não possui amigos' como invisível
-        txtVoceNaoPossuiAmigosAdd.visibility = View.VISIBLE
-        txtVoceNaoPossuiAmigosAdd.isEnabled = true
+        if(personagens.size > 0) {
+            // define o texto 'Você não possui amigos' como invisível
+            txtVoceNaoPossuiAmigosAdd.visibility = View.GONE
+            txtVoceNaoPossuiAmigosAdd.isEnabled = false
 
-        // define o adapter para o RecyclerView
-        rvPersonagensAdd.adapter = PersonagemAdapter(this.applicationContext, this.personagens)
+            // define o adapter para o RecyclerView
+            rvPersonagensAdd.adapter =
+                    PersonagemAdapter(this.applicationContext,
+                                      this.personagens,
+                   true) {
+                        val resultIntent = Intent()
 
-        // define o layout
-        val linearLayout = LinearLayoutManager(this)
-        linearLayout.orientation = RecyclerView.VERTICAL
-        rvPersonagensAdd.layoutManager = linearLayout
+                        resultIntent.putExtra("personagem_selecionado", it)
+
+                        setResult(Codigos.CODIGO_PARA_ADICIONAR_JOGADOR, resultIntent)
+                        finish()
+                    }
+
+            // define o layout
+            val linearLayout = LinearLayoutManager(this)
+            linearLayout.orientation = RecyclerView.VERTICAL
+            rvPersonagensAdd.layoutManager = linearLayout
+        } else {
+            // define o texto 'Você não possui amigos' como visível
+            txtVoceNaoPossuiAmigosAdd.visibility = View.VISIBLE
+            txtVoceNaoPossuiAmigosAdd.isEnabled = true
+        }
     }
 }

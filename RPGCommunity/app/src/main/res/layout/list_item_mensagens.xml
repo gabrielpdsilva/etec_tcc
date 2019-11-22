@@ -20,7 +20,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@android:color/white"
                     android:padding="5dp"/>
     </androidx.cardview.widget.CardView>
 
@@ -30,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:visibility="invisible"
-        android:background="@color/colorPrimary"
         android:layout_alignParentRight="true">
 
             <TextView
@@ -39,7 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@android:color/white"
                 android:padding="5dp"/>
     </androidx.cardview.widget.CardView>
 

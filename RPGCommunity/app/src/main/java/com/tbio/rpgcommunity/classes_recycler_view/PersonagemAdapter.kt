@@ -2,6 +2,7 @@ package com.tbio.rpgcommunity.classes_recycler_view
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +17,16 @@ import com.tbio.rpgcommunity.sub_activitys.PersonagemActivity
 import kotlinx.android.synthetic.main.list_item_personagens.view.*
 
 class PersonagemAdapter(val context: Context,
-                        val personagens: MutableList<Personagem>)
+                        val personagens: MutableList<Personagem>,
+                        val isThisAdapterToReturn: Boolean = false,
+                        val onItemClick: ((personagem: Personagem) -> Unit)? = null)
                         : RecyclerView.Adapter<PersonagemAdapter.PersonagemViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonagemViewHolder =
             PersonagemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_personagens,
                                                                          parent,
                                                                          false))
 
+    var selectedPersonagens: MutableList<Personagem> = mutableListOf()
     override fun getItemCount(): Int = this.personagens.size
 
     override fun onBindViewHolder(holder: PersonagemViewHolder, position: Int) {
@@ -30,6 +34,20 @@ class PersonagemAdapter(val context: Context,
         holder.nome.text = personagens[position].nome.nome
         holder.descricao.text = String.format("Descrição: %s",
                 personagens[position].descricao?.getDescricaoBasica() ?: "Sem descrição")
+
+        if (isThisAdapterToReturn)
+            holder.cardview.setOnClickListener {
+                onItemClick?.invoke(personagens[position])
+                // selectedPersonagens.add(personagens[position])
+            }
+
+        else
+            holder.cardview.setOnClickListener {
+                val intentToPersonagemActivity = Intent(this.context, PersonagemActivity::class.java)
+                intentToPersonagemActivity.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intentToPersonagemActivity.putExtra("personagem", this.personagens[position])
+                this.context.startActivity(intentToPersonagemActivity)
+            }
 
         Picasso.get()
                 .load(personagens[position].image)
@@ -54,17 +72,10 @@ class PersonagemAdapter(val context: Context,
     }
 
     inner class PersonagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val cardview = itemView.custom_cdv_item_personagem
         val nome = itemView.custom_txt_nome_personagem
         val foto = itemView.custom_img_foto_personagem
         val descricao = itemView.custom_txt_descricao_personagem
         val sessao = itemView.custom_txt_sessao_personagem
-
-        init{
-            itemView.setOnClickListener {
-                val intentToPersonagemActivity = Intent(this@PersonagemAdapter.context, PersonagemActivity::class.java)
-                intentToPersonagemActivity.putExtra("personagem", this@PersonagemAdapter.personagens[this.adapterPosition])
-                this@PersonagemAdapter.context.startActivity(intentToPersonagemActivity)
-            }
-        }
     }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="115dp"
+    android:id="@+id/custom_cdv_item_personagem"
     android:background="@color/caixasDeTexto">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -45,4 +46,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

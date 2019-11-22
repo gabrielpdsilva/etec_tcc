@@ -30,6 +30,13 @@ class AmigoAdapter(val amigos: MutableList<Usuario>,
         holder.nome.text = amigos[position].nickname.nome
         holder.nickname.text = amigos[position].nickname.toString()
 
+        holder.cardview.setOnClickListener {
+            val intentToPerfilActivity: Intent = Intent(this.context, PerfilActivity::class.java)
+            intentToPerfilActivity.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intentToPerfilActivity.putExtra("usuario", this.amigos[position])
+            this.context.startActivity(intentToPerfilActivity)
+        }
+
         // carrega a foto do amigo
         Picasso.get()
                 .load(amigos[position].foto)
@@ -42,17 +49,9 @@ class AmigoAdapter(val amigos: MutableList<Usuario>,
     }
 
     inner class AmigoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val cardview = itemView.custom_cdv_item_amigo
         var nickname = itemView.nicknameAmigo
         var nome = itemView.nomeAmigo
         var foto = itemView.imgAmigo
-
-        init {
-            itemView.setOnClickListener {
-                val intentToPerfilActivity: Intent = Intent(this@AmigoAdapter.context, PerfilActivity::class.java)
-                intentToPerfilActivity.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                intentToPerfilActivity.putExtra("usuario", this@AmigoAdapter.amigos[this.adapterPosition])
-                this@AmigoAdapter.context.startActivity(intentToPerfilActivity)
-            }
-        }
     }
 }

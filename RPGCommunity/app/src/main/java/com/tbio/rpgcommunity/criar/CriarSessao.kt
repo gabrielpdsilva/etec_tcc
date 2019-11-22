@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.fragment_perfil.*
 import org.jetbrains.anko.coroutines.experimental.asReference
 import org.jetbrains.anko.toast
 import java.util.*
+import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
 
 class CriarSessao : AppCompatActivity() {
 
@@ -43,7 +44,7 @@ class CriarSessao : AppCompatActivity() {
     // propriedades do banco
     private lateinit var db: FirebaseFirestore
     private var uriImagemSelecionada: Uri? = null
-    private lateinit var personagens: MutableList<DocumentReference>
+    private lateinit var personagens: MutableList<String>
     private lateinit var p: MutableList<Personagem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +53,9 @@ class CriarSessao : AppCompatActivity() {
 
         this.db = FirebaseFirestore.getInstance()
 
-        this.personagens = mutableListOf<DocumentReference>()
+        this.personagens = mutableListOf<String>()
         this.p = mutableListOf<Personagem>()
+        this.imagemSessao = findViewById(R.id.sessaoImagem)
 
         this.setRecyclerView(this.p);
 
@@ -70,7 +72,7 @@ class CriarSessao : AppCompatActivity() {
         btnAdicionarJogador = findViewById(R.id.sessaoBotaoAddJogadores)
         btnAdicionarJogador.setOnClickListener {
             val intent = Intent(this, AdicionarJogadorActivity::class.java)
-            startActivity(intent);
+            startActivityForResult(intent, Codigos.CODIGO_PARA_ADICIONAR_JOGADOR);
         }
 
         // define o botão 'criar sessão'
@@ -96,7 +98,6 @@ class CriarSessao : AppCompatActivity() {
         // define o adaptador de RecyclerView de personagens
         rvJogadores.adapter = PersonagemAdapter(applicationContext, p)
 
-        Log.d("DebugAddAmigos", rvJogadores.toString(), Exception("parou a aplicação aqui"))
         // define o layout
         val mLayout = LinearLayoutManager(this)
         mLayout.orientation = RecyclerView.VERTICAL
@@ -167,6 +168,15 @@ class CriarSessao : AppCompatActivity() {
                     val bm = MediaStore.Images.Media.getBitmap(contentResolver, this.uriImagemSelecionada)
                     imagemSessao.setImageDrawable(BitmapDrawable(bm))
                 }
+            }
+
+            Codigos.CODIGO_PARA_ADICIONAR_JOGADOR -> {
+                val personagemResult =
+                        data!!.extras!!.getParcelable<Personagem>("personagem_selecionado")!!
+
+                p.add(personagemResult)
+                personagens.add(personagemResult.referencia.path)
+                this.setRecyclerView(p)
             }
         }
     }

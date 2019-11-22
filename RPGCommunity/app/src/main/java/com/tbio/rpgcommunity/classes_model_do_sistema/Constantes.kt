@@ -7,6 +7,7 @@ object Tags{
 object Codigos{
     const val CODIGO_PARA_CADASTRAR_USUARIO = 100
     const val CODIGO_PARA_REQUISITAR_IMAGEM = 108
+    const val CODIGO_PARA_ADICIONAR_JOGADOR: Int = 116
 }
 
 object Erros{

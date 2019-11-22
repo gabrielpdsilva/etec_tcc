@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,49 +25,70 @@ import org.jetbrains.anko.support.v4.toast
 
 class HomeFragment : Fragment() {
     private lateinit var sessoes: MutableList<Sessao>
+    private lateinit var realView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        realView = inflater.inflate(R.layout.fragment_home, container, false)
+        val sessaoAPesquisar: String? = arguments?.getString("search", null)
 
-        FirebaseFirestore.getInstance()
-                .collectionGroup("Sessoes")
-                .orderBy("likes", Query.Direction.DESCENDING)
-                .limit(10)
-                .get()
-                .addOnSuccessListener {
-                    sessoes = mutableListOf<Sessao>()
+        if(sessaoAPesquisar == null || sessaoAPesquisar == "") {
+            FirebaseFirestore.getInstance()
+                    .collectionGroup("Sessoes")
+                    .orderBy("likes", Query.Direction.DESCENDING)
+                    .get()
+                    .addOnSuccessListener {
+                        sessoes = mutableListOf<Sessao>()
 
-                    for(sessao in it) {
-                        sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+                        for(sessao in it) {
+                            sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+                        }
+
+                        setHomeRecyclerView()
+                    }.addOnFailureListener {
+                        Log.e("error_ffc", it.message.toString())
                     }
+        } else {
+            FirebaseFirestore.getInstance()
+                    .collectionGroup("Sessoes")
+                    .whereEqualTo("nome.nome", sessaoAPesquisar)
+                    .orderBy("likes", Query.Direction.DESCENDING)
+                    .get()
+                    .addOnSuccessListener {
+                        sessoes = mutableListOf<Sessao>()
 
-                    setHomeRecyclerView()
-                }.addOnFailureListener {
-                    Log.e("error_ffc", it.message.toString())
-                }
+                        for(sessao in it) {
+                            sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+                        }
+
+                        setHomeRecyclerView()
+                    }.addOnFailureListener {
+                        Log.e("error_ffc", it.message.toString())
+                    }
+        }
 
         // Inflate the layout for this fragment
-        return view
+        return realView
     }
 
     private fun setHomeRecyclerView() {
         // define a progressbar como invisível
-        view!!.findViewById<ProgressBar>(R.id.pbHome).visibility = View.GONE
+        realView.findViewById<ProgressBar>(R.id.pbHome).visibility = View.GONE
 
         if(sessoes.size > 0) {
             // define a visibilidade de 'Não existem sessões disponíveis'
-            txtNaoExistemSessoes.visibility = View.GONE
+            realView.findViewById<TextView>(R.id.txtNaoExistemSessoes).visibility = View.GONE
 
             // define o adapter da RecyclerView
-            rvSessoes.adapter = SessaoAdapter(sessoes, view!!.context)
+            realView.findViewById<RecyclerView>(R.id.rvSessoes)
+                    .adapter = SessaoAdapter(sessoes, realView.context)
 
             // define o layout da RecyclerView
-            val linearLayout = LinearLayoutManager(view!!.context)
+            val linearLayout = LinearLayoutManager(realView.context)
             linearLayout.orientation = RecyclerView.VERTICAL
-            rvSessoes.layoutManager = linearLayout
+            realView.findViewById<RecyclerView>(R.id.rvSessoes).layoutManager = linearLayout
         } else {
-            txtNaoExistemSessoes.visibility = View.VISIBLE
+            realView.findViewById<TextView>(R.id.txtNaoExistemSessoes).visibility = View.VISIBLE
         }
     }
 }

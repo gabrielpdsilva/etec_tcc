@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import org.w3c.dom.Document
 import java.lang.IllegalArgumentException
 
 class Sessao (
@@ -19,7 +20,7 @@ class Sessao (
               // dados da Sessão
         val nome: Nome, // Nome da sessão
         val imagem: Uri? = null,  // foto da sessão
-        var personagens: MutableList<DocumentReference>? = null, // lista de personagens envolvidos
+        var personagens: MutableList<String>? = null, // lista de personagens envolvidos
         var historiaDeUniverso: Historia? = null, // história do Universo da Sessão
         var sistema: String? = null,  // sistema da Sessão
         var descricao: Descricao? = null // descrição da Sessão
@@ -42,6 +43,8 @@ class Sessao (
 
         // serializa o objeto
         with(sessaoHashMap) {
+            val personagensToSave: MutableList<DocumentReference> = mutableListOf()
+
             put("nome", nome.toHashMap())
             put("historiaDeUniverso", historiaDeUniverso?.toHashMap())
             put("sistema", sistema)
@@ -49,9 +52,10 @@ class Sessao (
             put("imagem", imagem.toString())
             put("likes", 0)
             put("deslikes", 0)
-            personagens?.let {
-                put("personagens", it)
+            personagens?.forEach {
+                personagensToSave.add(FirebaseFirestore.getInstance().document(it))
             }
+            put("personagens", personagensToSave)
         }
 
         return sessaoHashMap // retorna o nosso Map do objeto
@@ -70,7 +74,7 @@ class Sessao (
             parcel.readString(),
             parcel.readParcelable(Nome::class.java.classLoader),
             parcel.readParcelable(Uri::class.java.classLoader),
-            mutableListOf(),
+            parcel.createStringArrayList(),
             parcel.readParcelable(Historia::class.java.classLoader),
             parcel.readString(),
             parcel.readParcelable(Descricao::class.java.classLoader)) {
@@ -88,12 +92,17 @@ class Sessao (
         fun toNewObject(doc: DocumentSnapshot): RpgItem{
             val nome = Nome((doc["nome"] as HashMap<String, Any?>).get("nome").toString(),
                             (doc["nome"] as HashMap<String, Any?>).get("sobrenome") as List<String>?)
+            val personagens: MutableList<String> = mutableListOf()
+
+            (doc["personagens"] as List<DocumentReference>?)?.forEach {
+                personagens.add(it.path)
+            }
 
             @Suppress("UNCHECKED_CAST")
             return Sessao(id = doc.id,
                           parentId = doc.reference.parent.parent!!.id,
                           nome = nome,
-                          personagens = (doc["personagens"] as List<DocumentReference>?)?.toMutableList(),
+                          personagens = if(personagens.isEmpty()) null else personagens,
                           historiaDeUniverso = Historia.toNewObject(doc["historiaDeUniverso"] as Map<String, Any?>?) as Historia?,
                           sistema = doc["sistema"] as String,
                           descricao = Descricao.toNewObject(doc.get("descricao") as Map<String, Any?>) as Descricao,
@@ -107,10 +116,10 @@ class Sessao (
         parcel.writeString(this.getParentId())
         parcel.writeParcelable(nome, flags)
         parcel.writeParcelable(imagem, flags)
+        parcel.writeStringList(personagens)
         parcel.writeParcelable(historiaDeUniverso, flags)
         parcel.writeString(sistema)
         parcel.writeParcelable(descricao, flags)
-        parcel.writeList(personagens)
     }
 
     override fun describeContents(): Int {

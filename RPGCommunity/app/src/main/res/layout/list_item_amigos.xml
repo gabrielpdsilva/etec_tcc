@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:id="@+id/custom_cdv_item_amigo"
     android:background="#cc5ccc">
 
     <RelativeLayout

@@ -142,4 +142,14 @@
         android:enabled="false"
         style="@style/TextViewHomeBold"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/sessao_btn_play"
+        android:text="@string/play_button_text"
+        android:shadowRadius="@android:integer/config_shortAnimTime"
+        android:enabled="false"
+        />
+
 </RelativeLayout>
