@@ -44,7 +44,7 @@
                 android:id="@+id/titulo_login"
                 android:text="@string/txtBemVindo"
                 style="@style/TextViewHomeBoldTitulo"
-                android:layout_gravity="center_horizontal"/>
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="match_parent"
