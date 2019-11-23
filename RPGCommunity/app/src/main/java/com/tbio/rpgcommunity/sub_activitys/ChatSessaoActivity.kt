@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.*
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
 import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
@@ -54,6 +51,9 @@ class ChatSessaoActivity : AppCompatActivity() {
                     }
 
                     this.setMensagensRecyclerView()
+                    (activity_chat_sessao_recycler_view.layoutManager as LinearLayoutManager).scrollToPosition(
+                            activity_chat_sessao_recycler_view.adapter?.itemCount ?: 1 - 1
+                    )
                 }
 
         this.mButtonEnviar.setOnClickListener {
@@ -74,14 +74,31 @@ class ChatSessaoActivity : AppCompatActivity() {
                                     .add(message.toHashMap())
                                     .addOnSuccessListener {
                                         toast("Mensagem enviada")
-                                        this.mensagens.add(message)
-                                        activity_chat_sessao_recycler_view.scrollToPosition(this.mensagens.size - 1)
-                                        activity_chat_sessao_recycler_view.adapter?.notifyDataSetChanged()
-                                                ?: setMensagensRecyclerView()
                                     }
                         }
                     }
         }
+
+        db.collection("${sessao.caminho}/Histórico de mensagens")
+                .orderBy("date", Query.Direction.ASCENDING)
+                .addSnapshotListener { value, e ->
+                    if (e != null) {
+                        Log.w("DebugUpdateMensagens", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
+
+                    for (doc in value!!.documentChanges) {
+                        if(doc.type == DocumentChange.Type.ADDED)
+                            mensagens.add(Mensagem.toNewObject(doc = doc.document))
+                    }
+
+                    activity_chat_sessao_recycler_view.adapter?.notifyDataSetChanged()
+                            ?: setMensagensRecyclerView()
+
+                    (activity_chat_sessao_recycler_view.layoutManager as LinearLayoutManager).scrollToPosition(
+                            activity_chat_sessao_recycler_view.adapter?.itemCount ?: 1 - 1
+                    )
+                }
     }
 
     fun setMensagensRecyclerView() {
