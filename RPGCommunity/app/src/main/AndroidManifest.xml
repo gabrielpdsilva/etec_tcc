@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".sub_activitys.AdicionarJogadorActivity"></activity>
@@ -17,7 +17,8 @@
         <activity
             android:name=".logincadastro.Login"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            >
+            <!--android:screenOrientation="portrait"-->
 
             <!-- Screen orientation -> portrait faz com que não seja possível virar a tela na horizontal -->
             <intent-filter>
@@ -49,8 +50,7 @@
         </activity>
         <activity
             android:name=".criar.CriarPersonagem"
-            android:label="@string/txtManNovoPersonagem"
-            android:screenOrientation="portrait">
+            android:label="@string/txtManNovoPersonagem">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -58,7 +58,6 @@
         <activity
             android:name=".criar.CriarSessao"
             android:label="@string/txtManNovaSessao"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
 
             <!-- android:windowSoftInputMode="adjustNothing" faz com que o botão de criar sessão esteja fixo e não se mova quando abrir o teclado -->
