@@ -1,5 +1,6 @@
 package com.tbio.rpgcommunity.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -11,60 +12,135 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
 
 import com.tbio.rpgcommunity.R
-import com.tbio.rpgcommunity.classes_model_do_sistema.Nome
-import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
+import com.tbio.rpgcommunity.classes_model_do_sistema.*
+import com.tbio.rpgcommunity.classes_recycler_view.SaidaPesquisaAdapter
 import com.tbio.rpgcommunity.classes_recycler_view.SessaoAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.list_item_sessoes.view.*
 import org.jetbrains.anko.support.v4.toast
+import kotlin.IllegalArgumentException
+import kotlin.reflect.KClass
 
 class HomeFragment : Fragment() {
-    private lateinit var sessoes: MutableList<Sessao>
+    private val itens: MutableList<DocumentoRpgItem> = mutableListOf<DocumentoRpgItem>()
     private lateinit var realView: View
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+    @SuppressLint("DefaultLocale")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         realView = inflater.inflate(R.layout.fragment_home, container, false)
-        val sessaoAPesquisar: String? = arguments?.getString("search", null)
+        val itemToSearch: String? = arguments?.getString("search", null)
 
-        if(sessaoAPesquisar == null || sessaoAPesquisar == "") {
+        if(itemToSearch == null || itemToSearch == "") {
             FirebaseFirestore.getInstance()
-                    .collectionGroup("Sessoes")
-                    .orderBy("likes", Query.Direction.DESCENDING)
+                    .collection("Pesquisas")
+                    .orderBy("searchedTimes", Query.Direction.DESCENDING)
                     .get()
                     .addOnSuccessListener {
-                        sessoes = mutableListOf<Sessao>()
+                        for(doc in it) {
+                            val docTypeClass = doc["docTypeClass"] as String
+                            (doc["docReference"] as DocumentReference)
+                                    .get()
+                                    .addOnSuccessListener {
+                                        val genericDocRpgItem: DocumentoRpgItem?
 
-                        for(sessao in it) {
-                            sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+                                        when(docTypeClass) {
+                                            "personagem" -> {
+                                                genericDocRpgItem = Personagem.toNewObject(it) as DocumentoRpgItem
+                                            }
+
+                                            "sessao" -> {
+                                                genericDocRpgItem = Sessao.toNewObject(it) as DocumentoRpgItem
+                                            }
+
+                                            "usuario" -> {
+                                                genericDocRpgItem = Usuario.toNewObject(it) as DocumentoRpgItem
+                                            }
+
+                                            else -> throw IllegalArgumentException("""valor de 'docTypeClass' inválido: $docTypeClass""")
+                                        }
+
+                                        itens.add(genericDocRpgItem)
+                                        realView.findViewById<RecyclerView>(R.id.rvSessoes)
+                                                .adapter?.notifyDataSetChanged()
+                                                ?: setHomeRecyclerView()
+                                    }
                         }
-
-                        setHomeRecyclerView()
                     }.addOnFailureListener {
                         Log.e("error_ffc", it.message.toString())
                     }
         } else {
-            FirebaseFirestore.getInstance()
-                    .collectionGroup("Sessoes")
-                    .whereEqualTo("nome.nome", sessaoAPesquisar)
-                    .orderBy("likes", Query.Direction.DESCENDING)
-                    .get()
-                    .addOnSuccessListener {
-                        sessoes = mutableListOf<Sessao>()
+            val itemToSearchSplited = itemToSearch.toLowerCase().split(' ')
+            val itemToSearchKeys: MutableList<String> = mutableListOf()
+            itemToSearchSplited.forEach {
+                itemToSearchKeys.addAll(it.chunked(3))
+            }
 
-                        for(sessao in it) {
-                            sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+            itemToSearchKeys.forEach {
+                Log.i("DebugSearch", it)
+            }
+
+            itemToSearchKeys.forEach {
+                FirebaseFirestore.getInstance()
+                        .collection("Pesquisas")
+                        .whereArrayContains("searchKeyList", it)
+                        .get()
+                        .addOnSuccessListener {
+                            for (doc in it) {
+                                val docTypeClass = doc["docTypeClass"] as String
+
+                                (doc["docReference"] as DocumentReference)
+                                        .get()
+                                        .addOnSuccessListener {
+                                            val genericDocRpgItem: DocumentoRpgItem?
+
+                                            when (docTypeClass) {
+                                                "personagem" -> {
+                                                    genericDocRpgItem = Personagem.toNewObject(it) as DocumentoRpgItem
+                                                }
+
+                                                "sessao" -> {
+                                                    genericDocRpgItem = Sessao.toNewObject(it) as DocumentoRpgItem
+                                                }
+
+                                                "usuario" -> {
+                                                    genericDocRpgItem = Usuario.toNewObject(it) as DocumentoRpgItem
+                                                }
+
+                                                else -> throw IllegalArgumentException("""valor de 'docTypeClass' inválido: $docTypeClass""")
+                                            }
+
+                                            var alreadyInList = false;
+                                            itens.forEach {
+                                                if(it.referencia == genericDocRpgItem.referencia) {
+                                                    Log.i("DebugSearch", "it.referencia == genericDocRpgItem.referencia : " + (it.referencia == genericDocRpgItem.referencia))
+                                                    alreadyInList = true
+                                                    return@forEach
+                                                }
+                                            }
+
+                                            if(! alreadyInList) {
+                                                itens.add(genericDocRpgItem)
+                                                itens.sortWith(compareByDescending (DocumentoRpgItem::nearNumberOfResemble))
+
+                                                realView.findViewById<RecyclerView>(R.id.rvSessoes)
+                                                        .adapter?.notifyDataSetChanged()
+                                                        ?: setHomeRecyclerView()
+                                            }
+                                        }
+                            }
                         }
-
-                        setHomeRecyclerView()
-                    }.addOnFailureListener {
-                        Log.e("error_ffc", it.message.toString())
-                    }
+                        .addOnFailureListener {
+                            Log.e("error_ffc", it.message.toString())
+                        }
+            }
         }
 
         // Inflate the layout for this fragment
@@ -75,13 +151,13 @@ class HomeFragment : Fragment() {
         // define a progressbar como invisível
         realView.findViewById<ProgressBar>(R.id.pbHome).visibility = View.GONE
 
-        if(sessoes.size > 0) {
+        if(itens.size > 0) {
             // define a visibilidade de 'Não existem sessões disponíveis'
             realView.findViewById<TextView>(R.id.txtNaoExistemSessoes).visibility = View.GONE
 
             // define o adapter da RecyclerView
             realView.findViewById<RecyclerView>(R.id.rvSessoes)
-                    .adapter = SessaoAdapter(sessoes, realView.context)
+                    .adapter = SaidaPesquisaAdapter(itens, realView.context)
 
             // define o layout da RecyclerView
             val linearLayout = LinearLayoutManager(realView.context)

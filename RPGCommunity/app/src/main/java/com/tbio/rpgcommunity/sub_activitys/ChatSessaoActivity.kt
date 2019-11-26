@@ -25,6 +25,7 @@ import org.jetbrains.anko.toast
 
 class ChatSessaoActivity : AppCompatActivity() {
 
+    private lateinit var rvChat: RecyclerView
     private lateinit var mensagens: MutableList<Mensagem>
     private lateinit var mButtonEnviar: AppCompatImageButton
     private lateinit var mEditxtMensagem: EditText
@@ -40,6 +41,7 @@ class ChatSessaoActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         this.sessao = intent.extras!!["sessao"] as Sessao
         this.mensagens = mutableListOf()
+        this.rvChat = findViewById<RecyclerView>(R.id.activity_chat_sessao_recycler_view)
 
         db.collection("${sessao.caminho}/Histórico de mensagens")
                 .limit(50)
@@ -51,8 +53,8 @@ class ChatSessaoActivity : AppCompatActivity() {
                     }
 
                     this.setMensagensRecyclerView()
-                    (activity_chat_sessao_recycler_view.layoutManager as LinearLayoutManager).scrollToPosition(
-                            activity_chat_sessao_recycler_view.adapter?.itemCount ?: 1 - 1
+                    rvChat.layoutManager?.scrollToPosition(
+                            (rvChat.adapter?.itemCount ?: 1) - 1
                     )
                 }
 
@@ -92,11 +94,11 @@ class ChatSessaoActivity : AppCompatActivity() {
                             mensagens.add(Mensagem.toNewObject(doc = doc.document))
                     }
 
-                    activity_chat_sessao_recycler_view.adapter?.notifyDataSetChanged()
+                    rvChat.adapter?.notifyDataSetChanged()
                             ?: setMensagensRecyclerView()
 
-                    (activity_chat_sessao_recycler_view.layoutManager as LinearLayoutManager).scrollToPosition(
-                            activity_chat_sessao_recycler_view.adapter?.itemCount ?: 1 - 1
+                    rvChat.layoutManager?.scrollToPosition(
+                            (rvChat.adapter?.itemCount ?: 1) - 1
                     )
                 }
     }
@@ -110,12 +112,12 @@ class ChatSessaoActivity : AppCompatActivity() {
             // Log.d("DebugChat", findViewById<ProgressBar>(R.id.PbMensagens).visibility.toString(), Exception("passou por aqui"));
             // Log.d("DebugChat", findViewById<ProgressBar>(R.id.PbMensagens).context.toString(), Exception("passou por aqui"));
             // define o adapter da RecyclerView
-            activity_chat_sessao_recycler_view.adapter = MensagemAdapter(mensagens, this.applicationContext)
+            rvChat.adapter = MensagemAdapter(mensagens, this.applicationContext)
 
             // define o layout da RecyclerView
             val linearLayout = LinearLayoutManager(this.applicationContext)
             linearLayout.orientation = RecyclerView.VERTICAL
-            activity_chat_sessao_recycler_view.layoutManager = linearLayout
+            rvChat.layoutManager = linearLayout
         } else {
 
         }

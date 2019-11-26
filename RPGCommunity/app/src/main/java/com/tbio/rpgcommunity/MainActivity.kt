@@ -93,15 +93,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    //código original onBackPressed
-    /*override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }*/
-
     //código atual onBackPressed
     var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
@@ -139,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val homeFrag = HomeFragment()
                 val arguments = Bundle()
 
-                arguments.putString("search", query!!)
+                arguments.putString("search", query!!.toLowerCase())
 
                 homeFrag.arguments = arguments
                 loadHome(homeFrag)
@@ -147,28 +138,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                /*newText?.let {
-                    db.collection("Pesquisas")
-                            .orderBy("vezes_pesquisadas")
-                            .startAt(newText).endAt(newText + "\uf8ff")
-                            .limit(10)
-                            .get()
-                            .addOnSuccessListener {
-                                val newPesquisaList = mutableListOf<String>()
 
-                                for(p in it) {
-                                    newPesquisaList.add(p["pesquisa"].toString())
-                                    toast(p["pesquisa"].toString())
-                                }
-
-                                try {
-                                    this@MainActivity.searchFragment.pesquisas = newPesquisaList
-                                    this@MainActivity.searchFragment.setRecyclerView()
-                                } catch(e: Exception) {
-                                    toast("${e.stackTrace} : ${e.message}")
-                                }
-                            }
-                }*/
 
                 return false
             }

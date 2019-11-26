@@ -5,6 +5,8 @@ import com.google.firebase.firestore.DocumentSnapshot
 import java.lang.Exception
 
 abstract class DocumentoRpgItem(private val id: String?) : RpgItem(){
+    var nearNumberOfResemble: Int = 0
+
     // retorna o id do objeto atual
     fun getId() = this.id
 

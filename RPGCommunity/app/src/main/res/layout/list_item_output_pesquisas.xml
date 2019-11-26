@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/list_item_output_pesquisa_super_cdv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/cardViewCinza"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Usuário -->
+
+    <RelativeLayout
+        android:id="@+id/list_item_output_pesquisa_user_lyt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <!--ImageView do amigo-->
+        <ImageView
+            android:id="@+id/list_item_output_pesquisa_user_img"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:background="#c54342"/>
+
+        <!--TextView Nickname do amigo-->
+        <TextView
+            android:id="@+id/list_item_output_pesquisa_user_txt_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/list_item_output_pesquisa_user_img"
+            android:text="Nickname do amigo"
+            style="@style/TextViewHomeBoldTitulo"/>
+
+        <!--TextView Nome do amigo-->
+        <TextView
+            android:id="@+id/list_item_output_pesquisa_user_txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/list_item_output_pesquisa_user_img"
+            android:layout_below="@+id/list_item_output_pesquisa_user_txt_nick"
+            android:text="Nome do amigo"
+            style="@style/TextViewHomeBold"/>
+    </RelativeLayout>
+
+    <!-- Sessão -->
+
+    <RelativeLayout
+        android:id="@+id/list_item_output_pesquisa_session_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone">
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/list_item_output_pesquisa_session_txt_name"
+                style="@style/TextViewHomeBoldTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="3dp" />
+
+
+            <ImageView
+                android:id="@+id/list_item_output_pesquisa_session_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/list_item_output_pesquisa_session_txt_name"/>
+
+            <TextView
+                style="@style/TextViewComumBold"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/list_item_output_pesquisa_session_txt_master"
+                android:text="@string/txtSessaoMestre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_output_pesquisa_session_img"/>
+
+            <TextView
+                style="@style/TextViewComum"
+                android:id="@+id/list_item_output_pesquisa_session_txt_master_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_output_pesquisa_session_img"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_session_txt_master"/>
+
+            <TextView
+                style="@style/TextViewComumBold"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/list_item_output_pesquisa_session_txt_system"
+                android:text="@string/txtSessaoSistema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_output_pesquisa_session_txt_master_name" />
+
+            <TextView
+                style="@style/TextViewComum"
+                android:id="@+id/list_item_output_pesquisa_session_txt_system_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_output_pesquisa_session_txt_master_name"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_session_txt_system"/>
+
+            <TextView
+                style="@style/TextViewComumBold"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/list_item_output_pesquisa_session_txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtDescricaoSessao"
+                android:layout_below="@+id/list_item_output_pesquisa_session_txt_system_name"/>
+
+            <TextView
+                style="@style/TextViewComum"
+                android:id="@+id/list_item_output_pesquisa_session_txt_description_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_output_pesquisa_session_txt_system_name"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_session_txt_description"/>
+
+            <View
+                android:id="@+id/linhaSeparadora"
+                style="@style/Linha"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_below="@id/list_item_output_pesquisa_session_txt_description_content"/>
+    </RelativeLayout>
+
+    <!-- Personagem -->
+
+    <RelativeLayout
+        android:id="@+id/list_item_output_pesquisa_person_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/caixasDeTexto"
+        android:visibility="gone">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/list_item_output_pesquisa_person_img"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:src="@drawable/ic_add_avatar"
+            app:civ_border_width="5dp"
+            app:civ_border_color="@color/branco"/>
+
+            <!--TextView nome do personagem-->
+            <TextView
+                android:id="@+id/list_item_output_pesquisa_person_txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_person_img"
+                style="@style/estilo_list_item_personagem"/>
+
+            <!--TextView descrição do personagem-->
+            <TextView
+                android:id="@+id/list_item_output_pesquisa_person_txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_person_img"
+                android:layout_below="@+id/list_item_output_pesquisa_person_txt_name"
+                android:text="@string/txtDescricaoPersonagem"
+                style="@style/estilo_list_item_personagem"/>
+
+            <!--TextView sessão do personagem-->
+            <TextView
+                android:id="@+id/list_item_output_pesquisa_person_txt_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/list_item_output_pesquisa_person_img"
+                android:layout_below="@+id/list_item_output_pesquisa_person_txt_description"
+                android:text="@string/txtSessaoNome"
+                style="@style/estilo_list_item_personagem"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

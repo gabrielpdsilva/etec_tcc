@@ -145,8 +145,63 @@ class CriarSessao : AppCompatActivity() {
                                    sistema = sistema,
                                    descricao = Descricao(descricao))
                                     .saveDB(fun (doc) {
-                                        toast(R.string.sessao_salva_com_sucesso)
-                                        finish()
+                                        doc.get()
+                                                .addOnSuccessListener {
+                                                    val s: Sessao = Sessao.toNewObject(it) as Sessao
+
+                                                    s.parentReference!!.get()
+                                                            .addOnSuccessListener {u ->
+                                                                // split the description and name by ' ' spaces values
+                                                                val splitedDescription = s.descricao?.getDescricaoBasica()?.splitToSequence(' ', ignoreCase = true)
+                                                                val splitedName = s.nome.nome.splitToSequence(' ', ignoreCase = true)
+                                                                val splitedNameMaster = (u["nickname.nome"] as String).splitToSequence(' ', ignoreCase = true)
+
+                                                                // define the search key array list to save in 'Pesquisas'
+                                                                val searchKeyList: ArrayList<String> = arrayListOf<String>()
+
+                                                                splitedDescription?.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                splitedName.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                splitedNameMaster.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                val hashToBeSavedOnPesquisas = hashMapOf<String, Any?>(
+                                                                        "searchKeyList" to searchKeyList,
+                                                                        "docReference" to s.referencia,
+                                                                        "searchedTimes" to 0,
+                                                                        "docTypeClass" to "sessao"
+                                                                )
+
+                                                                FirebaseFirestore.getInstance().collection("Pesquisas")
+                                                                        .add(hashToBeSavedOnPesquisas)
+                                                                        .addOnFailureListener {
+                                                                            Log.i("DebugCriarSessao", it.message)
+                                                                        }
+
+                                                                toast(R.string.sessao_salva_com_sucesso)
+                                                                finish()
+                                                            }
+
+                                                }
+
                                     }, fun (exception) {
                                         toast(Erros.ERRO_AO_CRIAR_SESSAO)
                                         finish()
@@ -174,9 +229,11 @@ class CriarSessao : AppCompatActivity() {
                 val personagemResult =
                         data!!.extras!!.getParcelable<Personagem>("personagem_selecionado")!!
 
-                p.add(personagemResult)
-                personagens.add(personagemResult.referencia.path)
-                this.setRecyclerView(p)
+                if(! p.contains(personagemResult)) {
+                    p.add(personagemResult)
+                    personagens.add(personagemResult.referencia.path)
+                    this.setRecyclerView(p)
+                }
             }
         }
     }

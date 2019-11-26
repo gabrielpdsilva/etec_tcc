@@ -5,10 +5,12 @@ import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 import android.provider.DocumentsContract
+import android.util.Log
 import androidx.core.net.toUri
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import org.w3c.dom.Document
 import java.lang.IllegalArgumentException
 
@@ -24,10 +26,18 @@ class Sessao (
         var historiaDeUniverso: Historia? = null, // história do Universo da Sessão
         var sistema: String? = null,  // sistema da Sessão
         var descricao: Descricao? = null // descrição da Sessão
-             )
+        )
     : SubDocumentoRpgItem(id, parentId) {
     override var parentReference: DocumentReference? = null
         get() = this.referencia.parent.parent
+
+    var isActive: Boolean = false
+        set(newStatus) {
+            this.referencia
+                    .set(hashMapOf<String, Boolean>("isActive" to newStatus), SetOptions.merge())
+
+            field = newStatus
+        }
 
     var visibilidadeDeAcesso: Int = 0
         set(newVisibilidade) {
@@ -56,6 +66,7 @@ class Sessao (
                 personagensToSave.add(FirebaseFirestore.getInstance().document(it))
             }
             put("personagens", personagensToSave)
+            put("isActive", this@Sessao.isActive)
         }
 
         return sessaoHashMap // retorna o nosso Map do objeto
@@ -78,9 +89,8 @@ class Sessao (
             parcel.readParcelable(Historia::class.java.classLoader),
             parcel.readString(),
             parcel.readParcelable(Descricao::class.java.classLoader)) {
-        this.personagens.apply {
-            parcel.readList(this, DocumentReference::class.java.classLoader)
-        }
+        this.isActive = parcel.readByte() == 1.toByte()
+        parcel.readList(this.personagens, DocumentReference::class.java.classLoader)
     }
 
     override fun toObject(doc: DocumentSnapshot) { }
@@ -99,15 +109,18 @@ class Sessao (
             }
 
             @Suppress("UNCHECKED_CAST")
-            return Sessao(id = doc.id,
-                          parentId = doc.reference.parent.parent!!.id,
-                          nome = nome,
-                          personagens = if(personagens.isEmpty()) null else personagens,
-                          historiaDeUniverso = Historia.toNewObject(doc["historiaDeUniverso"] as Map<String, Any?>?) as Historia?,
-                          sistema = doc["sistema"] as String,
-                          descricao = Descricao.toNewObject(doc.get("descricao") as Map<String, Any?>) as Descricao,
-                          imagem = (doc["imagem"] as String?)?.toUri()
-                         )
+            val s = Sessao(id = doc.id,
+                    parentId = doc.reference.parent.parent!!.id,
+                    nome = nome,
+                    personagens = if(personagens.isEmpty()) null else personagens,
+                    historiaDeUniverso = Historia.toNewObject(doc["historiaDeUniverso"] as Map<String, Any?>?) as Historia?,
+                    sistema = doc["sistema"] as String,
+                    descricao = Descricao.toNewObject(doc.get("descricao") as Map<String, Any?>) as Descricao,
+                    imagem = (doc["imagem"] as String?)?.toUri()
+                    )
+            s.isActive = doc["isActive"] as Boolean? ?: false
+
+            return s
         }
     }
 
@@ -120,6 +133,7 @@ class Sessao (
         parcel.writeParcelable(historiaDeUniverso, flags)
         parcel.writeString(sistema)
         parcel.writeParcelable(descricao, flags)
+        parcel.writeByte(if(isActive) 1 else 0)
     }
 
     override fun describeContents(): Int {

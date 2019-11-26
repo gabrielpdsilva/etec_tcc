@@ -3,6 +3,7 @@ package com.tbio.rpgcommunity.sub_activitys
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Switch
 import com.google.firebase.auth.FirebaseAuth
@@ -34,33 +35,31 @@ class SessaoActivity : AppCompatActivity() {
                     }
                 }
 
-        sessao.referencia.get()
-                .addOnSuccessListener {
-                    val sessionActiveStatus = it["isActive"] as Boolean? ?: false
-                    switch.isChecked = sessionActiveStatus
+        if(sessao.isActive) {
+            val personagens = mutableListOf<DocumentReference>()
 
-                    if(sessionActiveStatus) {
-                        val personagens = it["personagens"] as List<DocumentReference>?
+            sessao.personagens?.forEach {
+                personagens.add(db.document(it))
+            }
 
-                        personagens?.forEach {
-                            val userParent = it.parent.parent!!.get()
+            personagens.forEach {
+                val userParent = it.parent.parent!!.get()
 
-                            userParent.addOnSuccessListener {
-                                if (it["email"] == currentUserEmail) {
-                                    playButton.isEnabled = true
-                                }
-                            }
-                        }
+                userParent.addOnSuccessListener {
+                    if (it["email"] == currentUserEmail) {
+                        playButton.isEnabled = true
                     }
                 }
+            }
+        }
 
         switch.setOnClickListener {
-            if(switch.isChecked)
-                sessao.referencia.set(hashMapOf("isActive" to false), SetOptions.merge())
-            else {
+            val statusSession = sessao.isActive
+            sessao.isActive = !sessao.isActive
+
+            if(! statusSession) {
                 val intent: Intent = Intent(this.applicationContext, ChatSessaoActivity::class.java);
                 intent.putExtra("sessao", sessao);
-                sessao.referencia.set(hashMapOf("isActive" to true), SetOptions.merge());
                 startActivity(intent);
             }
         }
@@ -71,5 +70,7 @@ class SessaoActivity : AppCompatActivity() {
 
             startActivity(intent);
         }
+
+        switch.isChecked = sessao.isActive
     }
 }

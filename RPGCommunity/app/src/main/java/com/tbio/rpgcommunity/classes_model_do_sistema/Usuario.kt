@@ -34,7 +34,7 @@ class Usuario(id: String?,
     override val caminho: String
         get() = FirebaseFirestore
             .getInstance()
-            .document("Usuários/${this.getId()}").path
+            .document("Usuarios/${this.getId()}").path
 
     // referencia no banco de dados para o personagem atual
     override val referencia: DocumentReference

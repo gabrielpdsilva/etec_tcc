@@ -100,8 +100,62 @@ class CriarPersonagem : AppCompatActivity() {
                                        historia = Historia(historia = edtHistoria.text.toString()),
                                        image = imgPersonagemUri)
                                     .saveDB( fun(doc){
-                                        toast("Personagem salvo com sucesso!")
-                                        finish()
+
+                                        doc.get()
+                                                .addOnSuccessListener {
+                                                    val p = Personagem.toNewObject(it) as Personagem
+
+                                                    p.parentReference!!.get()
+                                                            .addOnSuccessListener {u ->
+                                                                // split the description and name by ' ' spaces values
+                                                                val splitedDescription = p.descricao?.getDescricaoBasica()?.splitToSequence(' ', ignoreCase = true)
+                                                                val splitedName = p.nome.nome.splitToSequence(' ', ignoreCase = true)
+                                                                val splitedNameCreator = (u["nickname.nome"] as String).splitToSequence(' ', ignoreCase = true)
+
+                                                                // define the search key array list to save in 'Pesquisas'
+                                                                val searchKeyList: ArrayList<String> = arrayListOf<String>()
+
+                                                                splitedDescription?.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                splitedName.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                splitedNameCreator.forEach {strFull ->
+                                                                    val splitedValueChuncked = strFull.chunked(3)
+
+                                                                    splitedValueChuncked.forEach {strPieces ->
+                                                                        searchKeyList.add(strPieces.toLowerCase())
+                                                                    }
+                                                                }
+
+                                                                val hashToBeSavedOnPesquisas = hashMapOf<String, Any?>(
+                                                                        "searchKeyList" to searchKeyList,
+                                                                        "docReference" to p.referencia,
+                                                                        "searchedTimes" to 0,
+                                                                        "docTypeClass" to "personagem"
+                                                                )
+
+                                                                FirebaseFirestore.getInstance().collection("Pesquisas")
+                                                                        .add(hashToBeSavedOnPesquisas)
+                                                                        .addOnFailureListener {e ->
+                                                                            Log.i("DebugCriarPersonagem", e.message)
+                                                                        }
+
+                                                                toast("Personagem salvo com sucesso!")
+                                                                finish()
+                                                            }
+                                                }
                                     }, fun (e){
                                         toast(Erros.ERRO_AO_CRIAR_PERSONAGEM)
                                         Log.e(Tags.TAG_ERROR_CPA, e.message.toString() + e.stackTrace)
