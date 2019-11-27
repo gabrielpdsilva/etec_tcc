@@ -31,12 +31,13 @@ import java.util.*
 
 class PerfilFragment : Fragment() {
 
+    private lateinit var realView: View
     private lateinit var personagens: MutableList<Personagem>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = LayoutInflater.from(container?.context).inflate(R.layout.fragment_perfil, container, false)
+        realView = LayoutInflater.from(container?.context).inflate(R.layout.fragment_perfil, container, false)
 
-        view.findViewById<ProgressBar>(R.id.pbPersonagens).visibility = View.VISIBLE
+        realView.findViewById<ProgressBar>(R.id.pbPersonagens).visibility = View.VISIBLE
 
         FirebaseFirestore
                 .getInstance()
@@ -48,9 +49,9 @@ class PerfilFragment : Fragment() {
                     for(usuario in it){
                         val mUsuario = Usuario.toNewObject(usuario) as Usuario
 
-                        val nicknamePerfil = activity!!.findViewById<TextView>(R.id.nicknamePerfil_perfil)
-                        val fotoPerfil = activity!!.findViewById<ImageView>(R.id.avatarPerfil)
-                        val emailPerfil = activity!!.findViewById<TextView>(R.id.lblEmailUsuario)
+                        val nicknamePerfil = realView.findViewById<TextView>(R.id.nicknamePerfil_perfil)
+                        val fotoPerfil = realView.findViewById<ImageView>(R.id.avatarPerfil)
+                        val emailPerfil = realView.findViewById<TextView>(R.id.lblEmailUsuario)
 
                         nicknamePerfil.text = mUsuario.nickname.nome
                         //idPerfil.text = mUsuario.getId()
@@ -77,7 +78,7 @@ class PerfilFragment : Fragment() {
                     }
                 }
 
-        val imgPerfil = view.findViewById<ImageView>(R.id.avatarPerfil)
+        val imgPerfil = realView.findViewById<ImageView>(R.id.avatarPerfil)
 
         imgPerfil.setOnClickListener {
             val intentToGalery = Intent(Intent.ACTION_PICK)
@@ -88,7 +89,7 @@ class PerfilFragment : Fragment() {
 
 
 
-        return view
+        return realView
     }
 
     private fun setPersonagemRecyclerView() {

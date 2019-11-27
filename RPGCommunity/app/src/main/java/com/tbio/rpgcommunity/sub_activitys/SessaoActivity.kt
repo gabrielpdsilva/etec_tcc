@@ -26,13 +26,22 @@ class SessaoActivity : AppCompatActivity() {
         val switch = findViewById<Switch>(R.id.activity_sessao_switch);
         val sessao: Sessao = intent!!.extras!!["sessao"] as Sessao;
         val playButton = findViewById<Button>(R.id.sessao_btn_play);
+        this.title = "Sessão: " + sessao.nome.nome;
 
         val currentUserEmail: String = FirebaseAuth.getInstance().currentUser!!.email.toString();
+
+        sessao.getSessionState {
+            switch.isChecked = it["isActive"] as Boolean
+            Log.i("DebugActivitySessao", "Valor de isActive fora do chat: ${sessao.isActive}")
+        }
 
         sessao.parentReference!!.get()
                 .addOnSuccessListener {
                     if((it["email"] as String) == currentUserEmail) {
                         switch.isEnabled = true;
+
+                        if(switch.isChecked)
+                            playButton.isEnabled = true;
                     }
                 }
 
@@ -56,7 +65,7 @@ class SessaoActivity : AppCompatActivity() {
 
         switch.setOnClickListener {
             val statusSession = sessao.isActive
-            sessao.isActive = !sessao.isActive
+            sessao.saveSessionState(! sessao.isActive)
 
             if(! statusSession) {
                 val intent: Intent = Intent(this.applicationContext, ChatSessaoActivity::class.java);
@@ -71,7 +80,5 @@ class SessaoActivity : AppCompatActivity() {
 
             startActivity(intent);
         }
-
-        switch.isChecked = sessao.isActive
     }
 }

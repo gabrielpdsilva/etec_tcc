@@ -17,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -34,13 +35,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var isSearchButtonAlreadyPressed: Boolean = false
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val searchFragment: SearchFragment = SearchFragment()
+    private lateinit var currentFrag: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        loadHome(frag = HomeFragment())
+        if(savedInstanceState != null) {
+            val frag: Fragment = supportFragmentManager.getFragment(savedInstanceState, "oldFragment")!!
+            this.title = savedInstanceState.getString("oldTitle")
+            loadAnyFrag(frag)
+        } else {
+            loadHome(frag = HomeFragment())
+        }
 
         // captura a imagem e o campo de texto da navbar de perfil
         val headerView = findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
@@ -177,6 +185,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun loadAnyFrag(frag: Fragment) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.frameLayout, frag)
+        fm.commit()
+        this.currentFrag = frag
+    }
+
     //Aqui é a opção de Settings (Configurações). Deixei como comentário aqui e no XML
     /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -253,6 +268,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
+        this.currentFrag = frag
+        this.title = "Home"
     }
 
     //função que carrega a Fragment Meu Perfil
@@ -260,6 +277,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
+        this.currentFrag = frag
+        this.title = "Profile"
     }
 
     //função que carrega a Fragment Amigos
@@ -267,6 +286,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
+        this.currentFrag = frag
+        this.title = "Friends"
     }
 
     //função que carrega a Fragment Sessões
@@ -274,6 +295,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
+        this.currentFrag = frag
+        this.title = "My Sessions"
+    }
+
+    public override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        supportFragmentManager.putFragment(outState, "oldFragment", currentFrag)
+        outState.putString("oldTitle", this.title.toString())
     }
 
 }

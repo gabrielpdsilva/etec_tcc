@@ -47,6 +47,8 @@ class PerfilActivity : AppCompatActivity() {
                                 thisUserAlreadyIsFriend = true
                         }
 
+                        Log.i("DebugAddAmigo", "thisUserAlreadySendSolicitation = $thisUserAlreadyIsFriend")
+
                         btnAddFriend.isEnabled = ! thisUserAlreadyIsFriend;
                     }
                 }
@@ -61,8 +63,10 @@ class PerfilActivity : AppCompatActivity() {
                                     var thisUserAlreadySendSolicitation = false
                                     for(solicitation in solicitations) {
                                         if(solicitation["userDocFromSolicitation"] == u.reference)
-                                            thisUserAlreadySendSolicitation
+                                            thisUserAlreadySendSolicitation = true
                                     }
+
+                                    Log.i("DebugAddAmigo", "thisUserAlreadySendSolicitation = $thisUserAlreadySendSolicitation")
 
                                     btnAddFriend.isEnabled = ! thisUserAlreadySendSolicitation;
                                 }

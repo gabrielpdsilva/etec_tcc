@@ -28,16 +28,38 @@ class Sessao (
         var descricao: Descricao? = null // descrição da Sessão
         )
     : SubDocumentoRpgItem(id, parentId) {
+    init {
+        this.referencia.get()
+                .addOnSuccessListener {
+                    this.isActive = it["isActive"] as Boolean
+                }
+    }
+
     override var parentReference: DocumentReference? = null
         get() = this.referencia.parent.parent
 
     var isActive: Boolean = false
-        set(newStatus) {
-            this.referencia
-                    .set(hashMapOf<String, Boolean>("isActive" to newStatus), SetOptions.merge())
 
-            field = newStatus
-        }
+
+    fun saveSessionState(newState: Boolean) {
+            this.referencia
+                    .set(hashMapOf<String, Boolean>("isActive" to newState), SetOptions.merge())
+
+            this.referencia
+                    .get()
+                    .addOnSuccessListener{
+                        Log.i("DebugActivitySessao", "isActive = ${it["isActive"]}")
+                    }
+
+            this.isActive = newState
+    }
+
+    fun getSessionState(funcBeforeStart: ((newSession: DocumentSnapshot) -> Any?)? = null) {
+        this.referencia.get()
+                .addOnSuccessListener {
+                    funcBeforeStart?.invoke(it)
+                }
+    }
 
     var visibilidadeDeAcesso: Int = 0
         set(newVisibilidade) {

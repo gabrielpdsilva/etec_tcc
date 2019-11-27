@@ -15,6 +15,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -32,6 +33,8 @@ import org.jetbrains.anko.coroutines.experimental.asReference
 import org.jetbrains.anko.toast
 import java.util.*
 import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
+import org.jetbrains.anko.imageResource
+import java.io.File
 
 class CriarSessao : AppCompatActivity() {
 
@@ -56,6 +59,18 @@ class CriarSessao : AppCompatActivity() {
         this.personagens = mutableListOf<String>()
         this.p = mutableListOf<Personagem>()
         this.imagemSessao = findViewById(R.id.sessaoImagem)
+
+        if(savedInstanceState != null) {
+            this.p = savedInstanceState.getParcelableArrayList<Personagem>("personagensSelecionados").toMutableList() as ArrayList<Personagem>? ?: mutableListOf()
+            this.uriImagemSelecionada = savedInstanceState.getString("oldImageSession")?.toUri()
+
+            if(this.uriImagemSelecionada != null) {
+                Picasso.get()
+                        .load(this.uriImagemSelecionada)
+                        .resizeDimen(this.imagemSessao.height, 400)
+                        .into(this.imagemSessao)
+            }
+        }
 
         this.setRecyclerView(this.p);
 
@@ -219,22 +234,58 @@ class CriarSessao : AppCompatActivity() {
                 if(resultCode == Activity.RESULT_OK){
                     // armazena o caminho da imagem na nossa proprieda URI
                     this.uriImagemSelecionada = data!!.data
+                    var imagePath: String? = null
+                    if(this.uriImagemSelecionada.toString().contains("content:")) {
+                        val holder = contentResolver.query(
+                                    this.uriImagemSelecionada,
+                                    arrayOf(MediaStore.Images.Media.DATA),
+                                    null,
+                                    null,
+                                    null)
+                        val columnIndex = holder.getColumnIndexOrThrow(
+                                MediaStore.Images.Media.DATA
+                        )
+
+                        holder.moveToFirst()
+
+                        Log.i("DebugCriarSessao", "Truly Path = ${holder.getString(columnIndex)}")
+
+                        imagePath = holder.getString(columnIndex)
+                    }
+
                     // mostra a imagem selecionada no ImageButton
-                    val bm = MediaStore.Images.Media.getBitmap(contentResolver, this.uriImagemSelecionada)
-                    imagemSessao.setImageDrawable(BitmapDrawable(bm))
+                    val imageFile = File(imagePath!!)
+
+                    if(imageFile.exists()) {
+                        Log.i("DebugCriarSessao", "File Path = ${imageFile.absolutePath}")
+                        Picasso.get()
+                                .load("file:///storage/6465-3034/Download/images.jpg")
+                                .into(this.imagemSessao)
+                    }
                 }
             }
 
             Codigos.CODIGO_PARA_ADICIONAR_JOGADOR -> {
                 val personagemResult =
-                        data!!.extras!!.getParcelable<Personagem>("personagem_selecionado")!!
+                        data?.extras?.getParcelable<Personagem>("personagem_selecionado")
 
-                if(! p.contains(personagemResult)) {
-                    p.add(personagemResult)
-                    personagens.add(personagemResult.referencia.path)
-                    this.setRecyclerView(p)
+                if(personagemResult != null) {
+                    if (!p.contains(personagemResult)) {
+                        p.add(personagemResult)
+                        personagens.add(personagemResult.referencia.path)
+                        this.setRecyclerView(p)
+                    }
                 }
             }
         }
+    }
+
+    public override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        if(uriImagemSelecionada != null)
+            outState.putString("oldImageSession", uriImagemSelecionada.toString())
+
+        outState.putParcelableArrayList("personagensSelecionados", ArrayList(p))
     }
 }

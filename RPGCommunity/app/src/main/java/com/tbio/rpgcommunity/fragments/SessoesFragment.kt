@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,9 +19,10 @@ import kotlinx.android.synthetic.main.fragment_sessoes.*
 
 class SessoesFragment : Fragment() {
     private lateinit var sessoes: MutableList<Sessao>
+    private lateinit var realView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = LayoutInflater.from(container?.context).inflate(R.layout.fragment_sessoes, container, false)
+        realView = LayoutInflater.from(container?.context).inflate(R.layout.fragment_sessoes, container, false)
 
         FirebaseFirestore.getInstance()
                 .collection("Usuarios")
@@ -44,26 +46,26 @@ class SessoesFragment : Fragment() {
                     }
                 }
 
-        return view;
+        return realView;
     }
 
     fun setSessionRecyclerView() {
         // define a progressbar como invisível
-        view!!.findViewById<ProgressBar>(R.id.PbSessoes).visibility = View.GONE
+        realView.findViewById<ProgressBar>(R.id.PbSessoes).visibility = View.GONE
 
         if(sessoes.size > 0) {
             // define a visibilidade de 'Não existem sessões disponíveis' como false
-            txtNaoExistemSessoesSuas.visibility = View.GONE
+            realView.findViewById<TextView>(R.id.txtNaoExistemSessoesSuas).visibility = View.GONE
 
             // define o adapter da RecyclerView
-            fragment_sessoes_recycler_view.adapter = SessaoAdapter(sessoes, view!!.context)
+            realView.findViewById<RecyclerView>(R.id.fragment_sessoes_recycler_view).adapter = SessaoAdapter(sessoes, realView!!.context)
 
             // define o layout da RecyclerView
-            val linearLayout = LinearLayoutManager(view!!.context)
+            val linearLayout = LinearLayoutManager(realView.context)
             linearLayout.orientation = RecyclerView.VERTICAL
-            fragment_sessoes_recycler_view.layoutManager = linearLayout
+            realView.findViewById<RecyclerView>(R.id.fragment_sessoes_recycler_view).layoutManager = linearLayout
         } else {
-            txtNaoExistemSessoesSuas.visibility = View.VISIBLE
+            realView.findViewById<TextView>(R.id.txtNaoExistemSessoesSuas).visibility = View.VISIBLE
         }
     }
 }

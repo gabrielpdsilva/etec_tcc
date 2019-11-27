@@ -77,6 +77,7 @@ class HomeFragment : Fragment() {
                         Log.e("error_ffc", it.message.toString())
                     }
         } else {
+            activity!!.title = itemToSearch;
             val itemToSearchSplited = itemToSearch.toLowerCase().split(' ')
             val itemToSearchKeys: MutableList<String> = mutableListOf()
             itemToSearchSplited.forEach {
