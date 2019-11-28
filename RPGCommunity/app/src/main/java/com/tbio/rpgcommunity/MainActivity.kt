@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             loadHome(frag = HomeFragment())
         }
 
+        floatingSessao.isEnabled = false;
+        floatingPersonagem.isEnabled = false;
+
         // captura a imagem e o campo de texto da navbar de perfil
         val headerView = findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
         val profileImg = headerView.findViewById<ImageView>(R.id.imageMenu)!!;
@@ -77,9 +80,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //*********************************************************************************************************************//
 
         //floating action menu, necessario mudar a funcao
-        fab.setOnClickListener { view ->
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-             //       .setAction("Action", null).show()
+        fab.setOnMenuToggleListener{ view ->
+            floatingSessao.isEnabled = ! floatingSessao.isEnabled;
+            floatingPersonagem.isEnabled = ! floatingPersonagem.isEnabled;
         }
 
         //floating action button de criar personagem
@@ -186,9 +189,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun loadAnyFrag(frag: Fragment) {
-        val fm = supportFragmentManager.beginTransaction()
-        fm.replace(R.id.frameLayout, frag)
-        fm.commit()
+        val fm = getSupportFragmentManager().beginTransaction();
+        fm.replace(R.id.frameLayout, frag);
+        fm.commit();
         this.currentFrag = frag
     }
 

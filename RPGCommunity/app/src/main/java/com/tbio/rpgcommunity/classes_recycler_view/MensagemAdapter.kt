@@ -16,7 +16,10 @@ import kotlinx.android.synthetic.main.list_item_mensagens.*
 import kotlinx.android.synthetic.main.list_item_mensagens.view.*
 import java.lang.Exception
 import android.R
-
+import android.graphics.Typeface
+import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
+import com.tbio.rpgcommunity.classes_model_do_sistema.Palavras
+import java.nio.charset.CodingErrorAction
 
 
 class MensagemAdapter(val mensagens: MutableList<Mensagem>,
@@ -45,11 +48,26 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
                     holder.mensagem!!.text = this.mensagens[position].mensagem;
                     holder.cardView!!.visibility = View.VISIBLE
 
-                    Log.d("DebugChat", this.mensagens[position].mensagem);
-                    Log.d("DebugChat", holder.mensagem!!.text.toString());
-                    Log.d("DebugChat", it["email"].toString());
-                    Log.d("DebugChat", this.mensagens[position].de!!.path);
-                    Log.d("DebugChat", it.reference.path, Exception("Passou por aqui denovor"));
+                    when(this.mensagens[position].comportamento) {
+                        Codigos.ACAO -> {
+                            holder.mensagem!!.typeface = Typeface.DEFAULT_BOLD
+                        }
+
+                        Codigos.FALA -> {
+                            holder.mensagem!!.text = " — ${this.mensagens[position].mensagem}"
+                        }
+
+                        Codigos.PENSAMENTO -> {
+                            holder.mensagem!!.text = """"${this.mensagens[position].mensagem}""""
+                            holder.mensagem!!.typeface = Typeface.create(holder.mensagem!!.typeface, Typeface.ITALIC)
+                        }
+
+                        Codigos.COMUM -> {
+
+                        }
+
+                        else -> throw IllegalArgumentException("Valor inválido passado para comportamento")
+                    }
                 }
     }
 

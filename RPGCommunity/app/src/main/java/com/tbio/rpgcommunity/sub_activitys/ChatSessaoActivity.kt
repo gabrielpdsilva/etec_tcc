@@ -15,6 +15,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import com.tbio.rpgcommunity.R
+import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
 import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
 import com.tbio.rpgcommunity.classes_recycler_view.MensagemAdapter
@@ -30,6 +31,9 @@ class ChatSessaoActivity : AppCompatActivity() {
     private lateinit var mButtonEnviar: AppCompatImageButton
     private lateinit var mEditxtMensagem: EditText
     private lateinit var sessao: Sessao
+    private lateinit var btnToChangeBehave: AppCompatImageButton
+    private var currentBehave: Int = Codigos.ACAO
+    private var behaviorCount: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,7 @@ class ChatSessaoActivity : AppCompatActivity() {
         this.sessao = intent.extras!!["sessao"] as Sessao
         this.mensagens = mutableListOf()
         this.rvChat = findViewById<RecyclerView>(R.id.activity_chat_sessao_recycler_view)
+        this.btnToChangeBehave = findViewById(R.id.activity_chat_sessao_btn_acao)
 
         db.collection("${sessao.caminho}/Histórico de mensagens")
                 .limit(50)
@@ -70,12 +75,13 @@ class ChatSessaoActivity : AppCompatActivity() {
                                                     parentReference = this.sessao.referencia,
                                                     de = user.reference,
                                                     para = this.sessao.referencia,
-                                                    mensagem = this.mEditxtMensagem.text.toString())
+                                                    mensagem = this.mEditxtMensagem.text.toString(),
+                                                    comportamento = this.currentBehave)
 
                             db.collection("${this.sessao.caminho}/Histórico de mensagens")
                                     .add(message.toHashMap())
                                     .addOnSuccessListener {
-                                        toast("Mensagem enviada")
+                                        this.mEditxtMensagem.text.clear()
                                     }
                         }
                     }
@@ -101,6 +107,12 @@ class ChatSessaoActivity : AppCompatActivity() {
                             (rvChat.adapter?.itemCount ?: 1) - 1
                     )
                 }
+
+        this.btnToChangeBehave.setOnClickListener {
+            ++this.behaviorCount
+            this.setBehavior()
+            Log.i("DebugChatSessao", "Ação: " + this.behaviorCount)
+        }
     }
 
     fun setMensagensRecyclerView() {
@@ -118,8 +130,31 @@ class ChatSessaoActivity : AppCompatActivity() {
             val linearLayout = LinearLayoutManager(this.applicationContext)
             linearLayout.orientation = RecyclerView.VERTICAL
             rvChat.layoutManager = linearLayout
-        } else {
+        }
+    }
 
+    fun setBehavior() {
+        when(this.behaviorCount) {
+            1 -> {
+                this.currentBehave = Codigos.ACAO
+            }
+
+            2 -> {
+                this.currentBehave = Codigos.FALA
+            }
+
+            3 -> {
+                this.currentBehave = Codigos.PENSAMENTO
+            }
+
+            4 -> {
+                this.currentBehave = Codigos.COMUM
+            }
+
+            else -> {
+                this.behaviorCount = 1
+                this.setBehavior()
+            }
         }
     }
 }

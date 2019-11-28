@@ -8,6 +8,18 @@ object Codigos{
     const val CODIGO_PARA_CADASTRAR_USUARIO = 100
     const val CODIGO_PARA_REQUISITAR_IMAGEM = 108
     const val CODIGO_PARA_ADICIONAR_JOGADOR: Int = 116
+
+    const val ACAO = 150
+    const val FALA = 154
+    const val PENSAMENTO = 158
+    const val COMUM = 160
+}
+
+object Palavras {
+    const val ACAO = "acao"
+    const val FALA = "fala"
+    const val PENSAMENTO = "pensamento"
+    const val COMUM = "comum"
 }
 
 object Erros{

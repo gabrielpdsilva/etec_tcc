@@ -61,7 +61,8 @@
             android:src="@drawable/ic_floating_personagem"
             app:fab_colorRipple="@color/colorPrimaryDark"
             app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimaryDark" />
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            />
 
         <!--Floating action button Sessão-->
         <com.github.clans.fab.FloatingActionButton

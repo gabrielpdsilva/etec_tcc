@@ -16,7 +16,8 @@ class Mensagem(
                // dados da mensagem
                var de: DocumentReference?,
                var para: DocumentReference?,
-               val mensagem: String) : SubDocumentoRpgItem(id, parentId) {
+               val mensagem: String,
+               val comportamento: Int = Codigos.COMUM) : SubDocumentoRpgItem(id, parentId) {
     override val caminho: String
         get() = this.referencia.path
 
@@ -30,6 +31,7 @@ class Mensagem(
         mensagemHashMap.put("to", this.para)
         mensagemHashMap.put("message", this.mensagem)
         mensagemHashMap.put("date", Timestamp.now())
+        mensagemHashMap.put("comportamento", this.getStringBehavior())
 
         return mensagemHashMap
     }
@@ -86,13 +88,36 @@ class Mensagem(
     }
 
     companion object CREATOR : Parcelable.Creator<Mensagem> {
+        fun getCodeBehavior(strBehavior: String): Int {
+            when(strBehavior) {
+                Palavras.ACAO -> {
+                    return Codigos.ACAO
+                }
+
+                Palavras.FALA -> {
+                    return Codigos.FALA
+                }
+
+                Palavras.PENSAMENTO -> {
+                    return Codigos.PENSAMENTO
+                }
+
+                Palavras.COMUM -> {
+                    return Codigos.COMUM
+                }
+
+                else -> throw IllegalArgumentException("Valor inválido passado para comportamento")
+            }
+        }
+
         fun toNewObject(doc: DocumentSnapshot) =
-                Mensagem(id = doc.id,
-                         parentId = doc.reference.parent.parent!!.id,
-                         parentReference = doc.reference.parent.parent,
-                         de = doc["from"] as DocumentReference,
-                         para = null,
-                         mensagem = doc["message"] as String)
+            Mensagem(id = doc.id,
+                    parentId = doc.reference.parent.parent!!.id,
+                    parentReference = doc.reference.parent.parent,
+                    de = doc["from"] as DocumentReference,
+                    para = null,
+                    mensagem = doc["message"] as String,
+                    comportamento = Mensagem.getCodeBehavior(doc["comportamento"] as String))
 
         override fun createFromParcel(parcel: Parcel): Mensagem {
             return Mensagem(parcel)
@@ -100,6 +125,28 @@ class Mensagem(
 
         override fun newArray(size: Int): Array<Mensagem?> {
             return arrayOfNulls(size)
+        }
+    }
+
+    fun getStringBehavior(): String {
+        when(this.comportamento) {
+            Codigos.ACAO -> {
+                return Palavras.ACAO
+            }
+
+            Codigos.FALA -> {
+                return Palavras.FALA
+            }
+
+            Codigos.PENSAMENTO -> {
+                return Palavras.PENSAMENTO
+            }
+
+            Codigos.COMUM -> {
+                return Palavras.COMUM
+            }
+
+            else -> throw IllegalArgumentException("Valor inválido passado para comportamento")
         }
     }
 }
