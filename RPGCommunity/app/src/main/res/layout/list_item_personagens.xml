@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="5dp"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/custom_img_foto_personagem"
             android:layout_width="95dp"
@@ -24,15 +25,27 @@
 
         <!--TextView nome do personagem-->
         <TextView
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/custom_img_foto_personagem"
             android:id="@+id/custom_txt_nome_personagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/estilo_list_item_personagem"/>
 
-        <!--TextView classe do personagem-->
+
+        <!--TextView sessão do personagem-->
         <TextView
             android:layout_below="@id/custom_txt_nome_personagem"
+            android:layout_toRightOf="@id/custom_img_foto_personagem"
+            android:id="@+id/custom_txt_sessao_personagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSessaoNome"
+            style="@style/estilo_list_item_personagem"/>
+
+        <!--TextView descrição do personagem-->
+        <TextView
+            android:layout_below="@id/custom_txt_sessao_personagem"
             android:layout_toRightOf="@id/custom_img_foto_personagem"
             android:id="@+id/custom_txt_descricao_personagem"
             android:layout_width="wrap_content"
@@ -40,15 +53,10 @@
             android:text="@string/txtDescricaoPersonagem"
             style="@style/estilo_list_item_personagem"/>
 
-        <!--TextView sessão do personagem-->
-        <TextView
-            android:layout_below="@id/custom_txt_descricao_personagem"
-            android:layout_toRightOf="@id/custom_img_foto_personagem"
-            android:id="@+id/custom_txt_sessao_personagem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtSessaoNome"
-            style="@style/estilo_list_item_personagem"/>
+        <View
+            android:id="@+id/linhaSeparadora"
+            style="@style/Linha"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 

@@ -126,6 +126,7 @@
     <string name="voce_nao_possui_amigos">Você não possui amigos</string>
     <string name="voce_nao_tem_solicitacoes">Você não possui solicitações de amizade</string>
     <string name="start_session">Sessão ativa</string>
+    <string name="sem_personagens">Sem personagens...</string>
 
     <!--Textos sobre sessoes...-->
     <string name="sessao_salva_com_sucesso">Sessão criada com sucesso!</string>

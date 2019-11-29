@@ -96,7 +96,6 @@
                 android:layout_marginTop="190dp"
                 android:text="@string/txtInformacoesGerais" />
 
-
             <!--TextView E-mail:-->
             <TextView
                 android:id="@+id/lblEmail"
@@ -105,6 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/lblInformacoesGerais"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/txtEmailPerfil" />
 
             <!--TextView e-mail do usuário-->
@@ -115,11 +115,13 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/lblInformacoesGerais"
                 android:layout_toRightOf="@+id/lblEmail"
+                android:layout_marginTop="5dp"
                 android:text="@string/txtFragmentEmailPerfil" />
-
 
             <View
                 android:id="@+id/linhaSeparadora"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 style="@style/Linha"
                 android:layout_below="@id/lblEmailUsuario" />
 
@@ -136,7 +138,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPersonagens"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="230dp"
                 android:layout_below="@id/lblListaPersonagens"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
@@ -148,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="300sp" />
+                android:layout_marginTop="350sp" />
 
             <TextView
                 android:id="@+id/txt_vazio_personagens_perfil"
@@ -157,9 +159,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="350sp"
                 android:visibility="gone"
-                android:text="Vazio" />
-
-
+                style="@style/TextViewHomeBold"
+                android:text="@string/sem_personagens"/>
 
         </RelativeLayout>
 
