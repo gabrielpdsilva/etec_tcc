@@ -12,14 +12,21 @@
         android:layout_height="match_parent"
         tools:context=".TelaLogin">
 
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/logo_rpg_community"
+            android:id="@+id/logo_aplicativo"/>
+
         <!--CardView-->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="0dp"
+            android:layout_below="@+id/logo_aplicativo"
             app:cardBackgroundColor="@color/cardViewCinza">
 
         <LinearLayout
@@ -27,6 +34,7 @@
             android:orientation="vertical"
             android:layout_margin="10dp"
             android:layout_height="wrap_content">
+
 <!--
             <TextView
                 android:layout_width="match_parent"
@@ -162,7 +170,7 @@
                 android:id="@+id/tvCadastrar"
                 android:clickable="true"
                 android:onClick="onClick"
-                style="@style/TextViewHomeBoldTitulo"
+                style="@style/TextViewComum"
                 android:layout_gravity="center_horizontal"
                 android:textSize="21sp"/>
 

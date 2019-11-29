@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tcc_wallpaper_agora_vai"
     tools:context=".sub_activitys.ChatSessaoActivity">
     
     <androidx.recyclerview.widget.RecyclerView
@@ -35,31 +36,43 @@
                 android:id="@+id/activity_chat_sessao_edt_message"
                 android:layout_width="250dp"
                 android:layout_height="60dp"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:maxWidth="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/activity_chat_sessao_btn_enviar"
                 android:inputType="textPersonName"/>
 
+            <!--Botão Agir-->
+            <ImageButton
+                android:layout_marginTop="13dp"
+                android:id="@+id/activity_chat_sessao_btn_acao"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:layout_toLeftOf="@+id/activity_chat_sessao_btn_dado"
+                android:src="@mipmap/rpg_agir"/>
+
+            <!--Botão de Dado-->
+            <ImageButton
+                android:layout_marginTop="13dp"
+                android:id="@+id/activity_chat_sessao_btn_dado"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:layout_toLeftOf="@+id/activity_chat_sessao_btn_enviar"
+                android:src="@mipmap/logo_agora_vai"/>
+
             <!--Botão Enviar-->
             <ImageButton
+                android:layout_marginTop="13dp"
                 android:id="@+id/activity_chat_sessao_btn_enviar"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@null"
-                android:layout_margin="8dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_enviar"/>
 
-            <ImageButton
-                android:id="@+id/activity_chat_sessao_btn_acao"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@null"
-                android:layout_margin="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_toLeftOf="@+id/activity_chat_sessao_btn_enviar"
-                android:src="@drawable/ic_enviar"/>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

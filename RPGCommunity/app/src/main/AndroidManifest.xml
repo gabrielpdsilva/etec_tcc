@@ -11,7 +11,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".sub_activitys.AdicionarJogadorActivity"></activity>
         <activity android:name=".sub_activitys.ChatSessaoActivity" />
-        <activity android:name=".sub_activitys.SessaoActivity" />
+
+        <activity
+            android:name=".sub_activitys.SessaoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".sub_activitys.SessaoActivity" />
+        </activity>
+
         <activity android:name=".sub_activitys.PersonagemActivity" />
         <activity android:name=".sub_activitys.PerfilActivity" />
         <activity

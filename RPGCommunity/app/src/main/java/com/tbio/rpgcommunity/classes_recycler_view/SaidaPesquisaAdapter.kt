@@ -133,6 +133,7 @@ class SaidaPesquisaAdapter (val pesquisasItems: MutableList<out DocumentoRpgItem
 
         Picasso.get()
                 .load(s.imagem)
+                .resize(265, 155)
                 .into(holder.sessionImg)
     }
 

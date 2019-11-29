@@ -133,4 +133,7 @@
     <string name="amigo_adicionar">Adicionar amigo</string>
     <string name="amigo_excluir">Excluir amigo</string>
     <string name="play_button_text">Participar!</string>
+
+    <!--Tradução do chat-->
+    <string name="chat_eu">~ Eu</string>
 </resources>
