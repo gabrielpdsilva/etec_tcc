@@ -54,7 +54,7 @@
             style="@style/estilo_list_item_personagem"/>
 
         <View
-            android:id="@+id/linhaSeparadora"
+            android:id="@+id/linhaSeparadoraPersonagens"
             style="@style/Linha"
             android:layout_alignParentBottom="true"/>
 

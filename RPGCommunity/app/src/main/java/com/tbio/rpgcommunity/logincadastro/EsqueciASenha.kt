@@ -6,6 +6,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.tbio.rpgcommunity.R
+import com.tbio.rpgcommunity.classes_model_do_sistema.Divergencias
 import org.jetbrains.anko.toast
 
 class EsqueciASenha : AppCompatActivity() {
@@ -24,12 +25,12 @@ class EsqueciASenha : AppCompatActivity() {
 
             if(emailToSendReset.isEmpty() || emailToSendReset.isBlank()) {
                 this.edtEmailResetPass.isFocusable = true
-                this.edtEmailResetPass.error = "Preencha este campo"
+                this.edtEmailResetPass.error = Divergencias.RESET_CAMPO_VAZIO
             } else {
                 try {
                     FirebaseAuth.getInstance().sendPasswordResetEmail(emailToSendReset)
                             .addOnSuccessListener {
-                                toast("email de reset de senha enviado")
+                                toast(R.string.txtResetEnviado)
                                 finish()
                             }
                 } catch (e: Exception) {

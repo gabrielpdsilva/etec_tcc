@@ -92,6 +92,7 @@
     <string name="txtDuploClique">Clique novamente para sair.</string>
     <string name="txtLoginRealizado">Login realizado com sucesso.</string>
     <string name="txtLoginErro">Usuário inválido!</string>
+    <string name="txtResetEnviado">E-mail de reset de senha enviado com sucesso</string>
 
     <!--Alerts-->
     <string name="txtLogoutCerteza">Tem certeza de que deseja fazer logout?</string>
@@ -103,6 +104,7 @@
     <string name="txtSessaoNome">Sessão: </string>
     <string name="txtSessaoDescricao">Descrição: </string>
     <string name="txtSessaoSistema">Sistema: </string>
+    <string name="txtSessaoTituloImagem">Imagem da sessão:</string>
     <string name="txtSessaoMestre">Mestre: </string>
     <string name="txtSessaoNumeroJogadores">Nº de jogadores: </string>
     <string name="txtSessaoId">ID da sessão: </string>

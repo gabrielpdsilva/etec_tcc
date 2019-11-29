@@ -119,11 +119,11 @@
                 android:text="@string/txtFragmentEmailPerfil" />
 
             <View
-                android:id="@+id/linhaSeparadora"
+                android:id="@+id/linhaSeparadoraPerfil"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 style="@style/Linha"
-                android:layout_below="@id/lblEmailUsuario" />
+                android:layout_below="@id/lblEmailUsuario"/>
 
             <!--*********************************************************************************-->
 
@@ -132,7 +132,7 @@
                 style="@style/TextViewTitulos"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@id/linhaSeparadora"
+                android:layout_below="@id/linhaSeparadoraPerfil"
                 android:text="@string/txtListaDePersonagens" />
 
             <androidx.recyclerview.widget.RecyclerView
