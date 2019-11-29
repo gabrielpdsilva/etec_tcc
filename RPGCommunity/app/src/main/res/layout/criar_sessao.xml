@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/fundoCinza">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,12 +39,12 @@
 
                 <!--Imagem da sessão-->
                 <ImageView
+                    android:layout_marginTop="15dp"
                     android:id="@+id/sessaoImagem"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="265dp"
+                    android:layout_height="165dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/caixasDeTexto"/>
 
                 <Button
@@ -172,6 +172,7 @@
 
         <!--Botão pra criar sessão-->
         <Button
+            android:layout_below="@+id/cardView"
             android:id="@+id/sessaoBotaoCriarSessao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -188,6 +189,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </ScrollView>

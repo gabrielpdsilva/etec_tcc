@@ -23,12 +23,4 @@
         android:icon="@drawable/ic_editar"
         />
 
-    <item android:id="@+id/menu_adicionar_amigo"
-        android:title="@string/amigo_adicionar"
-        />
-
-    <item android:id="@+id/menu_excluir_amigo"
-        android:title="@string/amigo_excluir"
-        />
-
 </menu>

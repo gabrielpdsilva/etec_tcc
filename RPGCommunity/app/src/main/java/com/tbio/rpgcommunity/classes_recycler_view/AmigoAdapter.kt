@@ -27,7 +27,7 @@ class AmigoAdapter(val amigos: MutableList<Usuario>,
     override fun onBindViewHolder(holder: AmigoViewHolder, position: Int) {
 
         // define os valores nos atributos do XML
-        holder.nome.text = amigos[position].nickname.nome
+        //holder.nome.text = amigos[position].nickname.nome
         holder.nickname.text = amigos[position].nickname.toString()
 
         holder.cardview.setOnClickListener {
@@ -51,7 +51,7 @@ class AmigoAdapter(val amigos: MutableList<Usuario>,
     inner class AmigoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val cardview = itemView.custom_cdv_item_amigo
         var nickname = itemView.nicknameAmigo
-        var nome = itemView.nomeAmigo
+        //var nome = itemView.nomeAmigo
         var foto = itemView.imgAmigo
     }
 }

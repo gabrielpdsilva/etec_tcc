@@ -50,7 +50,7 @@
                 android:padding="3dp"
                 android:layout_gravity="right"
                 android:textStyle="italic"
-                android:text="~ Me" />
+                android:text="@string/chat_eu" />
 
             <TextView
                 android:layout_alignParentRight="true"
