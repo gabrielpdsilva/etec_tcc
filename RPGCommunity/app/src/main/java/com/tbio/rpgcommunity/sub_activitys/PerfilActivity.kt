@@ -61,6 +61,7 @@ class PerfilActivity : AppCompatActivity() {
                             .addOnSuccessListener {user ->
                                 for(u in user) {
                                     var thisUserAlreadySendSolicitation = false
+
                                     for(solicitation in solicitations) {
                                         if(solicitation["userDocFromSolicitation"] == u.reference)
                                             thisUserAlreadySendSolicitation = true

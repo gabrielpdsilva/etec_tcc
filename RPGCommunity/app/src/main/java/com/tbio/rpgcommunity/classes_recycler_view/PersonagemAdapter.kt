@@ -38,7 +38,6 @@ class PersonagemAdapter(val context: Context,
         if (isThisAdapterToReturn)
             holder.cardview.setOnClickListener {
                 onItemClick?.invoke(personagens[position])
-                // selectedPersonagens.add(personagens[position])
             }
 
         else

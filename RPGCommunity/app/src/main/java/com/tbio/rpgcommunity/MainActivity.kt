@@ -136,15 +136,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 searchView.clearFocus()
                 searchView.setQuery("", false)
                 searchItem.collapseActionView()
-                toast("Looking for $query")
 
                 val homeFrag = HomeFragment()
                 val arguments = Bundle()
 
-                arguments.putString("search", query!!.toLowerCase())
+                arguments.putString("search", query!!)
 
                 homeFrag.arguments = arguments
-                loadHome(homeFrag)
+                loadAnyFrag(homeFrag)
                 return true
             }
 
@@ -214,25 +213,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // home
                 loadHome(frag = HomeFragment())
             }
+
             R.id.nav_perfil -> {
                 // perfil
                 loadMeuPerfil(frag = PerfilFragment())
             }
+
             R.id.nav_amigos -> {
                 // amigos
                 loadAmigos(frag = AmigosFragment())
             }
+
             R.id.nav_sessoes -> {
                 // sessões
                 loadSessoes(frag = SessoesFragment())
 
             }
 
-            //menu nav_rascunho, que marquei como comentário em xml
-            /*
-            R.id.nav_rascunho -> {
-
-            }*/
+            R.id.nav_solicitacoes -> {
+                // solicitações
+                loadSolicitacoes(SolicitacoesFragment())
+            }
 
             R.id.nav_configuracoes -> {
                 startActivity<Configuracoes>()
@@ -300,6 +301,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fm.commit()
         this.currentFrag = frag
         this.title = "My Sessions"
+    }
+
+    private fun loadSolicitacoes(frag: SolicitacoesFragment) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.frameLayout, frag)
+        fm.commit()
+        this.currentFrag = frag
+        this.title = "Solicitations"
     }
 
     public override fun onSaveInstanceState(outState: Bundle) {

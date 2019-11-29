@@ -32,6 +32,7 @@
     <string name="txtAmigos">Amigos</string>
     <string name="txtOutros">Outras opções</string>
     <string name="txtSessoes">Sessões</string>
+    <string name="txtSolicitacoes">Solicitações</string>
     <string name="txtLogout">Logout</string>
 
     <!--Floating action buttons-->
