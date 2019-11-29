@@ -33,7 +33,8 @@
     <string name="txtAmigos">Friends</string>
     <string name="txtOutros">Other options</string>
     <string name="txtSessoes">Sessions</string>
-    <string name="txtSolicitacoes">Solicitations</string>
+    <string name="txtSolicitacoes">Friend Request</string>
+    <string name="txtConfiguracoes">Settings</string>
     <string name="txtLogout">Logout</string>
 
     <!--Floating action buttons-->
@@ -123,7 +124,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="voce_nao_pertence_sessoes">You are not in any sessions</string>
-    <string name="voce_nao_possui_amigos">You have no friends.</string>
+    <string name="voce_nao_possui_amigos">You have no friends</string>
+    <string name="voce_nao_tem_solicitacoes">You have no friend request</string>
     <string name="start_session">Session started</string>
 
     <!--Textos sobre sessoes...-->
@@ -133,7 +135,6 @@
     <string name="editar_isso">Edit...</string>
 
     <string name="amigo_adicionar">Adicionar amigo</string>
-    <string name="amigo_excluir">Excluir amigo</string>
     <string name="play_button_text">Play!</string>
 
     <!--Tradução do chat-->

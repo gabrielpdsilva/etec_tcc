@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".sub_activitys.AdicionarJogadorActivity"></activity>
-        <activity android:name=".sub_activitys.ChatSessaoActivity" />
+
+        <activity android:name=".sub_activitys.ChatSessaoActivity"/>
 
         <activity
             android:name=".sub_activitys.SessaoActivity">
@@ -53,6 +54,7 @@
         <activity android:name=".Configuracoes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+                android:label="@string/txtConfiguracoes"
                 android:value=".MainActivity" />
         </activity>
         <activity

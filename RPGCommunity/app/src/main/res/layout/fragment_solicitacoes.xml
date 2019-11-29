@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundoCinza"
     tools:context=".fragments.SolicitacoesFragment">
 
     <ProgressBar
@@ -16,7 +17,7 @@
         android:id="@+id/txtYouHaveNoPendentSolicitations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Você não tem solicitações pendentes"
+        android:text="@string/voce_nao_tem_solicitacoes"
         android:textAlignment="center"
         android:layout_centerVertical="true"
         android:textSize="25dp"

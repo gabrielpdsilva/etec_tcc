@@ -268,12 +268,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+     //função que carrega a Fragment Home
     private fun loadHome(frag: HomeFragment) {
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
         this.currentFrag = frag
-        this.title = "Home"
+        this.title = getString(R.string.txtHome)
     }
 
     //função que carrega a Fragment Meu Perfil
@@ -282,16 +283,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
         this.currentFrag = frag
-        this.title = "Profile"
-    }
-
-    //função que carrega a Fragment Amigos
-    private fun loadAmigos(frag: AmigosFragment){
-        val fm = supportFragmentManager.beginTransaction()
-        fm.replace(R.id.frameLayout, frag)
-        fm.commit()
-        this.currentFrag = frag
-        this.title = "Friends"
+        this.title = getString(R.string.txtPerfil)
     }
 
     //função que carrega a Fragment Sessões
@@ -300,15 +292,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
         this.currentFrag = frag
-        this.title = "My Sessions"
+        this.title = getString(R.string.txtSessoes)
     }
 
+    //função que carrega a Fragment Amigos
+    private fun loadAmigos(frag: AmigosFragment){
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.frameLayout, frag)
+        fm.commit()
+        this.currentFrag = frag
+        this.title = getString(R.string.txtAmigos)
+    }
+
+    //função que carrega a Fragment Solicitações
     private fun loadSolicitacoes(frag: SolicitacoesFragment) {
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.frameLayout, frag)
         fm.commit()
         this.currentFrag = frag
-        this.title = "Solicitations"
+        this.title = getString(R.string.txtSolicitacoes)
     }
 
     public override fun onSaveInstanceState(outState: Bundle) {

@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:visibility="invisible"
+        app:cardBackgroundColor="@color/branco"
         android:layout_alignParentLeft="true">
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -21,6 +23,7 @@
                         android:id="@+id/from_name"
                         android:layout_margin="5dp"
                         android:visibility="invisible"
+                        android:textColor="@color/fundoCinza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -30,6 +33,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:textColor="@color/fundoCinza"
                         android:layout_below="@+id/from_name"
                         android:padding="5dp"/>
                 </RelativeLayout>
@@ -41,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:visibility="invisible"
+        app:cardBackgroundColor="@color/colorPrimary"
         android:layout_alignParentRight="true">
 
             <TextView
@@ -50,6 +55,7 @@
                 android:padding="3dp"
                 android:layout_gravity="right"
                 android:textStyle="italic"
+                android:textColor="@color/branco"
                 android:text="@string/chat_eu" />
 
             <TextView
@@ -57,6 +63,7 @@
                 android:id="@+id/list_item_mensagens_layout_enviando"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/branco"
                 android:paddingBottom="18dp"
                 android:layout_margin="10dp"
                 android:layout_below="@+id/me_name"
