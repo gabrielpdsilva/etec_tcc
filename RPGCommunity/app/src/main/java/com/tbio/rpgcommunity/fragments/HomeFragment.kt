@@ -12,6 +12,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -44,8 +45,11 @@ class HomeFragment : Fragment() {
                     .orderBy("searchedTimes", Query.Direction.DESCENDING)
                     .get()
                     .addOnSuccessListener {
-                        for(doc in it) {
+                        outerFor@for(doc in it) {
                             val docTypeClass = doc["docTypeClass"] as String
+
+                            if(docTypeClass == "usuario")
+                                continue@outerFor
                             (doc["docReference"] as DocumentReference)
                                     .get()
                                     .addOnSuccessListener {
@@ -58,10 +62,6 @@ class HomeFragment : Fragment() {
 
                                             "sessao" -> {
                                                 genericDocRpgItem = Sessao.toNewObject(it) as DocumentoRpgItem
-                                            }
-
-                                            "usuario" -> {
-                                                genericDocRpgItem = Usuario.toNewObject(it) as DocumentoRpgItem
                                             }
 
                                             else -> throw IllegalArgumentException("""valor de 'docTypeClass' inválido: $docTypeClass""")

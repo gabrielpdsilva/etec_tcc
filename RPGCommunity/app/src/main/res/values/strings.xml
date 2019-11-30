@@ -141,5 +141,6 @@
 
     <!--Tradução do chat-->
     <string name="chat_eu">~ Eu</string>
+    <string name="accept_solicitation">Accept</string>
 
 </resources>

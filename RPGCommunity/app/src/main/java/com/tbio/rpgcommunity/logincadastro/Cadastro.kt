@@ -1,6 +1,7 @@
 package com.tbio.rpgcommunity.logincadastro
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
@@ -13,8 +14,10 @@ import com.tbio.rpgcommunity.classes_model_do_sistema.Erros
 import com.tbio.rpgcommunity.classes_model_do_sistema.Nome
 import com.tbio.rpgcommunity.classes_model_do_sistema.Usuario
 import kotlinx.android.synthetic.main.cadastro.*
+import org.jetbrains.anko.coroutines.experimental.asReference
 import org.jetbrains.anko.email
 import org.jetbrains.anko.toast
+import java.util.ArrayList
 
 class Cadastro : AppCompatActivity() {
 
@@ -61,16 +64,42 @@ class Cadastro : AppCompatActivity() {
                         .addOnSuccessListener {
 
                             // cria o usuário para ser salvo no banco
-                            Usuario(id = it.user!!.uid,
+                            val u = Usuario(id = null,
                                     nickname = Nome(this.txtNickname.text.toString()),
-                                    email = it.user!!.email.toString())
-                                    .saveDB(fun (doc){
+                                    email = it.user!!.email.toString());
+
+                            u.saveDB(fun (doc){
+                                        val splitedName = u.nickname.nome.splitToSequence(' ', ignoreCase = true)
+
+                                        // define the search key array list to save in 'Pesquisas'
+                                        val searchKeyList: ArrayList<String> = arrayListOf<String>()
+
+                                        splitedName.forEach {strFull ->
+                                            val splitedValueChuncked = strFull.chunked(3)
+
+                                            splitedValueChuncked.forEach {strPieces ->
+                                                searchKeyList.add(strPieces.toLowerCase())
+                                            }
+                                        }
+
+                                        val hashToBeSavedOnPesquisas = hashMapOf<String, Any?>(
+                                                "searchKeyList" to searchKeyList,
+                                                "docReference" to doc,
+                                                "searchedTimes" to 0,
+                                                "docTypeClass" to "usuario"
+                                        )
+
+                                        FirebaseFirestore.getInstance().collection("Pesquisas")
+                                                .add(hashToBeSavedOnPesquisas)
+                                                .addOnFailureListener {
+                                                    Log.i("DebugCriarUsuario", it.message)
+                                                }
 
                                         // usuário salvo com sucesso
                                         toast("Usuário cadastrado com sucesso")
                                         finish()
                                     }, fun (exception){
-                                        toast(Erros.ERRO_AO_CRIAR_USUARIO)
+                                        Log.i("error_cusr", exception.toString());
                                         finish()
                                     })
                         }.addOnFailureListener {

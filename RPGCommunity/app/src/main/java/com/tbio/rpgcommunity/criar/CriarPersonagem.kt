@@ -99,7 +99,7 @@ class CriarPersonagem : AppCompatActivity() {
                                        descricao = Descricao(edtDescricao.text.toString()),
                                        historia = Historia(historia = edtHistoria.text.toString()),
                                        image = imgPersonagemUri)
-                                    .saveDB( fun(doc){
+                                    .saveDB(funcSuccessListener =  fun(doc){
 
                                         doc.get()
                                                 .addOnSuccessListener {
@@ -156,7 +156,7 @@ class CriarPersonagem : AppCompatActivity() {
                                                                 finish()
                                                             }
                                                 }
-                                    }, fun (e){
+                                    }, funcFailListener = fun (e){
                                         toast(Erros.ERRO_AO_CRIAR_PERSONAGEM)
                                         Log.e(Tags.TAG_ERROR_CPA, e.message.toString() + e.stackTrace)
                                     })

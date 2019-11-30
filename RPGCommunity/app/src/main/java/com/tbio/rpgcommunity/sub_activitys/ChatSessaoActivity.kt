@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import android.widget.EditText
+import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.Codigos
+import com.tbio.rpgcommunity.classes_model_do_sistema.Dado
 import com.tbio.rpgcommunity.classes_model_do_sistema.Mensagem
 import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
 import com.tbio.rpgcommunity.classes_recycler_view.MensagemAdapter
@@ -32,8 +34,9 @@ class ChatSessaoActivity : AppCompatActivity() {
     private lateinit var mEditxtMensagem: EditText
     private lateinit var sessao: Sessao
     private lateinit var btnToChangeBehave: AppCompatImageButton
-    private var currentBehave: Int = Codigos.ACAO
-    private var behaviorCount: Int = 1
+    private lateinit var btnPlayDice: AppCompatImageButton
+    private var currentBehave: Int = Codigos.COMUM
+    private var behaviorCount: Int = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,23 +50,11 @@ class ChatSessaoActivity : AppCompatActivity() {
         this.mensagens = mutableListOf()
         this.rvChat = findViewById<RecyclerView>(R.id.activity_chat_sessao_recycler_view)
         this.btnToChangeBehave = findViewById(R.id.activity_chat_sessao_btn_acao)
-
-        db.collection("${sessao.caminho}/Histórico de mensagens")
-                .limit(50)
-                .orderBy("date", Query.Direction.ASCENDING)
-                .get()
-                .addOnSuccessListener {
-                    for(m in it) {
-                        this.mensagens.add(Mensagem.toNewObject(m))
-                    }
-
-                    this.setMensagensRecyclerView()
-                    rvChat.layoutManager?.scrollToPosition(
-                            (rvChat.adapter?.itemCount ?: 1) - 1
-                    )
-                }
+        this.btnPlayDice = findViewById(R.id.activity_chat_sessao_btn_dado)
 
         this.mButtonEnviar.setOnClickListener {
+            val strToSave: String = this.mEditxtMensagem.text.toString()
+            this.mEditxtMensagem.text.clear()
             db.collection("Usuarios")
                     .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email!!)
                     .limit(1)
@@ -75,16 +66,84 @@ class ChatSessaoActivity : AppCompatActivity() {
                                                     parentReference = this.sessao.referencia,
                                                     de = user.reference,
                                                     para = this.sessao.referencia,
-                                                    mensagem = this.mEditxtMensagem.text.toString(),
+                                                    mensagem = strToSave,
                                                     comportamento = this.currentBehave)
 
                             db.collection("${this.sessao.caminho}/Histórico de mensagens")
                                     .add(message.toHashMap())
-                                    .addOnSuccessListener {
-                                        this.mEditxtMensagem.text.clear()
-                                    }
                         }
                     }
+        }
+
+        this.btnPlayDice.setOnClickListener {
+            val popupMenu: PopupMenu = PopupMenu(this, it)
+            popupMenu.inflate(R.menu.dado_menu)
+
+            popupMenu.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.menu_item_dado_d100 -> {
+                        val result = Dado.playDice100()
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d20 -> {
+                        val result = Dado.playDice(20)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d12 -> {
+                        val result = Dado.playDice(12)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d10 -> {
+                        val result = Dado.playDice(10)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d8 -> {
+                        val result = Dado.playDice(8)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d6 -> {
+                        val result = Dado.playDice(6)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    R.id.menu_item_dado_d4 -> {
+                        val result = Dado.playDice(4)
+
+                        val reference = FirebaseFirestore.getInstance().collection("${sessao.caminho}/Histórico de mensagens")
+
+                        Dado.saveDice(result, reference, it.title.toString())
+                    }
+
+                    else -> throw IllegalArgumentException("valor passado para it.itemId inválido")
+
+                }
+                true
+            }
+
+            popupMenu.show()
         }
 
         db.collection("${sessao.caminho}/Histórico de mensagens")
@@ -96,12 +155,12 @@ class ChatSessaoActivity : AppCompatActivity() {
                     }
 
                     for (doc in value!!.documentChanges) {
-                        if(doc.type == DocumentChange.Type.ADDED)
+                        if (doc.type == DocumentChange.Type.ADDED) {
                             mensagens.add(Mensagem.toNewObject(doc = doc.document))
+                        }
                     }
 
-                    rvChat.adapter?.notifyDataSetChanged()
-                            ?: setMensagensRecyclerView()
+                    rvChat.adapter?.notifyDataSetChanged() ?: this.setMensagensRecyclerView()
 
                     rvChat.layoutManager?.scrollToPosition(
                             (rvChat.adapter?.itemCount ?: 1) - 1

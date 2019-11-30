@@ -3,6 +3,7 @@ package com.tbio.rpgcommunity.classes_model_do_sistema
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import androidx.core.net.toUri
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
@@ -13,7 +14,7 @@ class Usuario(id: String?,
               val nickname: Nome,
               val email: String,
               val foto: Uri? = null,
-              val amigos: MutableList<DocumentReference>? = null)
+              var amigos: MutableList<DocumentReference>? = null)
     : DocumentoRpgItem(id), Parcelable{
 
     // retorna o objeto serializado em um HashMap
@@ -50,7 +51,13 @@ class Usuario(id: String?,
             mutableListOf()) {
 
             this.amigos.apply {
-                parcel.readList(this, DocumentReference::class.java.classLoader)
+                val pathsStrings: MutableList<String>? = mutableListOf<String>()
+                parcel.readList(pathsStrings, String::class.java.classLoader)
+
+                pathsStrings?.forEach {
+                    this!!.add(FirebaseFirestore.getInstance()
+                                .document(it))
+                }
             }
     }
 
@@ -62,15 +69,17 @@ class Usuario(id: String?,
 
         // retorna um objeto usuário a partir dos dados no banco
         fun toNewObject(doc: DocumentSnapshot): RpgItem{
-            val nome = Nome((doc["nickname"] as HashMap<String, Any?>).get("nome").toString(),
-                            (doc["nickname"] as HashMap<String, Any?>).get("sobrenome") as List<String>?)
+            val nome = Nome(doc["nickname.nome"].toString(),
+                            doc["nickname.sobrenome"] as List<String>?)
+
+            Log.i("DebugShowProfileList", "valor de email = " + doc["email"].toString())
 
             @Suppress("UNCHECKED_CAST")
             return Usuario(id = doc.id,
                            nickname = nome,
                            email = doc["email"] as String,
                            foto = (doc["foto"] as String?)?.toUri(),
-                           amigos = doc["amigos"] as MutableList<DocumentReference>?)
+                           amigos = (doc["amigos"] as ArrayList<DocumentReference>?)?.toMutableList() )
         }
     }
 
@@ -79,7 +88,13 @@ class Usuario(id: String?,
         parcel.writeParcelable(this.nickname, flags)
         parcel.writeString(email)
         parcel.writeParcelable(foto, flags)
-        parcel.writeList(this.amigos)
+
+        val listStringOfReference = mutableListOf<String>()
+        this.amigos?.forEach {
+            listStringOfReference.add(it.path)
+        }
+
+        parcel.writeList(listStringOfReference)
     }
 
     override fun describeContents(): Int {

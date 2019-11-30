@@ -122,8 +122,8 @@ class Sessao (
         override fun newArray(size: Int): Array<Sessao?> = arrayOfNulls(size)
 
         fun toNewObject(doc: DocumentSnapshot): RpgItem{
-            val nome = Nome((doc["nome"] as HashMap<String, Any?>).get("nome").toString(),
-                            (doc["nome"] as HashMap<String, Any?>).get("sobrenome") as List<String>?)
+            val nome = Nome(doc["nome.nome"].toString(),
+                            (doc["nome.sobrenome"] as List<String>?))
             val personagens: MutableList<String> = mutableListOf()
 
             (doc["personagens"] as List<DocumentReference>?)?.forEach {

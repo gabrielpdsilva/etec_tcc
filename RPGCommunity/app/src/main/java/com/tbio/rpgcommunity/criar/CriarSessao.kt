@@ -159,7 +159,7 @@ class CriarSessao : AppCompatActivity() {
                                    personagens = this.personagens,
                                    sistema = sistema,
                                    descricao = Descricao(descricao))
-                                    .saveDB(fun (doc) {
+                                    .saveDB(funcSuccessListener = fun (doc) {
                                         doc.get()
                                                 .addOnSuccessListener {
                                                     val s: Sessao = Sessao.toNewObject(it) as Sessao
@@ -217,7 +217,7 @@ class CriarSessao : AppCompatActivity() {
 
                                                 }
 
-                                    }, fun (exception) {
+                                    }, funcFailListener = fun (exception) {
                                         toast(Erros.ERRO_AO_CRIAR_SESSAO)
                                         finish()
                                     })

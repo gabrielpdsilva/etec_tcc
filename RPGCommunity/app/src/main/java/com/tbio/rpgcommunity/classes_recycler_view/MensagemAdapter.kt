@@ -41,6 +41,8 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
                         holder.cardView = holder.itemView.list_item_mensagens_crdview_enviando
                     }
                     else {
+                        holder.fromMensagem = holder.itemView.from_name
+                        holder.fromMensagem!!.text = it["nickname.nome"] as String
                         holder.mensagem = holder.itemView.list_item_mensagens_layout_chegando
                         holder.cardView = holder.itemView.list_item_mensagens_crdview_chegando
                     }
@@ -66,6 +68,10 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
 
                         }
 
+                        Codigos.SISTEMA -> {
+
+                        }
+
                         else -> throw IllegalArgumentException("Valor inválido passado para comportamento")
                     }
                 }
@@ -76,6 +82,7 @@ class MensagemAdapter(val mensagens: MutableList<Mensagem>,
     }
 
     inner class MensagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        var fromMensagem: TextView? = null
         var mensagem: TextView? = null
         var cardView: CardView? = null
     }

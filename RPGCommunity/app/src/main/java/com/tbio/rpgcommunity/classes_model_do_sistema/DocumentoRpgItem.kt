@@ -11,13 +11,14 @@ abstract class DocumentoRpgItem(private val id: String?) : RpgItem(){
     fun getId() = this.id
 
     // salva o documento-objeto atual no banco de dados
-    fun saveDB(funcSuccessListener: (doc: DocumentReference) -> Unit, funcFailListener: (e: Exception) -> Unit) {
+    fun saveDB(funcFailListener: ((e: Exception) -> Unit)? = null,
+               funcSuccessListener: ((doc: DocumentReference) -> Unit)? = null) {
         this.referencia.parent.add(this.toHashMap())
             .addOnSuccessListener {
-                funcSuccessListener(it)
+                funcSuccessListener?.invoke(it)
             }
             .addOnFailureListener {
-                funcFailListener(it)
+                funcFailListener?.invoke(it)
             }
     }
 

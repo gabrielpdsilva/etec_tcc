@@ -22,7 +22,7 @@ class Mensagem(
         get() = this.referencia.path
 
     override val referencia: DocumentReference
-    get() = FirebaseFirestore.getInstance().document("${this.parentReference!!.path}/Histórico de Mensagens/${this.getId()}")
+    get() = FirebaseFirestore.getInstance().document("${this.parentReference!!.path}/Histórico de mensagens/${this.getId()}")
 
     override fun toHashMap(): HashMap<String, Any?> {
         val mensagemHashMap = hashMapOf<String, Any?>()
@@ -106,6 +106,10 @@ class Mensagem(
                     return Codigos.COMUM
                 }
 
+                Palavras.SISTEMA -> {
+                    return Codigos.SISTEMA
+                }
+
                 else -> throw IllegalArgumentException("Valor inválido passado para comportamento")
             }
         }
@@ -117,7 +121,7 @@ class Mensagem(
                     de = doc["from"] as DocumentReference,
                     para = null,
                     mensagem = doc["message"] as String,
-                    comportamento = Mensagem.getCodeBehavior(doc["comportamento"] as String))
+                    comportamento = getCodeBehavior(doc["comportamento"] as String))
 
         override fun createFromParcel(parcel: Parcel): Mensagem {
             return Mensagem(parcel)
@@ -144,6 +148,10 @@ class Mensagem(
 
             Codigos.COMUM -> {
                 return Palavras.COMUM
+            }
+
+            Codigos.SISTEMA -> {
+                return Palavras.SISTEMA
             }
 
             else -> throw IllegalArgumentException("Valor inválido passado para comportamento")

@@ -13,6 +13,7 @@ object Codigos{
     const val FALA = 154
     const val PENSAMENTO = 158
     const val COMUM = 160
+    const val SISTEMA = 162
 }
 
 object Palavras {
@@ -20,6 +21,7 @@ object Palavras {
     const val FALA = "fala"
     const val PENSAMENTO = "pensamento"
     const val COMUM = "comum"
+    const val SISTEMA = "sistema"
 }
 
 object Erros{
