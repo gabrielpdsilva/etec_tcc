@@ -137,27 +137,27 @@ class ChatSessaoActivity : AppCompatActivity() {
         when(this.behaviorCount) {
             1 -> {
                 this.currentBehave = Codigos.ACAO
-                btnToChangeBehave.setImageResource(R.mipmap.rpg_agir)
+                btnToChangeBehave.setImageResource(R.mipmap.rpg_render_agir)
             }
 
             2 -> {
                 this.currentBehave = Codigos.FALA
-                btnToChangeBehave.setImageResource(R.mipmap.rpg_falar)
+                btnToChangeBehave.setImageResource(R.mipmap.rpg_render_falar)
             }
 
             3 -> {
                 this.currentBehave = Codigos.PENSAMENTO
-                btnToChangeBehave.setImageResource(R.mipmap.rpg_pensar)
+                btnToChangeBehave.setImageResource(R.mipmap.rpg_render_pensar)
             }
 
             4 -> {
                 this.currentBehave = Codigos.COMUM
-                btnToChangeBehave.setImageResource(R.mipmap.rpg_comum)
+                btnToChangeBehave.setImageResource(R.mipmap.rpg_render_comum)
             }
 
             else -> {
                 this.behaviorCount = 1
-                btnToChangeBehave.setImageResource(R.mipmap.rpg_comum)
+                btnToChangeBehave.setImageResource(R.mipmap.rpg_render_comum)
                 this.setBehavior()
             }
         }

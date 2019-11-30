@@ -50,7 +50,7 @@
                 android:layout_height="40dp"
                 android:background="@null"
                 android:layout_toLeftOf="@+id/activity_chat_sessao_btn_dado"
-                android:src="@mipmap/rpg_agir"/>
+                android:src="@mipmap/rpg_render_agir"/>
 
             <!--Botão de Dado-->
             <ImageButton
