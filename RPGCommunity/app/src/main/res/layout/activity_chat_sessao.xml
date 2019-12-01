@@ -46,7 +46,6 @@
 
             <!--Botão Agir-->
             <ImageButton
-                android:layout_marginTop="13dp"
                 android:id="@+id/activity_chat_sessao_btn_acao"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

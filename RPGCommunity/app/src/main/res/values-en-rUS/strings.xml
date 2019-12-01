@@ -63,8 +63,7 @@
     <string name="txtTituloSessao">Title:</string>
     <string name="txtSistemaDaSessao">System:</string>
     <string name="txtAddSessao">Add players:</string>
-    <string name="btnAdicionar">Add</string>
-    <string name="btnImagemDaSessao">Add image</string>
+    <string name="btnAdicionar">Add...</string>
 
     <!--Sobre o Manifest-->
     <string name="txtManNovoPersonagem">New character</string>
@@ -137,9 +136,11 @@
 
     <string name="editar_isso">Edit...</string>
 
-    <string name="amigo_adicionar">Adicionar amigo</string>
+    <string name="amigo_adicionar">Add friend</string>
     <string name="play_button_text">Play!</string>
 
     <!--Tradução do chat-->
     <string name="chat_eu">~ Me</string>
+    <string name="accept_solicitation">Accept</string>
+
 </resources>

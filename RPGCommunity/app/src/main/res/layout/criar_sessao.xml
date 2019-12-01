@@ -173,10 +173,10 @@
                 <Button
                     android:id="@+id/sessaoBotaoAddJogadores"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="230dp"
+                    android:layout_height="35dp"
                     android:layout_below="@id/rvJogadores"
                     style="@style/BotaoEstilo"
+                    android:layout_marginLeft="20dp"
                     android:text="@string/btnAdicionar" />
 
                 <View
@@ -212,11 +212,10 @@
                     android:id="@+id/sessaoBotaoImagem"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_marginLeft="170dp"
-                    android:padding="5dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_below="@id/sessaoImagem"
                     style="@style/BotaoEstilo"
-                    android:text="@string/btnImagemDaSessao"/>
+                    android:text="@string/btnAdicionar"/>
 
             </RelativeLayout>
 
