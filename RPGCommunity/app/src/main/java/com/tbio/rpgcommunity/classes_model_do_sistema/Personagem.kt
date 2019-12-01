@@ -4,6 +4,7 @@ package com.tbio.rpgcommunity.classes_model_do_sistema
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import androidx.core.net.toUri
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
@@ -19,7 +20,9 @@ class Personagem (
                   var sessao: DocumentReference? = null,
                   var descricao: Descricao? = null,
                   var historia: Historia? = null,
-                  var image: Uri? = null)
+                  var image: Uri? = null,
+                  var campos: CampoMap<String, Any?>? = null,
+                  var genero: String? = null)
     : SubDocumentoRpgItem(id, parentId){
     override var parentReference: DocumentReference? = null
         get() = this.referencia.parent.parent
@@ -56,8 +59,14 @@ class Personagem (
             put("descricao", descricao?.toHashMap())
             put("historia", historia?.toHashMap())
             put("imagem", image.toString())
+            put("genero", genero.toString())
+
             sessao?.let {
                 this.put("sessao", it)
+            }
+
+            campos?.let {
+                this.put("campos", it)
             }
         }
 
@@ -82,6 +91,11 @@ class Personagem (
             parcel.readParcelable<Descricao>(Descricao::class.java.classLoader),
             parcel.readParcelable<Historia>(Historia::class.java.classLoader),
             parcel.readParcelable(Uri::class.java.classLoader)){
+        if(this.campos == null)
+            this.campos = CampoMap()
+
+        parcel.readMap(this.campos, CampoMap::class.java.classLoader)
+
         parcel.readString()?.let {
             FirebaseFirestore.getInstance().document(it)
                     .get()
@@ -89,6 +103,12 @@ class Personagem (
                         this.sessao = it.reference
                     }
         }
+
+        parcel.readString()?.let {
+            this.genero = it
+        }
+
+        Log.i("DebugShowPersonagem", "parcel.readString() = ${parcel.readString()}")
     }
 
     override fun toObject(doc: DocumentSnapshot) {
@@ -127,7 +147,7 @@ class Personagem (
         override fun newArray(size: Int): Array<Personagem?> = arrayOfNulls(size)
 
         // instancia um novo objeto-personagem com baso nos dados do documento do Banco de Dados
-        fun toNewObject(doc: DocumentSnapshot): RpgItem{
+        fun toNewObject(doc: DocumentSnapshot): RpgItem {
             val nome = Nome((doc["nome"] as HashMap<String, Any?>).get("nome").toString(),
                             (doc["nome"] as HashMap<String, Any?>).get("sobrenome") as List<String>?)
 
@@ -138,7 +158,9 @@ class Personagem (
                               sessao = doc["sessao"] as DocumentReference?,
                               descricao = Descricao.toNewObject(doc["descricao"] as Map<String, Any?>) as Descricao?,
                               historia = Historia.toNewObject(doc["historia"] as Map<String, Any?>?) as Historia?,
-                              image = (doc["imagem"] as String?)?.toUri())
+                              image = (doc["imagem"] as String?)?.toUri(),
+                              campos = (doc["campos"] as HashMap<String, Any?>?)?.toCampoMap(),
+                              genero = doc["genero"] as String?)
         }
     }
 
@@ -149,7 +171,11 @@ class Personagem (
         parcel.writeParcelable(descricao, flags)
         parcel.writeParcelable(historia, flags)
         parcel.writeParcelable(image, flags)
+        parcel.writeMap(this.campos);
         parcel.writeString(sessao?.path)
+        parcel.writeString(genero)
+
+        Log.i("DebugShowPersonagem", "parcel.readString() = ${sessao?.path}")
     }
 
     override fun describeContents(): Int {

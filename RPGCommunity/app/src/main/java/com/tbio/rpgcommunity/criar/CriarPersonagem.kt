@@ -9,27 +9,35 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.tbio.rpgcommunity.R
 import com.tbio.rpgcommunity.classes_model_do_sistema.*
+import com.tbio.rpgcommunity.classes_recycler_view.CampoAdapter
 import org.jetbrains.anko.toast
 import java.util.*
 
 class CriarPersonagem : AppCompatActivity() {
 
     // propriedades do xml
+    private lateinit var rvPersonagemAddField: RecyclerView
     private lateinit var imgPersonagem: ImageView
     private lateinit var btnCriarPersonagem: Button
+    private lateinit var btnAddCampo: ImageButton
+    private lateinit var btnDeleteCampo: ImageButton
     private lateinit var edtNickname: EditText
-    private lateinit var edtClasse: EditText
     private lateinit var edtGenero: EditText
-    private lateinit var edtHabilidades: EditText
     private lateinit var edtDescricao: EditText
     private lateinit var edtHistoria: EditText
+    private lateinit var campos: CampoMap<String, Any?>
+    private var keys = mutableListOf<String>()
+    private var values = mutableListOf<String>()
 
     // propriedades do banco
     private var imgPersonagemUri: Uri? = null
@@ -38,12 +46,16 @@ class CriarPersonagem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.criar_personagem)
 
+        this.campos = CampoMap()
         edtNickname = findViewById(R.id.criar_personagem_edt_nickname)
-        edtClasse = findViewById(R.id.criar_personagem_edt_classe)
         edtGenero = findViewById(R.id.criar_personagem_edt_genero)
-        //edtHabilidades = findViewById(R.id.criar_personagem_edt_habilidades)
         edtDescricao = findViewById(R.id.criar_personagem_edt_descricao)
         edtHistoria = findViewById(R.id.criar_personagem_edt_historia)
+        rvPersonagemAddField = findViewById(R.id.rvPersonagemAddField)
+        btnAddCampo = findViewById(R.id.criar_personagem_btn_add_campo)
+        btnDeleteCampo = findViewById(R.id.criar_personagem_btn_delete_campo)
+
+        this.setRecyclerView()
 
         imgPersonagem = findViewById<ImageView>(R.id.criar_personagem_imv_imagem)
         imgPersonagem.setOnClickListener {
@@ -63,10 +75,54 @@ class CriarPersonagem : AppCompatActivity() {
                             it.metadata!!.reference!!.downloadUrl
                                     .addOnSuccessListener {
                                         this.imgPersonagemUri = it
+
+                                        var i = 0
+
+                                        for(key in keys) {
+                                            if(keys[i].isBlank() || keys[i].isEmpty())
+                                                continue
+
+                                            if(values[i].isBlank() || values[i].isEmpty())
+                                                continue
+
+                                            this.campos.put(keys[i], values[i])
+
+                                            ++i
+                                        }
+
                                         salvarPersonagem()
                                     }
                         }
             } ?: salvarPersonagem()
+        }
+
+        btnAddCampo.setOnClickListener {
+            /*this.campos.put("key" + (this.campos.size + 1), "value")
+
+            this.rvPersonagemAddField.adapter?.notifyDataSetChanged()
+            Log.i("DebugAddCampo", this.campos.toString())*/
+            this.keys.add(this.keys.size, "key" + this.keys.size)
+            this.values.add(this.values.size, "value" + this.values.size)
+
+            this.rvPersonagemAddField.adapter?.notifyDataSetChanged()
+                    ?: this.setRecyclerView()
+
+            Log.i("DebugAddCampo", this.keys.toString())
+            Log.i("DebugAddCampo", this.values.toString())
+        }
+
+        btnDeleteCampo.setOnClickListener {
+
+            if(this.keys.size > 0) {
+                this.keys.removeAt(this.keys.size - 1)
+                this.values.removeAt(this.values.size - 1)
+
+                this.rvPersonagemAddField.adapter?.notifyDataSetChanged()
+                        ?: this.setRecyclerView()
+
+                Log.i("DebugAddCampo", this.keys.toString())
+                Log.i("DebugAddCampo", this.values.toString())
+            }
         }
     }
 
@@ -79,9 +135,9 @@ class CriarPersonagem : AppCompatActivity() {
         }
 
         //se a classe do personagem estiver vazia
-        else if(edtClasse.text.toString().isEmpty()){
-            edtClasse.error = Divergencias.PERSONAGEM_CLASSE_VAZIA
-            edtClasse.isFocusable = true
+        else if(edtGenero.text.toString().isEmpty()){
+            edtGenero.error = Divergencias.PERSONAGEM_GENERO_VAZIO
+            edtGenero.isFocusable = true
         }
 
         else
@@ -98,7 +154,9 @@ class CriarPersonagem : AppCompatActivity() {
                                        sessao = null,
                                        descricao = Descricao(edtDescricao.text.toString()),
                                        historia = Historia(historia = edtHistoria.text.toString()),
-                                       image = imgPersonagemUri)
+                                       image = imgPersonagemUri,
+                                       campos = this.campos,
+                                       genero = this.edtGenero.text.toString())
                                     .saveDB(funcSuccessListener =  fun(doc){
 
                                         doc.get()
@@ -177,5 +235,35 @@ class CriarPersonagem : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun setRecyclerView() {
+        this.rvPersonagemAddField.adapter = CampoAdapter(this.keys, this,
+                onClickFunc = {
+                    /*val keys = this.campos.keys.toMutableList()
+                    this.campos.remove(keys[it])
+
+                    this.rvPersonagemAddField.adapter!!.notifyDataSetChanged()*/
+                    this.keys.removeAt(it)
+
+                    this.rvPersonagemAddField.adapter?.notifyDataSetChanged()
+                            ?: this.setRecyclerView()
+
+                    Log.i("DebugAddCampo", this.keys.toString())
+                }, onKeyTextChange = { str, pos ->
+                    this.keys.removeAt(pos)
+                    this.keys.add(pos, str)
+
+                    Log.i("DebugAddCampo", this.keys.toString() + " : pos = ${pos}")
+                }, onValueTextChange = { str, pos ->
+                    this.values.removeAt(pos)
+                    this.values.add(pos, str)
+
+                    Log.i("DebugAddCampo", this.values.toString() + " : pos = ${pos}")
+                })
+
+        val mLayout = LinearLayoutManager(this)
+        mLayout.orientation = RecyclerView.VERTICAL
+        this.rvPersonagemAddField.layoutManager = mLayout
     }
 }

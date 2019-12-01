@@ -61,22 +61,6 @@
                 android:textColorHint="@color/textosEditText"
                 android:layout_height="40dp" />
 
-                <!--Campo Classe-->
-
-            <EditText
-                android:id="@+id/criar_personagem_edt_classe"
-                android:singleLine="true"
-                android:maxLength="15"
-                android:hint="@string/txtClassePersonagem"
-                android:layout_below="@+id/criar_personagem_edt_nickname"
-                android:layout_toRightOf="@id/criar_personagem_imv_imagem"
-                android:textColor="@color/branco"
-                android:textColorHint="@color/textosEditText"
-                android:layout_width="match_parent"
-                android:layout_height="40dp" />
-
-                <!--Campo Sexo-->
-
             <EditText
                 android:id="@+id/criar_personagem_edt_genero"
                 android:singleLine="true"
@@ -85,7 +69,7 @@
                 android:textColor="@color/branco"
                 android:textColorHint="@color/textosEditText"
                 android:layout_toRightOf="@+id/criar_personagem_imv_imagem"
-                android:layout_below="@id/criar_personagem_edt_classe"
+                android:layout_below="@id/criar_personagem_edt_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
@@ -99,6 +83,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="138dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layout_margin="15dp">
+                <ImageButton
+                    android:id="@+id/criar_personagem_btn_add_campo"
+                    android:layout_width="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="40dp"/>
+
+                <ImageButton
+                    android:id="@+id/criar_personagem_btn_delete_campo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:contentDescription="qualquer coisa"
+                    android:layout_marginBottom="70dp"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPersonagemAddField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    />
 
                     <!--Campo Descrição:-->
                 <TextView
@@ -121,8 +133,7 @@
                     android:gravity="top|left"
                     android:background="@color/caixasDeTexto"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:maxLength="200"/>
+                    android:layout_marginEnd="20dp"/>
 
                     <!--Campo História do personagem:-->
                 <TextView
@@ -147,8 +158,7 @@
                     android:background="@color/caixasDeTexto"
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:maxLength="200"/>
+                    android:layout_marginEnd="20dp"/>
 
             </LinearLayout>
 

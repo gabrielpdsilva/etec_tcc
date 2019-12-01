@@ -16,7 +16,7 @@ import com.tbio.rpgcommunity.sub_activitys.SessaoActivity
 import kotlinx.android.synthetic.main.list_item_sessoes.view.*
 
 class SessaoAdapter(val sessoes: MutableList<Sessao>,
-                  val context: Context)
+                    val context: Context)
     : RecyclerView.Adapter<SessaoAdapter.SessaoViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessaoViewHolder =

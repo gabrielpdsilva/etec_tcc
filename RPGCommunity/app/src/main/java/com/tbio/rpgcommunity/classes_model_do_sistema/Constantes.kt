@@ -51,7 +51,7 @@ object Divergencias{
 
     //divergências nos dados do personagem
     const val PERSONAGEM_NOME_VAZIO = "Por favor, preencha o nome do personagem."
-    const val PERSONAGEM_CLASSE_VAZIA = "Por favor, preencha a classe do personagem."
+    const val PERSONAGEM_GENERO_VAZIO = "Por favor, escolha um gênero para o personagem"
 
     const val RESET_CAMPO_VAZIO = "Por favor, preencha este campo."
 
