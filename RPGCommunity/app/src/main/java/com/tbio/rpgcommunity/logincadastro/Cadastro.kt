@@ -68,7 +68,7 @@ class Cadastro : AppCompatActivity() {
                                     nickname = Nome(this.txtNickname.text.toString()),
                                     email = it.user!!.email.toString());
 
-                            u.saveDB(fun (doc){
+                            u.saveDB( funcSuccessListener = fun (doc){
                                         val splitedName = u.nickname.nome.splitToSequence(' ', ignoreCase = true)
 
                                         // define the search key array list to save in 'Pesquisas'
@@ -98,7 +98,7 @@ class Cadastro : AppCompatActivity() {
                                         // usuário salvo com sucesso
                                         toast("Usuário cadastrado com sucesso")
                                         finish()
-                                    }, fun (exception){
+                                    }, funcFailListener = fun (exception){
                                         Log.i("error_cusr", exception.toString());
                                         finish()
                                     })
