@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardBackgroundColor="@color/cardViewCinza"
+    app:cardBackgroundColor="@color/caixasDeTexto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Usuário -->
@@ -16,11 +16,17 @@
         android:layout_height="wrap_content"
         android:visibility="gone">
         <!--ImageView do amigo-->
-        <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="10dp"
+            android:background="@color/caixasDeTexto"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/list_item_output_pesquisa_user_img"
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:background="#c54342"/>
+            android:src="@drawable/ic_add_avatar"
+            app:civ_border_width="5dp"
+            app:civ_border_color="#ffffff"/>
 
         <!--TextView Nickname do amigo-->
         <TextView
@@ -38,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/list_item_output_pesquisa_user_img"
             android:layout_below="@+id/list_item_output_pesquisa_user_txt_nick"
-            android:text="Nome do amigo"
+            android:text="..."
             style="@style/TextViewHomeBold"/>
     </RelativeLayout>
 
@@ -137,6 +143,7 @@
         android:visibility="gone">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="10dp"
             android:id="@+id/list_item_output_pesquisa_person_img"
             android:layout_width="95dp"
             android:layout_height="95dp"
