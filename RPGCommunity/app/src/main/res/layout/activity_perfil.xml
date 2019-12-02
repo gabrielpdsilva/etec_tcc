@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".sub_activitys.PerfilActivity"
     android:background="@color/fundoCinza">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <Button
         android:id="@+id/activity_perfil_btn_add_friend"
@@ -36,12 +41,43 @@
         style="@style/TextViewTitulos"
         android:layout_below="@+id/img_perfil_usuario"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/nickname_perfil_usuario"
+    <TextView
+        android:id="@+id/profile_lista_de_personagens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="30dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_below="@id/nickname_perfil_usuario"
+        android:text="Lista de Personagens:"
+        android:textColor="@color/branco"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_perfil_rv_personagens"
+        android:layout_below="@+id/profile_lista_de_personagens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/profile_lista_de_sessoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_below="@id/activity_perfil_rv_personagens"
+        android:text="Lista de Sessões:"
+        android:textColor="@color/branco"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_perfil_rv_sessoes"
+        android:orientation="horizontal"
+        android:layout_below="@+id/profile_lista_de_sessoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp" />
+    </RelativeLayout>
+
+</ScrollView>

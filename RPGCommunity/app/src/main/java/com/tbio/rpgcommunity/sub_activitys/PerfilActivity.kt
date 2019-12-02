@@ -7,23 +7,36 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import com.tbio.rpgcommunity.R
+import com.tbio.rpgcommunity.classes_model_do_sistema.Personagem
+import com.tbio.rpgcommunity.classes_model_do_sistema.Sessao
 import com.tbio.rpgcommunity.classes_model_do_sistema.Usuario
+import com.tbio.rpgcommunity.classes_recycler_view.PersonagemAdapter
+import com.tbio.rpgcommunity.classes_recycler_view.SessaoAdapter
 import kotlinx.android.synthetic.main.activity_perfil.*
 import org.jetbrains.anko.toast
 
 class PerfilActivity : AppCompatActivity() {
     private lateinit var btnAddFriend: Button
     private lateinit var mUser: Usuario
+    private lateinit var rvPersonagens: RecyclerView
+    private lateinit var rvSessoes: RecyclerView
+    private var personagens = mutableListOf<Personagem>()
+    private var sessoes = mutableListOf<Sessao>()
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
+
+        this.rvPersonagens = findViewById(R.id.activity_perfil_rv_personagens)
+        this.rvSessoes = findViewById(R.id.activity_perfil_rv_sessoes)
 
         this.btnAddFriend = findViewById<Button>(R.id.activity_perfil_btn_add_friend)
         this.mUser = intent.getParcelableExtra<Usuario>("usuario")
@@ -32,6 +45,26 @@ class PerfilActivity : AppCompatActivity() {
         Picasso.get()
                 .load(mUser.foto)
                 .into(findViewById<ImageView>(R.id.img_perfil_usuario))
+
+        db.collection("${mUser.referencia.path}/Personagens")
+                .get()
+                .addOnSuccessListener {
+                    for(personagem in it) {
+                        this.personagens.add(Personagem.toNewObject(personagem) as Personagem)
+                    }
+
+                    this.setPersonagensRecyclerView()
+                }
+
+        db.collection("${mUser.referencia.path}/Sessoes")
+                .get()
+                .addOnSuccessListener {
+                    for(sessao in it) {
+                        this.sessoes.add(Sessao.toNewObject(sessao) as Sessao)
+                    }
+
+                    this.setSessoesRecyclerView()
+                }
 
         findViewById<TextView>(R.id.nickname_perfil_usuario).text = mUser.nickname.nome
 
@@ -110,5 +143,21 @@ class PerfilActivity : AppCompatActivity() {
                                 }
                     }
                 }
+    }
+
+    fun setPersonagensRecyclerView() {
+        this.rvSessoes.adapter = SessaoAdapter(this.sessoes, this)
+
+        val mLyt = LinearLayoutManager(this)
+        mLyt.orientation = RecyclerView.HORIZONTAL
+        this.rvSessoes.layoutManager = mLyt
+    }
+
+    fun setSessoesRecyclerView() {
+        this.rvPersonagens.adapter = PersonagemAdapter(this, this.personagens)
+
+        val mLyt = LinearLayoutManager(this)
+        mLyt.orientation = RecyclerView.HORIZONTAL
+        this.rvPersonagens.layoutManager = mLyt
     }
 }

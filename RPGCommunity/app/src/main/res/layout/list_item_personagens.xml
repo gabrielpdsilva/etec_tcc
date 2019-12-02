@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="115dp"
     android:id="@+id/custom_cdv_item_personagem"
-    android:background="@color/caixasDeTexto">
-
+    app:cardBackgroundColor="@color/cardViewCinza">
 
     <RelativeLayout
         android:id="@+id/linear_layout_personagens"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/caixasDeTexto">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_margin="5dp"
