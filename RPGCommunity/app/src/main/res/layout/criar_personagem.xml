@@ -82,7 +82,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="138dp">
+                android:layout_marginTop="130dp">
+
+                <TextView
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtAddCampos"
+                    style="@style/TextViewHomeBold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -90,27 +98,33 @@
                     android:orientation="horizontal"
                     android:layout_gravity="right"
                     android:layout_margin="15dp">
-                <ImageButton
-                    android:id="@+id/criar_personagem_btn_add_campo"
-                    android:layout_width="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_height="40dp"/>
 
-                <ImageButton
-                    android:id="@+id/criar_personagem_btn_delete_campo"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:contentDescription="qualquer coisa"
-                    android:layout_marginBottom="70dp"/>
+
+                    <ImageButton
+                        android:id="@+id/criar_personagem_btn_add_campo"
+                        android:layout_width="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_add_campo_branco"/>
+
+                    <ImageButton
+                        android:id="@+id/criar_personagem_btn_delete_campo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="qualquer coisa"
+                        android:src="@drawable/ic_remove_campo_branco"
+                        android:background="@null"
+                        android:layout_marginBottom="20dp"/>
+
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPersonagemAddField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    />
+                    android:orientation="vertical"/>
 
                     <!--Campo Descrição:-->
                 <TextView

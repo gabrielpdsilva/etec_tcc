@@ -5,12 +5,14 @@
     android:layout_height="wrap_content">
 
     <TextView
+        style="@style/TextViewHomeBold"
         android:id="@+id/list_item_campos_display_key"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:textAlignment="center"/>
 
     <TextView
+        style="@style/TextViewHomeBold"
         android:id="@+id/list_item_campos_display_double_dot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,10 +20,11 @@
         android:text=" : "/>
 
     <TextView
+        style="@style/TextViewComum"
         android:id="@+id/list_item_campos_display_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="5dp"
         android:layout_toRightOf="@+id/list_item_campos_display_double_dot"/>
 
 </RelativeLayout>

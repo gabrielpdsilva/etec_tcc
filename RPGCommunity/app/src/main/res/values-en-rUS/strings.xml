@@ -45,9 +45,6 @@
     <string name="txtPreferencias">Preferences</string>
     <string name="txtModoDiaNoite">Day/Night mode</string>
 
-    <!--Chat-->
-    <string name="txtDigiteMensagem">Type here...</string>
-
     <!--Criar personagem-->
     <string name="txtHistoriaPersonagem">Story:</string>
     <string name="txtDescricaoPersonagem">Description:</string>
@@ -56,6 +53,11 @@
     <string name="txtClassePersonagem">Class:</string>
     <string name="txtSexoPersonagem">Gender:</string>
     <string name="btnCriar">Create</string>
+    <string name="txtAddCampos">Add Fields:</string>
+    <string name="txtCampoPersonagem">Field</string>
+    <string name="txtValorPersonagem">Value</string>
+
+    <string name="txtInfoPersonagem">Character general informations:</string>
 
     <!--Criar Sessão-->
     <string name="txtCriarSessao">Create Session</string>
@@ -142,5 +144,6 @@
     <!--Tradução do chat-->
     <string name="chat_eu">~ Me</string>
     <string name="accept_solicitation">Accept</string>
+    <string name="txtDigiteMensagem">Type here...</string>
 
 </resources>
