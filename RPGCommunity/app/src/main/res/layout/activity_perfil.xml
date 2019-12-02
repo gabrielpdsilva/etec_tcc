@@ -20,7 +20,8 @@
         android:text="..."
         android:visibility="gone"
         android:enabled="false"
-        android:background="@color/fundoCinza"/>
+        style="@style/TextViewHomeBold"
+        android:background="@null"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:textAlignment="center"
-        android:textSize="20dp"
+        style="@style/TextViewComumBold"
         android:layout_below="@id/nickname_perfil_usuario"
         android:text="Lista de Personagens:"
         android:textColor="@color/branco"/>
@@ -67,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:textAlignment="center"
-        android:textSize="20dp"
+        style="@style/TextViewComumBold"
         android:layout_below="@id/activity_perfil_rv_personagens"
         android:text="Lista de Sessões:"
         android:textColor="@color/branco"/>
