@@ -3,6 +3,7 @@ package com.tbio.rpgcommunity.fragments
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
 import com.tbio.rpgcommunity.R
@@ -38,23 +40,30 @@ class SolicitacoesFragment : Fragment() {
                 .collection("Usuarios")
                 .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email)
                 .get()
-                .addOnSuccessListener {users ->
-                    for(user in users) {
-                        FirebaseFirestore.getInstance()
-                                .collection("Usuarios/${user.id}/Solicitacoes de Amizade")
-                                .get()
-                                .addOnSuccessListener {solicitationsFromDb ->
-                                    for(solicitation in solicitationsFromDb) {
-                                        this.solicitations.add(Solicitacao.toNewObject(solicitation))
+                .addOnSuccessListener {
+                        for(u in it) {
+                            FirebaseFirestore.getInstance()
+                                    .collection("${u.reference.path}/Solicitacoes de Amizade")
+                                    .addSnapshotListener { value, e ->
+                                        if (e != null) {
+                                            Log.w("DebugUpdateMensagens", "Listen failed.", e)
+                                            return@addSnapshotListener
+                                        }
+
+                                        for (doc in value!!.documentChanges) {
+                                            if (doc.type == DocumentChange.Type.ADDED) {
+                                                solicitations.add(Solicitacao.toNewObject(doc = doc.document))
+                                            }
+                                        }
+
+                                        this.rvSolicitations.adapter?.notifyDataSetChanged()
+                                                ?: this.setRecyclerView()
                                     }
-
-                                    this.setRecyclerView()
-                                }
+                        }
                     }
-                }
 
-        return this.realView
-    }
+                    return this.realView
+                }
 
     fun setRecyclerView() {
         this.pbSolicitacoes.visibility = View.GONE

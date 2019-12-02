@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
@@ -265,5 +266,11 @@ class CriarPersonagem : AppCompatActivity() {
         val mLayout = LinearLayoutManager(this)
         mLayout.orientation = RecyclerView.VERTICAL
         this.rvPersonagemAddField.layoutManager = mLayout
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
+        outState!!.putParcelable("image", this.imgPersonagemUri)
     }
 }
