@@ -156,7 +156,7 @@ class PerfilActivity : AppCompatActivity() {
                 }
     }
 
-    fun setPersonagensRecyclerView() {
+    fun setSessoesRecyclerView() {
         this.rvSessoes.adapter = SessaoAdapter(this.sessoes, this)
 
         val mLyt = LinearLayoutManager(this)
@@ -164,7 +164,7 @@ class PerfilActivity : AppCompatActivity() {
         this.rvSessoes.layoutManager = mLyt
     }
 
-    fun setSessoesRecyclerView() {
+    fun setPersonagensRecyclerView() {
         this.rvPersonagens.adapter = PersonagemAdapter(this, this.personagens)
 
         val mLyt = LinearLayoutManager(this)
