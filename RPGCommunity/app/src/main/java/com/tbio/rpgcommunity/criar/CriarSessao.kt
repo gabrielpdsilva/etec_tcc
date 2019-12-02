@@ -65,10 +65,9 @@ class CriarSessao : AppCompatActivity() {
             this.uriImagemSelecionada = savedInstanceState.getString("oldImageSession")?.toUri()
 
             if(this.uriImagemSelecionada != null) {
-                Picasso.get()
-                        .load(this.uriImagemSelecionada)
-                        .resizeDimen(this.imagemSessao.height, 400)
-                        .into(this.imagemSessao)
+                // mostra a imagem selecionada no ImageButton
+                val bm = MediaStore.Images.Media.getBitmap(contentResolver, this.uriImagemSelecionada)
+                imagemSessao.setImageDrawable(BitmapDrawable(bm))
             }
         }
 
@@ -234,34 +233,9 @@ class CriarSessao : AppCompatActivity() {
                 if(resultCode == Activity.RESULT_OK){
                     // armazena o caminho da imagem na nossa proprieda URI
                     this.uriImagemSelecionada = data!!.data
-                    var imagePath: String? = null
-                    if(this.uriImagemSelecionada.toString().contains("content:")) {
-                        val holder = contentResolver.query(
-                                    this.uriImagemSelecionada,
-                                    arrayOf(MediaStore.Images.Media.DATA),
-                                    null,
-                                    null,
-                                    null)
-                        val columnIndex = holder.getColumnIndexOrThrow(
-                                MediaStore.Images.Media.DATA
-                        )
-
-                        holder.moveToFirst()
-
-                        Log.i("DebugCriarSessao", "Truly Path = ${holder.getString(columnIndex)}")
-
-                        imagePath = holder.getString(columnIndex)
-                    }
-
                     // mostra a imagem selecionada no ImageButton
-                    val imageFile = File(imagePath!!)
-
-                    if(imageFile.exists()) {
-                        Log.i("DebugCriarSessao", "File Path = ${imageFile.absolutePath}")
-                        Picasso.get()
-                                .load("file:///storage/6465-3034/Download/images.jpg")
-                                .into(this.imagemSessao)
-                    }
+                    val bm = MediaStore.Images.Media.getBitmap(contentResolver, this.uriImagemSelecionada)
+                    imagemSessao.setImageDrawable(BitmapDrawable(bm))
                 }
             }
 

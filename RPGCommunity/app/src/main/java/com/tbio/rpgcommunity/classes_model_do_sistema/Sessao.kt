@@ -31,7 +31,7 @@ class Sessao (
     init {
         this.referencia.get()
                 .addOnSuccessListener {
-                    this.isActive = it["isActive"] as Boolean
+                    this.isActive = it["isActive"] as Boolean? ?: false
                 }
     }
 

@@ -1,156 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".sub_activitys.SessaoActivity"
-    android:background="@color/fundoCinza">
+    android:background="@color/fundoCinza"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt_titulo_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome da sessão"
+            android:gravity="center"
+            style="@style/TextViewHomeBoldTitulo"/>
 
     <!--
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/txt_titulo_sessao"
+            android:id="@+id/img_da_sessao"/>
 
-    <TextView
-        android:id="@+id/txt_titulo_sessao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nome da sessão"
-        android:gravity="center"
-        style="@style/TextViewHomeBoldTitulo"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_mestre"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_add_avatar"
+            app:civ_border_width="5dp"
+            android:layout_below="@id/img_da_sessao"
+            app:civ_border_color="@color/branco"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/txt_titulo_sessao"
-        android:id="@+id/img_da_sessao"/>
+        <TextView
+            android:layout_toRightOf="@id/img_mestre"
+            android:id="@+id/txt_mestre"
+            android:layout_below="@id/img_da_sessao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewHomeBoldTitulo"
+            android:text="Mestre:"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/img_mestre"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/ic_add_avatar"
-        app:civ_border_width="5dp"
-        android:layout_below="@id/img_da_sessao"
-        app:civ_border_color="@color/branco"/>
+            -->
 
-    <TextView
-        android:layout_toRightOf="@id/img_mestre"
-        android:id="@+id/txt_mestre"
-        android:layout_below="@id/img_da_sessao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextViewHomeBoldTitulo"
-        android:text="Mestre:"/>
-
-        -->
-
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/sessao_txt_nome_sessao"
-        style="@style/TextViewHomeBoldTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="3dp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/sessao_txt_nome_sessao"
+            style="@style/TextViewHomeBoldTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="3dp"/>
 
 
-    <ImageView
-        android:id="@+id/sessao_img_profile_sessao"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/sessao_txt_nome_sessao"/>
+        <ImageView
+            android:id="@+id/sessao_img_profile_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/sessao_txt_nome_sessao"/>
 
-    <TextView
-        style="@style/TextViewComumBold"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/sessao_txt_sistema"
-        android:text="@string/txtSessaoSistema"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sessao_img_profile_sessao" />
+        <TextView
+            style="@style/TextViewComumBold"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/sessao_txt_sistema"
+            android:text="@string/txtSessaoSistema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sessao_img_profile_sessao" />
 
-    <TextView
-        style="@style/TextViewComum"
-        android:id="@+id/dinamic_txt_sistema_sessao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sessao_img_profile_sessao"
-        android:layout_toRightOf="@+id/sessao_txt_sistema"/>
+        <TextView
+            style="@style/TextViewComum"
+            android:id="@+id/dinamic_txt_sistema_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sessao_img_profile_sessao"
+            android:layout_toRightOf="@+id/sessao_txt_sistema"/>
 
-    <TextView
-        style="@style/TextViewComumBold"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/custom_txt_descricao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtSessaoDescricao"
-        android:layout_below="@+id/sessao_txt_sistema"/>
+        <TextView
+            style="@style/TextViewComumBold"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/custom_txt_descricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSessaoDescricao"
+            android:layout_below="@+id/sessao_txt_sistema"/>
 
-    <TextView
-        style="@style/TextViewComum"
-        android:id="@+id/dinamic_txt_descricao_sessao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sessao_txt_sistema"
-        android:layout_toRightOf="@+id/custom_txt_descricao"/>
+        <TextView
+            style="@style/TextViewComum"
+            android:id="@+id/dinamic_txt_descricao_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sessao_txt_sistema"
+            android:layout_toRightOf="@+id/custom_txt_descricao"/>
 
-    <View
-        android:id="@+id/sessao_linhaSeparadora"
-        style="@style/Linha"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="0dp"
-        android:layout_margin="5dp"
-        android:layout_below="@id/dinamic_txt_descricao_sessao"/>
+        <View
+            android:id="@+id/sessao_linhaSeparadora"
+            style="@style/Linha"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_margin="5dp"
+            android:layout_below="@id/dinamic_txt_descricao_sessao"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_below="@+id/sessao_linhaSeparadora"
-        android:id="@+id/sessao_img_foto_mestre"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_add_avatar"
-        app:civ_border_width="3dp"
-        app:civ_border_color="@color/branco"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_below="@+id/sessao_linhaSeparadora"
+            android:id="@+id/sessao_img_foto_mestre"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_add_avatar"
+            app:civ_border_width="3dp"
+            app:civ_border_color="@color/branco"/>
 
-    <TextView
-        style="@style/TextViewComumBold"
-        android:id="@+id/sessao_txt_mestre"
-        android:text="@string/txtSessaoMestre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/sessao_img_foto_mestre"
-        android:layout_below="@+id/sessao_linhaSeparadora"/>
+        <TextView
+            style="@style/TextViewComumBold"
+            android:id="@+id/sessao_txt_mestre"
+            android:text="@string/txtSessaoMestre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sessao_img_foto_mestre"
+            android:layout_below="@+id/sessao_linhaSeparadora"/>
 
-    <TextView
-        style="@style/TextViewComum"
-        android:id="@+id/dinamic_txt_mestre_sessao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sessao_linhaSeparadora"
-        android:layout_toRightOf="@+id/sessao_txt_mestre"/>
+        <TextView
+            style="@style/TextViewComum"
+            android:id="@+id/dinamic_txt_mestre_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sessao_linhaSeparadora"
+            android:layout_toRightOf="@+id/sessao_txt_mestre"/>
 
-    <Switch
-        android:gravity="center"
-        android:layout_below="@+id/sessao_txt_mestre"
-        android:layout_toRightOf="@+id/sessao_img_foto_mestre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/activity_sessao_switch"
-        android:text="@string/start_session"
-        android:enabled="false"
-        style="@style/TextViewHomeBold"/>
+        <Switch
+            android:gravity="center"
+            android:layout_below="@+id/sessao_txt_mestre"
+            android:layout_toRightOf="@+id/sessao_img_foto_mestre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_sessao_switch"
+            android:text="@string/start_session"
+            android:enabled="false"
+            style="@style/TextViewHomeBold"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        style="@style/BotaoEstilo"
-        android:id="@+id/sessao_btn_play"
-        android:text="@string/play_button_text"
-        android:shadowRadius="@android:integer/config_shortAnimTime"
-        android:layout_below="@id/activity_sessao_switch"
-        android:enabled="false"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSessao"
+            android:layout_below="@+id/activity_sessao_switch"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
 
-</RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            style="@style/BotaoEstilo"
+            android:id="@+id/sessao_btn_play"
+            android:text="@string/play_button_text"
+            android:shadowRadius="@android:integer/config_shortAnimTime"
+            android:layout_below="@id/rvSessao"
+            android:enabled="false"/>
+    </RelativeLayout>
+</ScrollView>
