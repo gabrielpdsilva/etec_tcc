@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -187,6 +188,13 @@ class PerfilFragment : Fragment() {
                                     this@PerfilFragment.activity!!.contentResolver,
                                     data.data!!)
                             avatarPerfil.setImageDrawable(BitmapDrawable(mBitMap))
+
+                            val header =
+                                    activity!!.findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
+
+                            val profileImg = header.findViewById<ImageView>(R.id.imageMenu)!!;
+
+                            profileImg.setImageDrawable(BitmapDrawable(mBitMap))
                         }
                         negativeButton("não tenho certeza"){
                             // não faz nada

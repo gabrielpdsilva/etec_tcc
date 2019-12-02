@@ -3,6 +3,7 @@ package com.tbio.rpgcommunity.sub_activitys
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupMenu
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import com.tbio.rpgcommunity.R
@@ -80,31 +82,10 @@ class PerfilActivity : AppCompatActivity() {
                                 thisUserAlreadyIsFriend = true
                         }
 
-                        Log.i("DebugAddAmigo", "thisUserAlreadySendSolicitation = $thisUserAlreadyIsFriend")
+                        Log.i("DebugAddAmigo", "thisUserAlreadyIsFriend = $thisUserAlreadyIsFriend")
 
-                        btnAddFriend.isEnabled = ! thisUserAlreadyIsFriend;
+                        this.verifySolicitation(thisUserAlreadyIsFriend)
                     }
-                }
-        db.collection("${mUser.caminho}/Solicitacoes de Amizade")
-                .get()
-                .addOnSuccessListener {solicitations ->
-                    db.collection("Usuarios")
-                            .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email.toString())
-                            .get()
-                            .addOnSuccessListener {user ->
-                                for(u in user) {
-                                    var thisUserAlreadySendSolicitation = false
-
-                                    for(solicitation in solicitations) {
-                                        if(solicitation["userDocFromSolicitation"] == u.reference)
-                                            thisUserAlreadySendSolicitation = true
-                                    }
-
-                                    Log.i("DebugAddAmigo", "thisUserAlreadySendSolicitation = $thisUserAlreadySendSolicitation")
-
-                                    btnAddFriend.isEnabled = ! thisUserAlreadySendSolicitation;
-                                }
-                            }
                 }
 
         btnAddFriend.setOnClickListener {
@@ -121,6 +102,36 @@ class PerfilActivity : AppCompatActivity() {
             }
             popupMenu.show()
         }
+    }
+
+    private fun verifySolicitation(isAFriend: Boolean) {
+        if(isAFriend)
+            return
+
+        db.collection("${mUser.caminho}/Solicitacoes de Amizade")
+                .get()
+                .addOnSuccessListener {solicitations ->
+                    db.collection("Usuarios")
+                            .whereEqualTo("email", FirebaseAuth.getInstance().currentUser!!.email.toString())
+                            .get()
+                            .addOnSuccessListener {user ->
+                                for(u in user) {
+                                    var thisUserAlreadySendSolicitation = false
+
+                                    for(solicitation in solicitations) {
+                                        if((solicitation["userDocFromSolicitation"] as DocumentReference) == u.reference)
+                                            thisUserAlreadySendSolicitation = true
+                                    }
+
+                                    Log.i("DebugAddAmigo", "thisUserAlreadySendSolicitation = $thisUserAlreadySendSolicitation")
+
+                                    if(! thisUserAlreadySendSolicitation) {
+                                        this.btnAddFriend.visibility = View.VISIBLE
+                                        this.btnAddFriend.isEnabled = true
+                                    }
+                                }
+                            }
+                }
     }
 
     private fun addAmigoSolicitation() {
@@ -145,7 +156,7 @@ class PerfilActivity : AppCompatActivity() {
                 }
     }
 
-    fun setPersonagensRecyclerView() {
+    fun setSessoesRecyclerView() {
         this.rvSessoes.adapter = SessaoAdapter(this.sessoes, this)
 
         val mLyt = LinearLayoutManager(this)
@@ -153,7 +164,7 @@ class PerfilActivity : AppCompatActivity() {
         this.rvSessoes.layoutManager = mLyt
     }
 
-    fun setSessoesRecyclerView() {
+    fun setPersonagensRecyclerView() {
         this.rvPersonagens.adapter = PersonagemAdapter(this, this.personagens)
 
         val mLyt = LinearLayoutManager(this)
